@@ -458,9 +458,9 @@
   			$(window).scroll(function () {
 				$( "#time" ).text(3+($("html").scrollTop()-$("html").scrollTop()%1000)/1000 + ":" +($("html").scrollTop()%1000)/1000*60);
 			});
-  			$(window).resize(function() {
-			  var h = $(window).height(); // New height
-			  var w = $(window).width(); // New width
+			$(window).resize(function() {
+			  var h = $(window).height();
+			  var w = $(window).width();
 			  if (h>w) {
 				  $("section").css({
 				  	'transform' : 'scale(' + (w/1400) + ')'
@@ -470,8 +470,20 @@
 				  	'transform' : 'scale(' + (h/1200) + ')'
 				  });
 			  }
- 
 			});
-		</script>	
+			$( document ).ready(function() {
+			    var h = $(window).height();
+			  	var w = $(window).width();
+			  	if (h>w) {
+				  $("section").css({
+				  	'transform' : 'scale(' + (w/1400) + ')'
+				  });
+			  } else {
+				  $("section").css({
+				  	'transform' : 'scale(' + (h/1200) + ')'
+				  });
+			  }
+			});		
+	</script>	
 </body>
 </html>
