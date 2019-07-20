@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+	<script type="text/javascript" src="skrollr.min.js"></script>
+	 <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet">
+	<style>
+		section {
+			width: 1400px;
+			height: 1200px;
+			position: fixed;
+			background: url("map.png") center;
+		}
+		svg {
+			position: absolute;
+			/*border: solid red 1px;*/
+		}
+
+		#log, #time{
+			position: fixed;
+			z-index: 9999;
+			font-size: 2vw;
+		}
+
+		#log {
+			top: 10px;
+		}
+		
+		#time {
+			top: 50px;
+		}
+
+		.circle {
+			position: absolute;
+			border-radius: 50%;
+		}
+
+		.circle#gold {
+			border: solid 0 gold;
+			box-shadow: 0 0 5px 3px rgb(255,215,0);
+		}
+
+		.circle#black {
+			border: solid 0 black;
+			box-shadow: 0 0 5px 3px rgb(0,0,0);
+		}
+
+
+		.circle#gold:hover {
+			background: gold;
+		}
+		.circle#black:hover {
+			background: black;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="log"></div>
+	<div id="time"></div>
+	<main>
+		<section>
+		<!-- <svg width="1400" height="1200">
+  			<line x1="0" y1="120" x2="1400" y2="120" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="0" y1="240" x2="1400" y2="240" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="0" y1="360" x2="1400" y2="360" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="0" y1="480" x2="1400" y2="480" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="0" y1="600" x2="1400" y2="600" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="0" y1="720" x2="1400" y2="720" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="0" y1="840" x2="1400" y2="840" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="0" y1="960" x2="1400" y2="960" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="0" y1="1080" x2="1400" y2="1080" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="140" y1="0" x2="140" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="280" y1="0" x2="280" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="420" y1="0" x2="420" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="560" y1="0" x2="560" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="700" y1="0" x2="700" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="840" y1="0" x2="840" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="980" y1="0" x2="980" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="1120" y1="0" x2="1120" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
+  			<line x1="1260" y1="0" x2="1260" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
+		</svg> -->
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-2000 = "left: 55%; top: 22.75%;"
+			data-2500 = "left: 60%; top: 15%; opacity: 1"
+			data-6250 = "left: 60%; top: 15%;"	
+			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6400 = "left:52.5%; top:24.5%; opacity: 0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -25px; margin-left: 5px"
+			data-3000 = "left: 66%; top: 7%; opacity: 0"
+			data-3500 = "left: 60%; top: 15%; opacity: 1"
+			data-6250 = "left: 60%; top: 15%;"	
+			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6400 = "left:52.5%; top:24.5%; opacity: 0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -40px; margin-left: 20px"
+			data-3000 = "left: 66%; top: 7%; opacity: 0"
+			data-3500 = "left: 60%; top: 15%; opacity: 1"
+			data-6250 = "left: 60%; top: 15%;"	
+			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6400 = "left:52.5%; top:24.5%; opacity: 0"></div>
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-3750 = "left: 66%; top: 35%; opacity: 0"
+			data-4250 = "left: 60%; top: 28%; opacity: 1"
+			data-6250 = "left: 60%; top: 28%;"	
+			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6400 = "left:52.5%; top:20.5%; opacity: 0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: 5px; margin-left: 5px"
+			data-3750 = "left: 66%; top: 35%; opacity: 0"
+			data-4250 = "left: 60%; top: 28%; opacity: 1"
+			data-6250 = "left: 60%; top: 28%;"	
+			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6400 = "left:52.5%; top:20.5%; opacity: 0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: 20px; margin-left: 20px"
+			data-3750 = "left: 66%; top: 35%; opacity: 0"
+			data-4250 = "left: 60%; top: 28%; opacity: 1"
+			data-6250 = "left: 60%; top: 28%;"	
+			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6400 = "left:52.5%; top:20.5%; opacity: 0"></div>
+
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-4250 = "left: 45%; top: 12.75%; opacity: 0"
+			data-4750 = "left: 49%; top: 17.5%; opacity: 1"
+			data-6250 = "left: 49%; top: 17.5%;"	
+			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6400 = "left:56.5%; top:24.5%; opacity: 0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -25px; margin-left: -25px"
+			data-4250 = "left: 45%; top: 12.75%; opacity: 0"
+			data-4750 = "left: 49%; top: 17.5%; opacity: 1"
+			data-6250 = "left: 49%; top: 17.5%;"	
+			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6400 = "left:56.5%; top:24.5%; opacity: 0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -40px; margin-left: -40px"
+			data-4250 = "left: 45%; top: 12.75%; opacity: 0"
+			data-4750 = "left: 49%; top: 17.5%; opacity: 1"	
+			data-6250 = "left: 49%; top: 17.5%;"	
+			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6400 = "left:56.5%; top:24.5%; opacity: 0"></div>
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-3250 = "left: 25%; top: 49.5%; opacity: 0"
+			data-3750 = "left: 28.5%; top: 48.5%; opacity: 1"></div>
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-4100 = "left: 48.5%; top: 33.5%; opacity: 0"
+			data-4600 = "left: 48.5%; top: 31.5%; opacity: 1"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: 10px; margin-left: -10px"
+			data-4100 = "left: 48.5%; top: 33.5%; opacity: 0"
+			data-4600 = "left: 48.5%; top: 31.5%; opacity: 1"></div>
+
+		<div class="circle" id="black"
+			style="width:12px ; height:12px; margin-left: -20px; margin-top: -20px"
+			data-3500 = "opacity: 0"
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
+		<div class="circle" id="black"
+			style="width:12px ; height:12px; margin-left: -10px; margin-top: -10px"
+			data-3500 = "opacity: 0"
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
+		<div class="circle" id="black"
+			style="width:12px ; height:12px; margin-left: 0px; margin-top: 0px"
+			data-3500 = "opacity: 0"
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
+		<div class="circle" id="black"
+			style="width:12px ; height:12px; margin-left: 10px; margin-top: 10px"
+			data-3500 = "opacity: 0"
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
+		<div class="circle" id="black"
+			style="width:12px ; height:12px; margin-left: 20px; margin-top: 20px"
+			data-3500 = "opacity: 0"
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6350 = "transform: scale(2);	opacity: 0"
+			data-6400 = "left:54.5%; top:22.5%; opacity: 1"
+			data-6500 = "left:51%;   top:26%;"
+			data-6750 = "left:44%;   top:20%;"></div>
+
+
+		<div class="circle" id="gold"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-start= "left:54%; top:22.6%;"
+			data-1700= "opacity: 0; transform: scale(0)"
+			data-2000= "opacity: 1; transform: scale(2)"
+			data-2500= "transform: scale(1); left:57%; top:18.5%;"
+			data-3500= "transform: scale(1); left:57%; top:18.5%;"
+			data-4000= "transform: scale(2.5); left:54.5%; top:22.5%;"
+			data-6250= "transform: scale(1); left:54.5%; top:22.5%;"
+			data-6450= "left:51%;   top:26%; opacity: 1"
+			data-6700= "left:44%;   top:20%; opacity: 0;"></div>
+
+		<div class="circle" id="gold"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-start= "left:42%; top:32.5%;"
+			data-4500= "opacity: 0; transform: scale(0)"
+			data-5000= "opacity: 1; transform: scale(2.5)"></div>
+
+		<div id="chain"
+			data-2500= "opacity: 0"
+			data-3000= "opacity: 1"
+			data-4300= "opacity: 0.5"
+			data-5000= "opacity: 0"></div>
+
+	</section>
+	</main>
+	<script>
+			//main protest 
+			for (var i = 0; i < 100; i++) {
+				var c = (i*250/100)/18;
+				$("section").append(
+				'<div class="circle" id="gold"'+
+				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px" '+
+				'data-start= "display: block"'+
+				'data-'+ (i*25-c*0+167) +'=			"left:6%; 		top:85%;"'+
+				'data-'+ (i*25-c*1+200) +'=			"left:5%; 		top:81%;"'+
+				'data-'+ (i*25-c*2+300) +'=			"left:12.5%; 	top:76%;"'+
+				'data-'+ (i*25-c*3+350) +'=			"left:17.1%; 	top:75%;"'+
+				'data-'+ (i*25-c*4+450) +'=			"left:25%; 		top:76%;"'+
+				'data-'+ (i*25-c*5+500) +'=			"left:31%; 		top:75%;"'+
+				'data-'+ (i*25-c*6+550) +'=			"left:35%; 		top:72%;"'+
+				'data-'+ (i*25-c*7+700) +'=			"left:29%; 		top:59.5%;"'+
+				'data-'+ (i*25-c*8+800) +'=			"left:26%; 		top:50%;"'+
+				'data-'+ (i*25-c*9+860) +'=			"left:32%; 		top:47%;"'+
+				'data-'+ (i*25-c*10+960) +'=			"left:30%; 		top:37.5%;"'+
+				'data-'+ (i*25-c*11+1060) +'=		"left:37.5%; 	top:28%;"'+
+				'data-'+ (i*25-c*12+1160) +'=		"left:44%; 		top:20%;"'+
+				'data-'+ (i*25-c*13+1260) +'=		"left:51%; 		top:27%;"'+
+				'data-'+ (i*25-c*14+1300) +'=		"left:54%; 		top:22.6%;"'+
+				'data-'+ (i*25-c*15+1500) +'=		"left:39%; 		top:6%;"'+
+				'data-'+ (i*25-c*16+1600) +'=		"left:34%; 		top:11%;"'+
+				'data-'+ (i*25-c*17+1700) +'=		"left:34.5%; 	top:16.5%;"'+
+				'data-'+ (i*25-c*18+1750) +'=		"left:34%; 		top:20%;"'+
+				'data-4000-start= "opacity: 0.8;"'+
+				'data-5250-start= "opacity: 0; display: none"></div>');
+			};
+			for (var i = 1; i <= 20; i++) {
+				$("section #chain").append(
+					'<div class="circle" id="gold"'+
+					'style="width:10px ; height:10px; margin-top: -5px; margin-left: -5px;'+
+					'left:' + (i*0.5425+30.5) + '%; top:' + (36.75-i*0.6875) + '%;"'+
+					'></div>');
+			};
+			for (var i = 1; i <= 10; i++) {
+				$("section #chain").append(
+					'<div class="circle" id="gold"'+
+					'style="width:10px ; height:10px; margin-top: -5px; margin-left: -5px;'+
+					'left:' + (i*0.65+41.5) + '%; top:' + (23+i*0.65) + '%;"'+
+					'></div>');
+			};
+			for (var i = 1; i <= 15; i++) {
+				$("section #chain").append(
+					'<div class="circle" id="gold"'+
+					'style="width:10px ; height:10px; margin-top: -5px; margin-left: -5px;'+
+					'left:' + (i*0.533+48) + '%; top:' + (31-i*0.717) + '%;"'+
+					'></div>');
+			};
+			for (var i = 0; i < 30; i++) {
+				$("section").append(
+				'<div class="circle" id="gold"'+
+				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"'+
+				'data-'+ (3999+i*75) +'= "opacity:0;"'+
+				'data-'+ (4000+i*75) +'= "opacity:1; transform: scale(1);   left:54.5%; top:22.5%;"'+
+				'data-'+ (4250+i*75) +'= "			 transform: scale(0.5); left:51%;   top:26%;"'+
+				'data-'+ (4500+i*75) +'= "opacity:0.5; 						left:44%;   top:20%;"'+
+				'data-'+ (4750+i*75) +'= "opacity:0; 						left:37.5%;   top:28.5%;"></div>'
+				);
+				$("section").append(
+				'<div class="circle" id="gold"'+
+				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"'+
+				'data-'+ (3999+i*75) +'= "opacity:0;"'+
+				'data-'+ (4000+i*75) +'= "opacity:1; 						left:54.5%; top:22.5%;"'+
+				'data-'+ (4250+i*75) +'= "			 transform: scale(1);   left:51%;   top:26%;"'+
+				'data-'+ (4500+i*75) +'= "opacity:1; transform: scale(0.5); left:48%;   top:30%;"'+
+				'data-'+ (4750+i*75) +'= "opacity:0.5; 						left:41%;   top:23%;"'+
+				'data-'+ (5000+i*75) +'= "opacity:0; 						left:37.5%; top:28.5%;"></div>'
+				);
+
+			};
+
+	</script>
+	<script type="text/javascript">
+			var s = skrollr.init();
+			$( document ).on( "mousemove", function( event ) {
+				$( "#log" ).text( "pageX: " + event.pageX/14 + ", pageY: " + (event.pageY-$("html").scrollTop())/12 );
+			});
+  			$(window).scroll(function () {
+				$( "#time" ).text(3+($("html").scrollTop()-$("html").scrollTop()%1000)/1000 + ":" +($("html").scrollTop()%1000)/1000*60);
+			});
+
+		</script>	
+</body>
+</html>
