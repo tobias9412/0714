@@ -10,8 +10,8 @@
 			width: 1400px;
 			height: 1200px;
 			position: fixed;
-			background: url("map.png") center;
 		}
+
 		svg {
 			position: absolute;
 			/*border: solid red 1px;*/
@@ -38,12 +38,14 @@
 
 		.circle#gold {
 			border: solid 0 gold;
-			box-shadow: 0 0 5px 3px rgb(255,215,0);
+			box-shadow: 0 0 5px 3px rgba(255,215,0,0.9);
+			background: rgba(255,215,0,0.9);
 		}
 
 		.circle#black {
 			border: solid 0 black;
-			box-shadow: 0 0 5px 3px rgb(0,0,0);
+			box-shadow: 0 0 5px 3px rgba(0,0,0, 0.9);
+			background: rgba(0,0,0, 0.9);
 		}
 
 
@@ -60,27 +62,11 @@
 	<div id="log"></div>
 	<div id="time"></div>
 	<main>
-		<section>
-		<!-- <svg width="1400" height="1200">
-  			<line x1="0" y1="120" x2="1400" y2="120" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="0" y1="240" x2="1400" y2="240" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="0" y1="360" x2="1400" y2="360" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="0" y1="480" x2="1400" y2="480" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="0" y1="600" x2="1400" y2="600" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="0" y1="720" x2="1400" y2="720" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="0" y1="840" x2="1400" y2="840" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="0" y1="960" x2="1400" y2="960" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="0" y1="1080" x2="1400" y2="1080" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="140" y1="0" x2="140" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="280" y1="0" x2="280" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="420" y1="0" x2="420" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="560" y1="0" x2="560" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="700" y1="0" x2="700" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="840" y1="0" x2="840" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="980" y1="0" x2="980" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="1120" y1="0" x2="1120" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
-  			<line x1="1260" y1="0" x2="1260" y2="1200" style="stroke:rgb(255,0,0);stroke-width:2" />
-		</svg> -->
+		<section
+		data-6400 = "background: url('map1.png') center; transition: 0.3s"
+		data-6401 = "background: url('map2.png') center; transition: 0.3s">
+
+		<!--map1-->
 		<div class="circle" id="black"
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
 			data-2000 = "left: 55%; top: 22.75%;"
@@ -151,45 +137,53 @@
 		<div class="circle" id="black"
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
 			data-3250 = "left: 25%; top: 49.5%; opacity: 0"
-			data-3750 = "left: 28.5%; top: 48.5%; opacity: 1"></div>
+			data-3750 = "left: 28.5%; top: 48.5%; opacity: 1"
+			data-6400 = "display: block"
+			data-6401 = "display: none"></div>
 
 		<div class="circle" id="black"
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
 			data-4100 = "left: 48.5%; top: 33.5%; opacity: 0"
-			data-4600 = "left: 48.5%; top: 31.5%; opacity: 1"></div>
+			data-4600 = "left: 48.5%; top: 31.5%; opacity: 1"
+			data-6400 = "display: block"
+			data-6401 = "display: none"></div>
 		<div class="circle" id="black"
 			style="width:20px ; height:20px; margin-top: 10px; margin-left: -10px"
 			data-4100 = "left: 48.5%; top: 33.5%; opacity: 0"
-			data-4600 = "left: 48.5%; top: 31.5%; opacity: 1"></div>
+			data-4600 = "left: 48.5%; top: 31.5%; opacity: 1"
+			data-6400 = "display: block"
+			data-6401 = "display: none"></div>
 
 		<div class="circle" id="black"
 			style="width:12px ; height:12px; margin-left: -20px; margin-top: -20px"
 			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
+			data-6400 = "display: block"
+			data-6401 = "display: none"></div>
 		<div class="circle" id="black"
 			style="width:12px ; height:12px; margin-left: -10px; margin-top: -10px"
 			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
+			data-6400 = "display: block"
+			data-6401 = "display: none"></div>
 		<div class="circle" id="black"
 			style="width:12px ; height:12px; margin-left: 0px; margin-top: 0px"
 			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
+			data-6400 = "display: block"
+			data-6401 = "display: none"></div>
 		<div class="circle" id="black"
 			style="width:12px ; height:12px; margin-left: 10px; margin-top: 10px"
 			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
+			data-6400 = "display: block"
+			data-6401 = "display: none"></div>
 		<div class="circle" id="black"
 			style="width:12px ; height:12px; margin-left: 20px; margin-top: 20px"
 			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"></div>
-
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
-			data-6350 = "transform: scale(2);	opacity: 0"
-			data-6400 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6500 = "left:51%;   top:26%;"
-			data-6750 = "left:44%;   top:20%;"></div>
-
+			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
+			data-6400 = "display: block"
+			data-6401 = "display: none"></div>
 
 		<div class="circle" id="gold"
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
@@ -200,20 +194,187 @@
 			data-3500= "transform: scale(1); left:57%; top:18.5%;"
 			data-4000= "transform: scale(2.5); left:54.5%; top:22.5%;"
 			data-6250= "transform: scale(1); left:54.5%; top:22.5%;"
-			data-6450= "left:51%;   top:26%; opacity: 1"
-			data-6700= "left:44%;   top:20%; opacity: 0;"></div>
-
+			data-6400= "left:53%; top:24%; display: block"
+			data-6401= "display: none"></div>
 		<div class="circle" id="gold"
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
 			data-start= "left:42%; top:32.5%;"
 			data-4500= "opacity: 0; transform: scale(0)"
-			data-5000= "opacity: 1; transform: scale(2.5)"></div>
-
+			data-5000= "opacity: 1; transform: scale(2.5)"
+			data-6400 = "display: block"
+			data-6401 = "display: none"></div>
 		<div id="chain"
 			data-2500= "opacity: 0"
 			data-3000= "opacity: 1"
 			data-4300= "opacity: 0.5"
 			data-5000= "opacity: 0"></div>
+
+		<!--map2-->
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6400 = "display: none"
+			data-6401 = "left: 77.5%; top: 55.5%; display: block"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: 10px; margin-left: -10px"
+			data-6400 = "display: none"
+			data-6401 = "left: 77.5%; top: 55.5%; display: block"></div>
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: 10px; margin-left: -10px"
+			data-6400 = "left: 54%; top: 15%; opacity: 0"
+			data-6500 = "left: 51%; top: 19%; opacity: 1"
+			data-6600 = "left: 51%; top: 19%"
+			data-6700 = "left: 44.5%; top: 28%; opacity:1"
+			data-7000 = "opacity:0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -5px; margin-left: 5px"
+			data-6400 = "left: 54%; top: 15%; opacity: 0"
+			data-6500 = "left: 51%; top: 19%; opacity: 1"
+			data-6600 = "left: 51%; top: 19%"
+			data-6700 = "left: 44.5%; top: 28%; opacity:1"
+			data-7000 = "opacity:0"></div>
+
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: 10px; margin-left: -10px"
+			data-6500 = "left: 28%; top: 26.75%; opacity: 0"
+			data-6550 = "left: 24%; top: 34%; opacity: 1"
+			data-6650 = "left: 25%; top: 34.5%; opacity: 1"
+			data-6800 = "opacity: 0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -5px; margin-left: 0px"
+			data-6500 = "left: 28%; top: 26.75%; opacity: 0"
+			data-6550 = "left: 24%; top: 34%; opacity: 1"
+			data-6650 = "left: 25%; top: 34.5%; opacity: 1"
+			data-6800 = "opacity: 0"></div>
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6400 = "display: none"
+			data-6401 = "left:93%; top:30%; display: block"
+			data-6440 = "left:88.5%; top:37.5%;"
+			data-6460 = "left:83%;   top:39.5%;"
+			data-6500 = "left:72%;   top:28.5%;"
+			data-6550 = "left:74.5%;   top:25%; display: block"
+			data-6551 = "display: none"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6550 = "display: none"
+			data-6551 = "left:74.5%; top:25%; display: block"
+			data-6600 = "left:66%; top:17%;"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6550 = "display: none"
+			data-6551 = "left:74.5%; top:25%; display: block"
+			data-6600 = "left:75.5%; top:27%;"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6550 = "display: none"
+			data-6551 = "left:74.5%; top:25%; display: block"
+			data-6600 = "left:83%; top:35%;"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6599 = "display: none"
+			data-6600 = "left:66%; top:17%; display: block"
+			data-6650 = "left:62%; top:21%;"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6599 = "display: none"
+			data-6600 = "left:75.5%; top:27%; display: block"
+			data-6650 = "left:72%; top:31%;"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6599 = "display: none"
+			data-6600 = "left:83%; top:35%; display: block"
+			data-6650 = "left:80%; top:40%;"></div>
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6410 = "display: none"
+			data-6411 = "left:93%; top:30%; display: block"
+			data-6450 = "left:88.5%; top:37.5%;"
+			data-6470 = "left:83%;   top:39.5%;"
+			data-6510 = "left:72%;   top:28.5%;"
+			data-6560 = "left:61.5%;   top:18%;"
+			data-6600 = "left:34.5%;   top:54%;"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6420 = "display: none"
+			data-6421 = "left:93%; top:30%; display: block"
+			data-6460 = "left:88.5%; top:37.5%;"
+			data-6480 = "left:83%;   top:39.5%;"
+			data-6520 = "left:72%;   top:28.5%;"
+			data-6580 = "left:61.5%;   top:18%;"
+			data-6600 = "left:36%;   top:52%;"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6430 = "display: none"
+			data-6431 = "left:93%; top:30%; display: block"
+			data-6480 = "left:88.5%; top:37.5%;"
+			data-6490 = "left:83%;   top:39.5%;"
+			data-6530 = "left:72%;   top:28.5%;"
+			data-6580 = "left:61.5%;   top:18%;"
+			data-6600 = "left:41.5%;   top:43.5%;"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6440 = "display: none"
+			data-6441 = "left:93%; top:30%; display: block"
+			data-6490 = "left:88.5%; top:37.5%;"
+			data-6500 = "left:83%;   top:39.5%;"
+			data-6540 = "left:72%;   top:28.5%;"
+			data-6590 = "left:61.5%;   top:18%;"
+			data-6600 = "left:43%;   top:41.5%;"></div>
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6799 = "display: none"
+			data-6800 = "display: block; left:58%; top:67.5%; opacity:0"
+			data-6900 = "left:52%; top:62%; opacity:1"
+			data-6950 = "left:35%; top:42.75%; opacity:1"
+			data-7000 = "opacity:0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6799 = "display: none"
+			data-6810 = "display: block; left:58%; top:67.5%; opacity:0"
+			data-6910 = "left:52%; top:62%; opacity:1"
+			data-6960 = "left:35%; top:42.75%; opacity:1"
+			data-7000 = "opacity:0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6799 = "display: none"
+			data-6820 = "display: block; left:58%; top:67.5%; opacity:0"
+			data-6920 = "left:52%; top:62%; opacity:1"
+			data-6970 = "left:35%; top:42.75%; opacity:1"
+			data-7000 = "opacity:0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6799 = "display: none"
+			data-6830 = "display: block; left:58%; top:67.5%; opacity:0"
+			data-6930 = "left:52%; top:62%; opacity:1"
+			data-6980 = "left:35%; top:42.75%; opacity:1"
+			data-7000 = "opacity:0"></div>
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6799 = "display: none"
+			data-6840 = "display: block; left:58%; top:67.5%; opacity:0"
+			data-6940 = "left:52%; top:62%; opacity:1"
+			data-6990 = "left:35%; top:42.75%; opacity:1"
+			data-7000 = "opacity:0"></div>
+
+		<div class="circle" id="gold"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6401 = "opacity: 0; transform: scale(2)"
+			data-7000 = "opacity: 1; left:35%; top:42.75%; transform: scale(6)"></div>
+
+		<div class="circle" id="black"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6975 = "opacity: 0; transform: scale(1)"
+			data-7000 = "opacity: 1; left:35%; top:42.75%; transform: scale(4)"></div>
+
+		<div class="circle" id="gold"
+			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
+			data-6400 = "display: none; transform: scale(4)"
+			data-6401 = "display: block; left:52%; top:62%"></div>
 
 	</section>
 	</main>
@@ -247,6 +408,8 @@
 				'data-4000-start= "opacity: 0.8;"'+
 				'data-5250-start= "opacity: 0; display: none"></div>');
 			};
+
+			//#chain
 			for (var i = 1; i <= 20; i++) {
 				$("section #chain").append(
 					'<div class="circle" id="gold"'+
@@ -268,7 +431,9 @@
 					'left:' + (i*0.533+48) + '%; top:' + (31-i*0.717) + '%;"'+
 					'></div>');
 			};
-			for (var i = 0; i < 30; i++) {
+
+			//pre0925leaving
+			for (var i = 0; i < 29; i++) {
 				$("section").append(
 				'<div class="circle" id="gold"'+
 				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"'+
@@ -276,19 +441,9 @@
 				'data-'+ (4000+i*75) +'= "opacity:1; transform: scale(1);   left:54.5%; top:22.5%;"'+
 				'data-'+ (4250+i*75) +'= "			 transform: scale(0.5); left:51%;   top:26%;"'+
 				'data-'+ (4500+i*75) +'= "opacity:0.5; 						left:44%;   top:20%;"'+
-				'data-'+ (4750+i*75) +'= "opacity:0; 						left:37.5%;   top:28.5%;"></div>'
+				'data-'+ (4750+i*75) +'= "opacity:0; 						left:37.5%; top:28.5%;"'+
+				'data-6400 = "display: block" data-6401 = "display: none"></div>'
 				);
-				$("section").append(
-				'<div class="circle" id="gold"'+
-				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"'+
-				'data-'+ (3999+i*75) +'= "opacity:0;"'+
-				'data-'+ (4000+i*75) +'= "opacity:1; 						left:54.5%; top:22.5%;"'+
-				'data-'+ (4250+i*75) +'= "			 transform: scale(1);   left:51%;   top:26%;"'+
-				'data-'+ (4500+i*75) +'= "opacity:1; transform: scale(0.5); left:48%;   top:30%;"'+
-				'data-'+ (4750+i*75) +'= "opacity:0.5; 						left:41%;   top:23%;"'+
-				'data-'+ (5000+i*75) +'= "opacity:0; 						left:37.5%; top:28.5%;"></div>'
-				);
-
 			};
 
 	</script>
