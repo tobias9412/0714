@@ -226,6 +226,7 @@
 			data-6400 = "display: none"
 			data-6401 = "left: 77.5%; top: 55.5%; display: block"></div>
 
+
 		<div class="circle" id="black"
 			style="width:20px ; height:20px; margin-top: 10px; margin-left: -10px"
 			data-6400 = "left: 54%; top: 15%; opacity: 0"
@@ -241,6 +242,12 @@
 			data-6700 = "left: 44.5%; top: 28%; opacity:1"
 			data-7000 = "opacity:0"></div>
 
+		<div class="circle" id="gold"
+			style="width:20px ; height:20px; margin-top: -5px; margin-left: 5px"
+			data-6400 = "display: none; transform: scale(3); left: 50%; top: 19%"
+			data-6401 = "display: block; "
+			data-6600 = "left: 47%; top: 24%; opacity: 1"
+			data-6700 = "left:35%; top:42.75%; transform: scale2); opacity: 0"></div>
 
 		<div class="circle" id="black"
 			style="width:20px ; height:20px; margin-top: 10px; margin-left: -10px"
@@ -254,6 +261,12 @@
 			data-6550 = "left: 24%; top: 34%; opacity: 1"
 			data-6650 = "left: 25%; top: 34.5%; opacity: 1"
 			data-6800 = "opacity: 0"></div>
+
+		<div class="circle" id="gold"
+			style="width:20px ; height:20px; margin-top: -5px; margin-left: 5px"
+			data-6400 = "display: none; transform: scale(2); left: 26%; top: 37%"
+			data-6401 = "display: block; "></div>
+
 
 		<div class="circle" id="black"
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
@@ -413,12 +426,30 @@
 				'data-'+ (i*10-c*17+1700) +'=		"left:34.5%; 	top:16.5%;"'+
 				'data-'+ (i*10-c*18+1750) +'=		"left:34%; 		top:20%;"'+
 				'data-4000-start= "opacity: 0.3;"'+
-				'data-5250-start= "opacity: 0; display: none"></div>');
+				'data-5000-start= "opacity: 0; display: none"></div>');
 			};
 
-			//#chain
-			//30, 38.75, 31 44 
+			// leaving by MTR
+			for (var i = 0; i < 60; i++) {
+				$("section").append(
+				'<div class="circle" id="gold"'+
+				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px" '+
+				'data-'+ (i*50+1750) +' = "transform: scale(0); left:34%; top:20%;"'+
+				'data-'+ (i*50+2000) +' = "transform: scale(2); opacity: 0.5; left:34%; top:20%; "'+
+				'data-'+ (i*50+2250) +' = "transform: scale(0); opacity: 0; left:30%; top:30%; "></div>');
+			};
 
+			// heading to screening
+			for (var i = 0; i < 60; i++) {
+				$("section").append(
+				'<div class="circle" id="gold"'+
+				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px" '+
+				'data-'+ (i*50+4450) +' = "opacity: 0; left:38.5%; top:30%;"'+
+				'data-'+ (i*50+4500) +' = "opacity: 1; left:42%; top:32.5%"'+
+				'data-6400 = "display: block" data-6401 = "display: none"></div>');
+			};			
+
+			//#chain
 			for (var i = 1; i <= 5; i++) {
 				$("section #chain").append(
 					'<div class="circle" id="gold"'+
@@ -426,7 +457,6 @@
 					'left:' + (31-i*0.15) + '%; top:' + (44-i*1) + '%;"'+
 					'></div>');
 			};
-
 			for (var i = 1; i <= 2; i++) {
 				$("section #chain").append(
 					'<div class="circle" id="gold"'+
@@ -434,7 +464,6 @@
 					'left:' + (i*0.3+30) + '%; top:' + (39-i*1) + '%;"'+
 					'></div>');
 			};
-
 			for (var i = 1; i <= 20; i++) {
 				$("section #chain").append(
 					'<div class="circle" id="gold"'+
@@ -458,15 +487,15 @@
 			};
 
 			//pre0925leaving
-			for (var i = 0; i < 29; i++) {
+			for (var i = 0; i < 100; i++) {
 				$("section").append(
 				'<div class="circle" id="gold"'+
 				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"'+
-				'data-'+ (3999+i*75) +'= "opacity:0;"'+
-				'data-'+ (4000+i*75) +'= "opacity:1; transform: scale(1);   left:54.5%; top:22.5%;"'+
-				'data-'+ (4250+i*75) +'= "			 transform: scale(0.5); left:51%;   top:26%;"'+
-				'data-'+ (4500+i*75) +'= "opacity:0.5; 						left:44%;   top:20%;"'+
-				'data-'+ (4750+i*75) +'= "opacity:0; 						left:37.5%; top:28.5%;"'+
+				'data-'+ (3999+i*22.5) +'= "opacity:0;"'+
+				'data-'+ (4000+i*22.5) +'= "opacity:1; transform: scale(1);   left:54.5%; top:22.5%;"'+
+				'data-'+ (4250+i*22.5) +'= "			 transform: scale(0.5); left:51%;   top:26%;"'+
+				'data-'+ (4500+i*22.5) +'= "opacity:0.5; 						left:44%;   top:20%;"'+
+				'data-'+ (4750+i*22.5) +'= "opacity:0; 						left:37.5%; top:28.5%;"'+
 				'data-6400 = "display: block" data-6401 = "display: none"></div>'
 				);
 			};
