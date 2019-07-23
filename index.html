@@ -38,6 +38,28 @@
 			top: 50px;
 		}
 
+		svg {
+			border: solid red 0px;
+			position: absolute;
+		}
+
+		polyline {
+			fill:none; 
+			stroke-width:20;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+		}
+
+		#gold {
+			stroke:gold;
+			stroke-opacity:0.5;
+		}
+
+		#black {
+			stroke:black;
+			stroke-opacity:1;
+		}
+
 		.circle {
 			position: absolute;
 			border-radius: 50%;
@@ -45,8 +67,8 @@
 
 		.circle#gold {
 			border: solid 0 rgba(255,215,0,0.9);
-			box-shadow: 0 0 3px 1px rgba(255,255,255,0.9);
-			background: rgba(255,255,255,0.9);
+			box-shadow: 0 0 3px 1px rgba(255,215,0,0.9);
+			background: rgba(255,215,0,0.9);
 		}
 
 		.circle#black {
@@ -66,27 +88,100 @@
 		data-6401 = "background: url('map2.png') center; transition: 0.3s">
 
 		<!--map1-->
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
-			data-2000 = "left: 55%; top: 22.75%;"
-			data-2500 = "left: 60%; top: 15%; opacity: 1"
-			data-6250 = "left: 60%; top: 15%;"	
-			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6400 = "left:52.5%; top:24.5%; opacity: 0"></div>
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -25px; margin-left: 5px"
-			data-3000 = "left: 66%; top: 7%; opacity: 0"
-			data-3500 = "left: 60%; top: 15%; opacity: 1"
-			data-6250 = "left: 60%; top: 15%;"	
-			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6400 = "left:52.5%; top:24.5%; opacity: 0"></div>
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -40px; margin-left: 20px"
-			data-3000 = "left: 66%; top: 7%; opacity: 0"
-			data-3500 = "left: 60%; top: 15%; opacity: 1"
-			data-6250 = "left: 60%; top: 15%;"	
-			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6400 = "left:52.5%; top:24.5%; opacity: 0"></div>
+		<svg id="gold" width="1400" height="1200">
+			<defs><filter id="b10" width="200%" height="200%" x="-50%" y="-50%">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+			</filter></defs>
+			<defs><filter id="b5" width="200%" height="200%" x="-50%" y="-50%">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+			</filter></defs>
+			<polyline
+						points="84,1020 
+			  					70,972 
+			  					175,912
+								350,912
+								434,900
+								490,864
+								406,714
+								364,600
+								448,564
+								420,450
+								525,336
+								616,240
+								714,324
+								756,271.2
+								546,72
+								476,132
+								483,198
+								476,240"
+						style="stroke-dasharray:2000;
+							   stroke-dashoffset:0" 
+					  	filter="url(#b10)"
+					  	data-167="stroke-dashoffset:2000;" 
+					  	data-1750="stroke-dashoffset:0;"
+					  	data-2500="stroke-dashoffset:0;"
+					  	data-4000="stroke-dashoffset:-2000;" />
+		</svg>
+
+		<svg id="gold" width="100" height="100" style="left:700px; top:215px; "
+		  	 data-1700="opacity: 0;"
+  			 data-2000= "opacity: 1;" 
+  			 data-2500= "transform: scale(1);"
+  			 data-4000= "transform: scale(2);">
+  			 <circle cx="50" cy="50" r="30" stroke="none" fill="gold" opacity="0.5" filter="url(#b10)" />
+  		</svg>
+
+		<svg id="gold" width="1400" height="1200">
+			<polyline 	points="776,266 
+			  					818,208"
+						style="stroke-dasharray:80;
+							   stroke-dashoffset:0" 
+					  	filter="url(#b10)" 
+		  	 			data-2000="stroke-dashoffset:80;"
+		  	 			data-2500="stroke-dashoffset:0;"/>
+		</svg>
+
+		<svg id="gold" width="1400" height="1200"
+			data-2500= "opacity: 0"
+			data-3000= "opacity: 1"
+			data-4300= "opacity: 1"
+			data-5000= "opacity: 0">
+			<polyline 	points="434,528
+								420,468
+								427,441
+								616,240
+								707,324
+								781,238"
+						style="stroke-dasharray:600;
+							   stroke-dashoffset:0;" 
+					  	filter="url(#b5)" 
+		  	 			data-start="stroke-width:5; stroke-opacity:1;"
+		  	 			data-2500="stroke-dashoffset:0;"/>
+		</svg>
+
+		<svg id="gold" width="100" height="100" 
+			 style="margin-left:-50px; margin-top:-50px; 
+			 		left:775px; top:265px;
+			 		transform: scale(0.5)"
+			 data-2000="left:775px; top:265px;"
+			 data-2500="left:850px; top:175px;"
+			 data-3000="transform: scale(0.5);"
+ 			 data-3500="transform: scale(0.75)"
+ 			 data-6250="left:850px; top:175px;"
+ 			 data-6400="left:775px; top:265px;">
+ 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" opacity="0.75" filter="url(#b10)" />
+  		</svg>
+
+		<!--<svg id="black" width="1400" height="1200">
+			<polyline 	points="763,270
+								887,132"
+						style="stroke-dasharray:200; 
+							   stroke-dashoffset:180;"
+					  	filter="url(#b10)" 
+		  	 			data-2000="stroke-dasharray:200; stroke-dashoffset:180;"
+		  	 			data-2500="stroke-dashoffset:-140; "
+		  	 			/>
+		</svg>-->
 
 		<div class="circle" id="black"
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
@@ -186,17 +281,6 @@
 
 		<div class="circle" id="gold"
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
-			data-start= "left:54%; top:22.6%;"
-			data-1700= "opacity: 0; transform: scale(0)"
-			data-2000= "opacity: 1; transform: scale(2)"
-			data-2500= "transform: scale(1); left:57%; top:18.5%;"
-			data-3500= "transform: scale(1); left:57%; top:18.5%;"
-			data-4000= "transform: scale(2.5); left:54.5%; top:22.5%;"
-			data-6250= "transform: scale(1); left:54.5%; top:22.5%;"
-			data-6400= "left:53%; top:24%; display: block"
-			data-6401= "display: none"></div>
-		<div class="circle" id="gold"
-			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
 			data-start= "left:42%; top:32.5%;"
 			data-4500= "opacity: 0; transform: scale(0)"
 			data-5000= "opacity: 1; transform: scale(2.5)"
@@ -233,7 +317,6 @@
 			data-6600 = "left: 51%; top: 19%"
 			data-6700 = "left: 44.5%; top: 28%; opacity:1"
 			data-7000 = "opacity:0"></div>
-
 		<div class="circle" id="gold"
 			style="width:20px ; height:20px; margin-top: -5px; margin-left: 5px"
 			data-6400 = "display: none; transform: scale(3); left: 50%; top: 19%"
@@ -253,7 +336,6 @@
 			data-6550 = "left: 24%; top: 34%; opacity: 1"
 			data-6650 = "left: 25%; top: 34.5%; opacity: 1"
 			data-6800 = "opacity: 0"></div>
-
 		<div class="circle" id="gold"
 			style="width:20px ; height:20px; margin-top: -5px; margin-left: 5px"
 			data-6400 = "display: none; transform: scale(2); left: 26%; top: 37%"
@@ -391,6 +473,7 @@
 	</section>
 	</main>
 	<script>
+	/*
 			//main protest 
 			for (var i = 0; i < 250; i++) {
 				var c = (i*250/250)/18;
@@ -490,13 +573,13 @@
 				'data-'+ (4750+i*22.5) +'= "opacity:0; 						left:37.5%; top:28.5%;"'+
 				'data-6400 = "display: block" data-6401 = "display: none"></div>'
 				);
-			};
+			};*/
 
 	</script>
 	<script type="text/javascript">
 			var s = skrollr.init();
 			$("section").on( "mousemove", function( event ) {
-				$( "#log" ).text( "pageX: " + event.offsetX/14 + ", pageY: " + event.offsetY/12 );
+				$( "#log" ).text( "pageX: " + event.offsetX + ", pageY: " + event.offsetY );
 			});
   			$(window).scroll(function () {
 				$( "#time" ).text(3+($("html").scrollTop()-$("html").scrollTop()%1000)/1000 + ":" +($("html").scrollTop()%1000)/1000*60);
