@@ -65,6 +65,22 @@
 			border-radius: 50%;
 		}
 
+		div {
+			position: absolute; 
+		}
+
+		div img {
+			width: 100%;
+		}
+
+		p {
+			position: absolute; 
+			bottom: -10px; 
+			padding: 10px; 
+			background: rgba(0, 0, 0, 0.5); 
+			color: white; ">
+		}
+
 		.circle#gold {
 			border: solid 0 rgba(255,215,0,0.9);
 			box-shadow: 0 0 3px 1px rgba(255,215,0,0.9);
@@ -116,10 +132,10 @@
 								476,240"
 					  	filter="url(#b10)"
 						style="stroke-dasharray:2000; stroke-dashoffset:0" 
-					  	data-167="stroke-dasharray:2000; stroke-dashoffset:6000" 
-					  	data-1750="stroke-dasharray:2000; stroke-dashoffset:4000" 
-					  	data-2500="stroke-dasharray:2000; stroke-dashoffset:4000" 
-					  	data-4000="stroke-dasharray:2000; stroke-dashoffset:2000"  />
+					  	data-167="stroke-dashoffset:6000" 
+					  	data-1750="stroke-dashoffset:4000" 
+					  	data-2500="stroke-dashoffset:4000" 
+					  	data-4000="stroke-dashoffset:2000"  />
 		</svg>
 
 		<svg id="gold" width="100" height="100" style="left:700px; top:215px; "
@@ -171,16 +187,38 @@
  			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" opacity="0.75" filter="url(#b10)" />
   		</svg>
 
-		<!--<svg id="black" width="1400" height="1200">
-			<polyline 	points="763,270
-								887,132"
-						style="stroke-dasharray:200; 
-							   stroke-dashoffset:180;"
-					  	filter="url(#b10)" 
-		  	 			data-2000="stroke-dasharray:200; stroke-dashoffset:180;"
-		  	 			data-2500="stroke-dashoffset:-140; "
-		  	 			/>
-		</svg>-->
+		<div style="width: 500px"
+		   data-500   = "opacity: 1; left: 800px; top: 290px; display: block"  
+		   data-600   = "opacity: 0; left: 800px; top: 240px; display: none">
+			  <a target="_blank" href="https://www.inmediahk.net/node/1065663"><img src="https://live.staticflickr.com/65535/48278621006_8834e40121_z.jpg" ></a>
+			  <p>(香港獨立媒體圖片)<br>距離沙田遊行起步約一小時，沙田源禾路與沙田鄉事會路十字路口交界現已實行交通管制，大部份行車路段已經清空，約10多輛警車正停泊於源禾路游泳池外。</p>
+		</div>
+		<div style="width: 500px"
+		   data-start = "opacity: 0; left: 250px; bottom: -50px" 
+		   data-167   = "opacity: 1; left: 250px; bottom: 0px; display: block"  
+		   data-1000  = "opacity: 1; left: 250px; bottom: 0px; display: block"  
+		   data-1100  = "opacity: 0; left: 250px; bottom: 50px; display: none" >
+			  <a target="_blank" href="std.stheadline.com/instant/articles/detail/1043935/即時-香港-逃犯條例-沙田遊行隊伍拉起黑布提前起步-大圍站迫滿黑衣人流
+"><img src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071415275364947.jpg"></a>
+			 <p>15:10 (星島日報圖片)<br>在起點翠田街足球場，由於人數眾多，比原定提早20分鐘開始起步。</p>
+		</div>
+		<div style="width: 300px" 
+		   data-1650 = "opacity: 0; left: 20px; top: 240px; display: none"
+		   data-1750 = "opacity: 1; left: 20px; top: 190px; display: block" 
+		   data-2750 = "opacity: 1; left: 20px; top: 190px; display: block" 
+		   data-2850 = "opacity: 0; left: 20px; top: 140px; display: none">
+			 <p>16:45 遊行隊頭出發到達終點，與此同時，起點翠田街足球場的所有市民已經出發，仍有市民直接由港鐵大圍站直接進入車公廟路遊行路線。<br><br>部分人抵達終點後，沿沙田鄉事會路折返至源禾路，聲援該處示威者。</p>
+		</div>
+		<div style="width: 500px"
+		   data-3500 = "opacity: 0; right: 0px; top: 250px; " 
+		   data-3600 = "opacity: 1; right: 0px; top: 200px; " 
+		   data-4000 = "opacity: 1; right: 0px; top: 200px; " 
+		   data-4100 = "opacity: 0; right: 0px; top: 150px; ">
+		   <img src="https://cdn.thestandnews.com/media/photos/cache/66583011_2305350629550544_7038596871450787840_n_wnNWs_1200x0.jpg">
+			<p>18:40 (立場新聞圖片)<br>記者現場所見，部分警員不論是胸前或膊頭上，均沒有展示警員編號，有警員頭盔眼部位置有銀色反光物料。現場民眾不斷高呼「委任證」，要求警員交代身份。</p>
+		</div>
+
+
 
 		<div class="circle" id="black"
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
@@ -590,11 +628,11 @@
 			  console.log (o);
 			  if (h>w) {
 				  $("section").css({
-				  	'transform' : 'scale(' + (w/1400) + ')'
+				  	'transform' : 'scale(' + (w/1400/1.01) + ')'
 				  });
 			  } else {
 				  $("section").css({
-				  	'transform' : 'scale(' + (h/1200) + ')'
+				  	'transform' : 'scale(' + (h/1200/1.01) + ')'
 				  });
 			  }
 			});
@@ -603,11 +641,11 @@
 			  	var w = $(window).width();
 			  	if (h>w) {
 				  $("section").css({
-				  	'transform' : 'scale(' + (w/1400) + ')'
+				  	'transform' : 'scale(' + (w/1400/1.01) + ')'
 				  });
 			  } else {
 				  $("section").css({
-				  	'transform' : 'scale(' + (h/1200) + ')'
+				  	'transform' : 'scale(' + (h/1200/1.01) + ')'
 				  });
 			  }
 			});		
