@@ -7,7 +7,7 @@
 	 <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet">
 	<style>
 		html, body {
-			background: black;
+			background: lightgrey;
 		}
 
 		section {
@@ -49,19 +49,16 @@
 
 		polyline {
 			fill:none; 
-			stroke-width:20;
 			stroke-linecap:round;
 			stroke-linejoin:round;
 		}
 
 		#gold {
-			stroke: rgb(248,248,6);
-			stroke-opacity:0.8;
+			stroke: gold;
 		}
 
 		#black {
 			stroke:black;
-			stroke-opacity:1;
 		}
 
 		.circle {
@@ -106,9 +103,9 @@
 <body>
 	<div id="log"></div>
 	<main>
-		<section
-		data-6400 = "background: url('map1.png') center; transition: 0.3s"
-		data-6401 = "background: url('map2.png') center; transition: 0.3s">
+		<section>
+			<!--data-6400 = "background: url('map1.png') center; transition: 0.3s"
+		data-6401 = "background: url('map2.png') center; transition: 0.3s"-->
 		<div id="time"></div>
 
 		<!--map1-->
@@ -120,80 +117,166 @@
 				<feGaussianBlur in="SourceGraphic" stdDeviation="5" />
 			</filter></defs>
 			<polyline
-						points="84,1020 
-			  					70,972 
-			  					175,912
+						points="105,963 
+			  					194,900 
+			  					243,884
+			  					276,884
+			  					360,893
 								350,912
+								410,893
 								434,900
-								490,864
-								406,714
-								364,600
-								448,564
-								420,450
-								525,336
-								616,240
-								714,324
-								756,271.2
-								546,72
-								476,132
-								483,198
-								476,240"
+								512,844
+								418,705
+								386,597
+								460,571
+								442,466
+								620,260
+								719,336
+								759,291
+								550,110
+								512,134
+								493,168
+								501,225
+								488,275"
 					  	filter="url(#b10)"
-						style="stroke-dasharray:2000; stroke-dashoffset:0" 
+						style="	stroke-width:30;
+								stroke-dasharray:2000; 
+								stroke-dashoffset:0" 
+					  	data-start="display: block;"
 					  	data-167="stroke-dashoffset:6000" 
 					  	data-1750="stroke-dashoffset:4000" 
 					  	data-2500="stroke-dashoffset:4000" 
-					  	data-4000="stroke-dashoffset:2000"  />
-		</svg>
-
-		<svg id="gold" width="100" height="100" style="left:700px; top:215px; "
-		  	 data-1700="opacity: 0;"
-  			 data-2000= "opacity: 1;" 
-  			 data-2500= "transform: scale(1);"
-  			 data-4000= "transform: scale(2);">
-  			 <circle cx="50" cy="50" r="30" stroke="none" fill="rgb(248,248,6)" opacity="0.5" filter="url(#b10)" />
-  		</svg>
-
-		<svg id="gold" width="1400" height="1200">
-			<polyline 	points="776,266 
-			  					818,208"
-						style="stroke-dasharray:80;
-							   stroke-dashoffset:0" 
-					  	filter="url(#b10)" 
-		  	 			data-2000="stroke-dashoffset:80;"
-		  	 			data-2500="stroke-dashoffset:0;"/>
-		</svg>
-
-		<svg id="gold" width="1400" height="1200"
-			data-2500= "opacity: 0"
-			data-3000= "opacity: 1"
-			data-4300= "opacity: 1"
-			data-5000= "opacity: 0">
-			<polyline 	points="434,528
-								420,468
-								427,441
-								616,240
-								707,324
-								781,238"
-						style="stroke-dasharray:600;
-							   stroke-dashoffset:0;" 
-					  	filter="url(#b5)" 
-		  	 			data-start="stroke-width:5; stroke-opacity:1;"
-		  	 			data-2500="stroke-dashoffset:0;"/>
+					  	data-4000="stroke-dashoffset:2000"
+					  	data-6401="display: none;"/>
 		</svg>
 
 		<svg id="gold" width="100" height="100" 
 			 style="margin-left:-50px; margin-top:-50px; 
-			 		left:775px; top:265px;
-			 		transform: scale(0.5)"
-			 data-2000="left:775px; top:265px;"
-			 data-2500="left:850px; top:175px;"
-			 data-3000="transform: scale(0.5);"
- 			 data-3500="transform: scale(0.75)"
- 			 data-6250="left:850px; top:175px;"
- 			 data-6400="left:775px; top:265px;">
- 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" opacity="0.75" filter="url(#b10)" />
+			 		left:761px; top:294px; "
+		  	 data-start="display: block;"
+		  	 data-1700= "opacity: 0;"
+  			 data-2000= "opacity: 1;" 
+  			 data-2500= "transform: scale(1);"
+  			 data-4000= "transform: scale(1.5);"
+  			 data-6250= "transform: scale(1.5);"
+  			 data-6400= "transform: scale(0);"
+  			 data-6411= "display: none;">
+  			 <circle cx="50" cy="50" r="30" stroke="none" fill="gold" filter="url(#b10)" />
   		</svg>
+
+		<svg id="gold" width="1400" height="1200">
+			<polyline 	points="776,266 
+			  					830,215"
+						style="stroke-width:20;
+							   stroke-dasharray:80;
+							   stroke-dashoffset:0" 
+					  	filter="url(#b10)" 
+					  	data-start="display: block;"
+		  	 			data-2000="stroke-dashoffset:80;"
+		  	 			data-2500="stroke-dashoffset:0;"/
+		  	 			data-6250="stroke-dashoffset:0;"/
+		  	 			data-6400="stroke-dashoffset:80;"/
+					  	data-6401="display: none;"/>
+		</svg>
+
+		<svg id="gold" width="1400" height="1200"
+			data-start="display: block;"
+			data-2500= "opacity: 0"
+			data-3000= "opacity: 1"
+			data-4300= "opacity: 1"
+			data-5000= "opacity: 0"
+			data-6401= "display: none;">
+			<polyline 	points="453,522
+								442,459
+								623,261
+								721,334
+								781,238"
+						style="stroke-dasharray:600;
+							   stroke-dashoffset:0;
+							   stroke-width:10; " 
+					  	filter="url(#b5)" />
+		</svg>
+
+		<svg id="gold" width="100" height="100" 
+			 style="margin-left:-50px; margin-top:-50px; 
+			 		left:590px; top:382px; 
+			 		z-index: 100;"
+		  	 data-start="display: block;"
+		  	 data-4500= "opacity: 0; transform: scale(0);"
+  			 data-5000= "opacity: 1; transform: scale(1.5);" 
+  			 data-6401= "display: none;">
+  			 <circle cx="50" cy="50" r="30" stroke="none" fill="gold" filter="url(#b10)" />
+  		</svg>
+
+		<svg id="black" width="100" height="100" 
+			 style="margin-left:-50px; margin-top:-50px; 
+			 		transform: scale(0.5)"
+			 data-start="display: block;"
+			 data-2000="left:771px; top:291px;"
+			 data-2500="left:854px; top:179px;"
+			 data-3000="transform: scale(0.75);"
+ 			 data-3500="transform: scale(1)"
+ 			 data-6250="left:850px; top:175px; opacity: 1; transform: scale(1)"
+ 			 data-6400="left:759px; top:290px; opacity: 0; transform: scale(0.5)"
+ 			 data-6401="display: none;">
+ 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
+  		</svg>
+
+		<svg id="black" width="100" height="100" 
+			 style="margin-left:-50px; margin-top:-50px;"
+			 data-start="display: block;"
+			 data-3750="left:877px; top:400px; opacity: 0"
+			 data-4250="left:820px; top:342px; opacity: 1"
+			 data-6250="left:820px; top:342px; opacity: 1"
+			 data-6400="left:772px; top:300px; opacity: 0"
+			 data-6401="display: none;">
+ 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
+  		</svg>
+
+		<svg id="black" width="100" height="100" 
+			 style="margin-left:-50px; margin-top:-50px;"
+			 data-start="display: block;"
+			 data-3750="left:639px; top:179px; opacity: 0"
+			 data-4250="left:691px; top:231px; opacity: 1"
+			 data-6250="left:691px; top:231px; opacity: 1"
+			 data-6400="left:747px; top:278px; opacity: 0"
+			 data-6401="display: none;">
+ 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
+  		</svg>
+
+  		<svg id="black" width="100" height="100" 
+			 style="margin-left:-50px; margin-top:-50px;
+			 		left: 412px; top: 584px"
+			 data-start="display: block;"
+			 data-3250="opacity: 0"
+			 data-3750="opacity: 1"
+			 data-6401="display: none;">
+ 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
+  		</svg>
+
+  		<svg id="black" width="100" height="100" 
+			 style="margin-left:-50px; margin-top:-50px;
+			 		left: 680px; top: 400px;
+			 		transform: scale(0.75)"
+			 data-start="display: block;"
+			 data-4100="opacity: 0"
+			 data-4600="opacity: 1"
+			 data-6401="display: none;">
+ 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
+  		</svg>
+
+		<svg id="black" width="1400" height="1200"
+			data-start="display: block;"
+			data-3500= "opacity: 0"
+			data-4000= "opacity: 1"
+			data-6401="display: none;">
+			<polyline 	points="660,157
+								739,220"
+					  	filter="url(#b5)" 
+		  	 			data-start="stroke-width: 20; stroke-opacity:1;"
+		  	 			data-2500="stroke-dashoffset:0;"/>
+		</svg>
+
 
 		<div style="width: 500px"
 		   data-start = "opacity: 1; left: 800px; top: 300px; display: block"  
@@ -208,8 +291,7 @@
 		   data-167   = "opacity: 1; left: 250px; bottom: 0px; display: block"  
 		   data-1000  = "opacity: 1; left: 250px; bottom: 10px; display: block"  
 		   data-1100  = "opacity: 0; left: 250px; bottom: 60px; display: none" >
-			  <a target="_blank" href="http://std.stheadline.com/instant/articles/detail/1043935/即時-香港-逃犯條例-沙田遊行隊伍拉起黑布提前起步-大圍站迫滿黑衣人流
-"><img src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071415275364947.jpg"></a>
+			  <a target="_blank" href="http://std.stheadline.com/instant/articles/detail/1043935/即時-香港-逃犯條例-沙田遊行隊伍拉起黑布提前起步-大圍站迫滿黑衣人流"><img src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071415275364947.jpg"></a>
 			 <p>15:10 (星島日報圖片)<br>在起點翠田街足球場，由於人數眾多，比原定提早20分鐘開始起步。</p>
 		</div>
 
@@ -219,8 +301,7 @@
 		   data-1750  = "opacity: 1; left: 20px; top: 290px; display: block" 
 		   data-2750  = "opacity: 1; left: 20px; top: 280px; display: block" 
 		   data-2850  = "opacity: 0; left: 20px; top: 230px; display: none">
-			 <a target="_blank" href="https://m.mingpao.com/ins/港聞/article/20190714/s00001/1563088298405/【逃犯條例-沙田示威】7-14文字紀錄-下午遊行-晚上新城市廣場衝突%ef%bc%88附短片%ef%bc%89
-"><img src="https://fs.mingpao.com/ins/20190714/s00001/5d252448bd5a6143d24589eda85e3930.jpg"></a>
+			 <a target="_blank" href="https://m.mingpao.com/ins/港聞/article/20190714/s00001/1563088298405/【逃犯條例-沙田示威】7-14文字紀錄-下午遊行-晚上新城市廣場衝突%ef%bc%88附短片%ef%bc%89"><img src="https://fs.mingpao.com/ins/20190714/s00001/5d252448bd5a6143d24589eda85e3930.jpg"></a>
 			<p>16:45 (明報圖片)<br>遊行隊頭出發到達終點，與此同時，起點翠田街足球場的所有市民已經出發，仍有市民直接由港鐵大圍站直接進入車公廟路遊行路線。</p>
 		</div>
 
@@ -233,7 +314,6 @@
 		   <a target="_blank" href="http://std.stheadline.com/instant/articles/detail/1044040/%E5%8D%B3%E6%99%82-%E9%A6%99%E6%B8%AF-%E9%80%83%E7%8A%AF%E6%A2%9D%E4%BE%8B-%E6%B2%99%E7%94%B0%E7%88%86%E8%A1%9D%E7%AA%81%E8%AD%A6%E5%AF%9F%E6%94%BE%E8%83%A1%E6%A4%92%E5%99%B4%E9%9C%A7-%E7%A4%BA%E5%A8%81%E8%80%85%E6%8A%95%E6%93%B2%E7%89%A9%E5%93%81%E8%A8%AD%E8%B7%AF%E9%9A%9C"><img src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071417303568762.jpg"></a>
 			<p>17:00 (星島日報圖片)<br>源禾路發生衝突，有示威者向警方投擲雜物，其後多名軍裝警員手持警棍衝向示威者，並施放胡椒噴霧。其後警方退守至源禾路泳池一帶，立法會議員郭家麒到場了解情況並要求見指揮官，一名警務人員要求郭家麒立即離開。郭要求其展示委任證，該名警務人員聲稱執行職務期間不便展示委任證。</p>
 		</div>
-
 
 		<div style="width: 400px"
 		   data-start = "display: none"
@@ -263,116 +343,6 @@
 		   <img src="https://cdn.thestandnews.com/media/photos/cache/66583011_2305350629550544_7038596871450787840_n_wnNWs_1200x0.jpg">
 			<p>18:40 (立場新聞圖片)<br>記者現場所見，部分警員不論是胸前或膊頭上，均沒有展示警員編號，有警員頭盔眼部位置有銀色反光物料。現場民眾不斷高呼「委任證」，要求警員交代身份。</p>
 		</div>
-
-
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
-			data-3750 = "left: 66%; top: 35%; opacity: 0"
-			data-4250 = "left: 60%; top: 28%; opacity: 1"
-			data-6250 = "left: 60%; top: 28%;"	
-			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6400 = "left:52.5%; top:20.5%; opacity: 0"></div>
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: 5px; margin-left: 5px"
-			data-3750 = "left: 66%; top: 35%; opacity: 0"
-			data-4250 = "left: 60%; top: 28%; opacity: 1"
-			data-6250 = "left: 60%; top: 28%;"	
-			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6400 = "left:52.5%; top:20.5%; opacity: 0"></div>
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: 20px; margin-left: 20px"
-			data-3750 = "left: 66%; top: 35%; opacity: 0"
-			data-4250 = "left: 60%; top: 28%; opacity: 1"
-			data-6250 = "left: 60%; top: 28%;"	
-			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6400 = "left:52.5%; top:20.5%; opacity: 0"></div>
-
-
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
-			data-4250 = "left: 45%; top: 12.75%; opacity: 0"
-			data-4750 = "left: 49%; top: 17.5%; opacity: 1"
-			data-6250 = "left: 49%; top: 17.5%;"	
-			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6400 = "left:56.5%; top:24.5%; opacity: 0"></div>
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -25px; margin-left: -25px"
-			data-4250 = "left: 45%; top: 12.75%; opacity: 0"
-			data-4750 = "left: 49%; top: 17.5%; opacity: 1"
-			data-6250 = "left: 49%; top: 17.5%;"	
-			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6400 = "left:56.5%; top:24.5%; opacity: 0"></div>
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -40px; margin-left: -40px"
-			data-4250 = "left: 45%; top: 12.75%; opacity: 0"
-			data-4750 = "left: 49%; top: 17.5%; opacity: 1"	
-			data-6250 = "left: 49%; top: 17.5%;"	
-			data-6350 = "left:54.5%; top:22.5%; opacity: 1"
-			data-6400 = "left:56.5%; top:24.5%; opacity: 0"></div>
-
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
-			data-3250 = "left: 25%; top: 49.5%; opacity: 0"
-			data-3750 = "left: 28.5%; top: 48.5%; opacity: 1"
-			data-6400 = "display: block"
-			data-6401 = "display: none"></div>
-
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
-			data-4100 = "left: 48.5%; top: 33.5%; opacity: 0"
-			data-4600 = "left: 48.5%; top: 31.5%; opacity: 1"
-			data-6400 = "display: block"
-			data-6401 = "display: none"></div>
-		<div class="circle" id="black"
-			style="width:20px ; height:20px; margin-top: 10px; margin-left: -10px"
-			data-4100 = "left: 48.5%; top: 33.5%; opacity: 0"
-			data-4600 = "left: 48.5%; top: 31.5%; opacity: 1"
-			data-6400 = "display: block"
-			data-6401 = "display: none"></div>
-
-		<div class="circle" id="black"
-			style="width:12px ; height:12px; margin-left: -20px; margin-top: -20px"
-			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
-			data-6400 = "display: block"
-			data-6401 = "display: none"></div>
-		<div class="circle" id="black"
-			style="width:12px ; height:12px; margin-left: -10px; margin-top: -10px"
-			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
-			data-6400 = "display: block"
-			data-6401 = "display: none"></div>
-		<div class="circle" id="black"
-			style="width:12px ; height:12px; margin-left: 0px; margin-top: 0px"
-			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
-			data-6400 = "display: block"
-			data-6401 = "display: none"></div>
-		<div class="circle" id="black"
-			style="width:12px ; height:12px; margin-left: 10px; margin-top: 10px"
-			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
-			data-6400 = "display: block"
-			data-6401 = "display: none"></div>
-		<div class="circle" id="black"
-			style="width:12px ; height:12px; margin-left: 20px; margin-top: 20px"
-			data-3500 = "opacity: 0"
-			data-4000 = "opacity: 1; left: 49.5%; top: 13%"
-			data-6400 = "display: block"
-			data-6401 = "display: none"></div>
-
-		<div class="circle" id="gold"
-			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
-			data-start= "left:42%; top:32.5%;"
-			data-4500= "opacity: 0; transform: scale(0)"
-			data-5000= "opacity: 1; transform: scale(2.5)"
-			data-6400 = "display: block"
-			data-6401 = "display: none"></div>
-		<div id="chain"
-			data-2500= "opacity: 0"
-			data-3000= "opacity: 1"
-			data-4300= "opacity: 0.5"
-			data-5000= "opacity: 0"></div>
 
 		<!--map2-->
 		<div class="circle" id="black"
@@ -551,113 +521,10 @@
 			style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"
 			data-6400 = "display: none; transform: scale(4)"
 			data-6401 = "display: block; left:52%; top:62%"></div>
+		<img src="map1.png" style="position:absolute;">
 
 	</section>
 	</main>
-	<script>
-	/*
-			//main protest 
-			for (var i = 0; i < 250; i++) {
-				var c = (i*250/250)/18;
-				$("section").append(
-				'<div class="circle" id="gold"'+
-				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px" '+
-				'data-start= "display: block"'+
-				'data-'+ (i*10-c*0+167) +'=			"left:6%; 		top:85%;"'+
-				'data-'+ (i*10-c*1+200) +'=			"left:5%; 		top:81%;"'+
-				'data-'+ (i*10-c*2+300) +'=			"left:12.5%; 	top:76%;"'+
-				'data-'+ (i*10-c*3+350) +'=			"left:17.1%; 	top:75%;"'+
-				'data-'+ (i*10-c*4+450) +'=			"left:25%; 		top:76%;"'+
-				'data-'+ (i*10-c*5+500) +'=			"left:31%; 		top:75%;"'+
-				'data-'+ (i*10-c*6+550) +'=			"left:35%; 		top:72%;"'+
-				'data-'+ (i*10-c*7+700) +'=			"left:29%; 		top:59.5%;"'+
-				'data-'+ (i*10-c*8+800) +'=			"left:26%; 		top:50%;"'+
-				'data-'+ (i*10-c*9+860) +'=			"left:32%; 		top:47%;"'+
-				'data-'+ (i*10-c*10+960) +'=		"left:30%; 		top:37.5%;"'+
-				'data-'+ (i*10-c*11+1060) +'=		"left:37.5%; 	top:28%;"'+
-				'data-'+ (i*10-c*12+1160) +'=		"left:44%; 		top:20%;"'+
-				'data-'+ (i*10-c*13+1260) +'=		"left:51%; 		top:27%;"'+
-				'data-'+ (i*10-c*14+1300) +'=		"left:54%; 		top:22.6%;"'+
-				'data-'+ (i*10-c*15+1500) +'=		"left:39%; 		top:6%;"'+
-				'data-'+ (i*10-c*16+1600) +'=		"left:34%; 		top:11%;"'+
-				'data-'+ (i*10-c*17+1700) +'=		"left:34.5%; 	top:16.5%;"'+
-				'data-'+ (i*10-c*18+1750) +'=		"left:34%; 		top:20%;"'+
-				'data-4000-start= "opacity: 0.3;"'+
-				'data-5000-start= "opacity: 0; display: none"></div>');
-			};
-
-			// leaving by MTR
-			for (var i = 0; i < 60; i++) {
-				$("section").append(
-				'<div class="circle" id="gold"'+
-				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px" '+
-				'data-'+ (i*50+1750) +' = "transform: scale(0); left:34%; top:20%;"'+
-				'data-'+ (i*50+2000) +' = "transform: scale(2); opacity: 0.5; left:34%; top:20%; "'+
-				'data-'+ (i*50+2250) +' = "transform: scale(0); opacity: 0; left:30%; top:30%; "></div>');
-			};
-
-			// heading to screening
-			for (var i = 0; i < 60; i++) {
-				$("section").append(
-				'<div class="circle" id="gold"'+
-				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px" '+
-				'data-'+ (i*50+4450) +' = "opacity: 0; left:38.5%; top:30%;"'+
-				'data-'+ (i*50+4500) +' = "opacity: 1; left:42%; top:32.5%"'+
-				'data-6400 = "display: block" data-6401 = "display: none"></div>');
-			};			
-
-			//#chain
-			for (var i = 1; i <= 5; i++) {
-				$("section #chain").append(
-					'<div class="circle" id="gold"'+
-					'style="width:10px ; height:10px; margin-top: -5px; margin-left: -5px;'+
-					'left:' + (31-i*0.15) + '%; top:' + (44-i*1) + '%;"'+
-					'></div>');
-			};
-			for (var i = 1; i <= 2; i++) {
-				$("section #chain").append(
-					'<div class="circle" id="gold"'+
-					'style="width:10px ; height:10px; margin-top: -5px; margin-left: -5px;'+
-					'left:' + (i*0.3+30) + '%; top:' + (39-i*1) + '%;"'+
-					'></div>');
-			};
-			for (var i = 1; i <= 20; i++) {
-				$("section #chain").append(
-					'<div class="circle" id="gold"'+
-					'style="width:10px ; height:10px; margin-top: -5px; margin-left: -5px;'+
-					'left:' + (i*0.675+30.5) + '%; top:' + (36.75-i*0.8375) + '%;"'+
-					'></div>');
-			};
-			for (var i = 1; i <= 10; i++) {
-				$("section #chain").append(
-					'<div class="circle" id="gold"'+
-					'style="width:10px ; height:10px; margin-top: -5px; margin-left: -5px;'+
-					'left:' + (i*0.65+44) + '%; top:' + (20+i*0.7) + '%;"'+
-					'></div>');
-			};
-			for (var i = 1; i <= 10; i++) {
-				$("section #chain").append(
-					'<div class="circle" id="gold"'+
-					'style="width:10px ; height:10px; margin-top: -5px; margin-left: -5px;'+
-					'left:' + (i*0.533+50.5) + '%; top:' + (27-i*0.717) + '%;"'+
-					'></div>');
-			};
-
-			//pre0925leaving
-			for (var i = 0; i < 100; i++) {
-				$("section").append(
-				'<div class="circle" id="gold"'+
-				'style="width:20px ; height:20px; margin-top: -10px; margin-left: -10px"'+
-				'data-'+ (3999+i*22.5) +'= "opacity:0;"'+
-				'data-'+ (4000+i*22.5) +'= "opacity:1; transform: scale(1);   left:54.5%; top:22.5%;"'+
-				'data-'+ (4250+i*22.5) +'= "			 transform: scale(0.5); left:51%;   top:26%;"'+
-				'data-'+ (4500+i*22.5) +'= "opacity:0.5; 						left:44%;   top:20%;"'+
-				'data-'+ (4750+i*22.5) +'= "opacity:0; 						left:37.5%; top:28.5%;"'+
-				'data-6400 = "display: block" data-6401 = "display: none"></div>'
-				);
-			};*/
-
-	</script>
 	<script type="text/javascript">
 			var s = skrollr.init();
 			$("section").on( "mousemove", function( event ) {
