@@ -9,6 +9,8 @@
 		html {
 			background: #181818;
 			font-family: 'Noto Serif TC', serif;
+			overflow: hidden;
+
 		}
 
 		main {
@@ -29,7 +31,7 @@
 			overflow: hidden;
 		}
 
-		#log, #time{
+		#log, #time, #button{
 			position: fixed;
 			z-index: 9999;
 			font-size: 2em;
@@ -46,7 +48,16 @@
 			right: 0;
 			padding: 10px;
 			font-weight: bold;
-			font-size: 150px;
+			font-size: 10vw;
+		}
+
+		#button {
+			bottom: 10%;
+			right: 0;
+			padding: 10px;
+			font-weight: bold;
+			font-size: 10vw;
+
 		}
 
 		svg {
@@ -98,7 +109,8 @@
 </head>
 <body>
 	<div id="log"></div>
-	<div id="time"></div>
+	<div id="time">15:00</div>
+	<div id="button"><span id="prev"> < </span><span id="next"> > </span></div>
 	<main>
 		<svg>
 			<defs><filter id="b15" width="300%" height="300%" x="-50%" y="-50%">
@@ -576,6 +588,24 @@
 				  	'transform' : 'scale(' + (h/1200/1.01) + ')'
 				  });
 			  }
+
+			  var time = [0, 167, 1750, 2000, 2250, 3003, 3667, 4333, 4933, 6000, 99999];
+			  $("#next").click(function() {
+			  	for ( var i = 0, l = time.length; i < l; i++ ) {
+			  		if (($("html").scrollTop() >= time[i]) && ($("html").scrollTop() < time[i+1])) {
+			  			if (i !== time.length-2) {
+			  				$("html").stop().animate({scrollTop:time[i+1]}, 1000);
+			  			}
+			  		};
+			  	};
+			  });
+			  $("#prev").click(function() {
+			  	for ( var i = 0, l = time.length; i < l; i++ ) {
+			  		if (($("html").scrollTop() >= time[i]) && ($("html").scrollTop() < time[i+1])) {
+			  			$("html").stop().animate({scrollTop:time[i-1]}, 1000);
+			  		};
+			  	};
+			  });
 			});		
 	</script>	
 </body>
