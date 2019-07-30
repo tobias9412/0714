@@ -2,7 +2,7 @@
 <html>
 <head>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
 	<script type="text/javascript" src="skrollr.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC:400,900&display=swap&subset=chinese-traditional" rel="stylesheet">	<link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet">
 	<style>
@@ -11,9 +11,15 @@
 			font-family: 'Noto Serif TC', serif;
 		}
 
+		main {
+			position: fixed;
+			width: 80%;
+			height: 100%;
+		}
+
 		section {
 			background: #c8c8c8;
-			position: fixed;
+			position: absolute;
 			width: 1400px;
 			height: 1200px;
 			left: 50%; 
@@ -92,20 +98,25 @@
 </head>
 <body>
 	<div id="log"></div>
+	<div id="time"></div>
 	<main>
-		<section>
-		<div id="time"></div>
-
-		<!--map1-->
-		<svg id="gold" width="1400" height="1200">
+		<svg>
+			<defs><filter id="b15" width="300%" height="300%" x="-50%" y="-50%">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+			</filter></defs>
 			<defs><filter id="b10" width="200%" height="200%" x="-50%" y="-50%">
 				<feGaussianBlur in="SourceGraphic" stdDeviation="10" />
 			</filter></defs>
 			<defs><filter id="b5" width="200%" height="200%" x="-50%" y="-50%">
 				<feGaussianBlur in="SourceGraphic" stdDeviation="5" />
 			</filter></defs>
-			<polyline
-						points="105,963 
+		</svg>
+
+		<section
+		data-6400 = "display: block;"
+		data-6401 = "display: none;">
+		<svg id="gold" width="1400" height="1200">
+			<polyline 	points="105,963 
 			  					194,900 
 			  					243,884
 			  					276,884
@@ -258,11 +269,12 @@
 
   		<svg id="black" width="100" height="100" 
 			 style="margin-left:-50px; margin-top:-50px;
-			 		left: 680px; top: 400px;
 			 		transform: scale(0.75)"
 			 data-start="display: block;"
-			 data-4100="opacity: 0"
-			 data-4600="opacity: 1"
+			 data-4100="opacity: 0;"
+			 data-4600="opacity: 1;"
+			 data-6250="left: 680px; top: 400px;"
+			 data-6400="left: 700px; top: 368px;"
 			 data-6401="display: none;">
  			 <circle cx="50" cy="50" r="30" stroke="none" fill="#181818" filter="url(#b10)" />
   		</svg>
@@ -396,18 +408,133 @@
 		    <img src="https://cdn.thestandnews.com/media/photos/cache/66615751_2305620629523544_3338879783177027584_n_jxLSU_1200x0.jpg">
 		   	<p>21:00<br>清場行動一觸即發，警方三面夾攻，一群防暴警察由沙田鄕事會路向源禾路推進，並高舉紅旗，沙田大會堂前的防暴警亦開始推進，而沙燕橋的防暴警察亦推進至鄕事會路及源禾路交界。</p>
 		</div>
+		<img src="map1.png" style="position:absolute;">
+	</section>
+	<section
+	data-6400 = "display: none;"
+	data-6401 = "display: block;">
+
+		<svg id="black" width="1400" height="1200">
+			<polyline 	points="1321,349
+								1185,506
+								860,236
+								422,734"
+					  	filter="url(#b10)" 
+					  	style="stroke-width: 60;
+					  		   stroke-dasharray:1300;
+							   stroke-dashoffset:0;" 
+						data-6400="stroke-dashoffset:1300;"
+		  	 			data-6700="stroke-dashoffset:0;" />
+			<polyline 	points="1052,736
+								1080,648
+								1198,526
+								1182,503"
+					  	filter="url(#b10)" 
+					  	style="stroke-width: 50; 
+					  		   stroke-dasharray:300;
+							   stroke-dashoffset:0;" 
+		  	 			data-6400="stroke-dashoffset:300;"
+		  	 			data-6450="stroke-dashoffset:0;" />
+			</svg>
+		<svg id="gold" width="1400" height="1200">
+			<polygon 	fill="gold"
+						filter="url(#b5)" 
+						data-6450  = "@points:887,216 905,199 1168,428 1141,449"
+						data-6550  = "@points:887,216 977,122 1228,346 1141,449"
+						data-6650  = "@points:887,216 887,216 1168,428 1168,428" />
+			<polygon 	fill="black"
+						filter="url(#b5)" 
+						data-6550  = "@points:977,122 977,122 1228,346 1228,346"
+						data-6650  = "@points:885,240 977,122 1228,346 1137,455" />
+			<polygon 	fill="gold"
+						filter="url(#b5)" 
+						data-6550  = "@points:855,264 1122,494 1122,494 858,270"
+						data-6650  = "@points:855,264 1122,494 1040,594 764,360"
+						data-6750  = "@points:855,264 855,264 764,360 764,360" />
+			<polygon 	fill="black"
+						filter="url(#b5)" 
+						data-6650  = "@points:1122,494 1122,494 1040,594 1040,594"
+						data-6750  = "@points:855,264 1122,494 1040,594 764,360" />
+			<polygon 	fill="gold"
+						filter="url(#b5)" 
+						data-6400  = "@points:770,122 857,200 427,686 333,600" />
+			<polygon 	fill="gold"
+						filter="url(#b5)" 
+						data-6400  = "@points:725,446 754,468 603,663 505,582 565,524 616,570" />
+			<polygon 	fill="gold"
+						filter="url(#b5)" 
+						data-6400  = "@points:416,402 476,453 422,514 371,466" />
+		</svg>
+		<svg id="gold" width="1400" height="1200">
+			<polygon 	fill="gold"
+						filter="url(#b5)" 
+						data-6400  = "@points:747,663 785,697 698,788 655,753 717,723" />
+		</svg>
+
+		<svg id="gold" width="1400" height="1200">
+			<polyline 	points="1321,349
+								1185,506
+								860,236
+								459,696"
+					  	filter="url(#b10)" 
+					  	style="stroke-width: 60;
+					  		   stroke-dasharray:1300;
+							   stroke-dashoffset:0;" 
+						data-6400="stroke-dashoffset:2600;"
+		  	 			data-6700="stroke-dashoffset:1300;" />
+		</svg>
+
+		<svg id="gold" width="1400" height="1200">
+			<polyline 	points="913,244
+								878,281"
+					  	filter="url(#b10)" 
+					  	style="stroke-width: 30;
+					  		   stroke-dasharray:100;
+							   stroke-dashoffset:0;"
+		  	 			data-6450="stroke-dashoffset:300;" 
+		  	 			data-6630="stroke-dashoffset:200;" 
+		  	 			data-6700="stroke-dashoffset:100;" />
+			<polyline 	points="1022,339
+								990,384"
+					  	filter="url(#b10)" 
+					  	style="stroke-width: 30;
+					  		   stroke-dasharray:100;
+							   stroke-dashoffset:0;"
+		  	 			data-6450="stroke-dashoffset:300;" 
+		  	 			data-6630="stroke-dashoffset:200;" 
+		  	 			data-6700="stroke-dashoffset:100;" />
+			<polyline 	points="1125,435
+								1102,476"
+					  	filter="url(#b10)" 
+					  	style="stroke-width: 30;
+					  		   stroke-dasharray:100;
+							   stroke-dashoffset:0;"
+		  	 			data-6450="stroke-dashoffset:300;" 
+		  	 			data-6630="stroke-dashoffset:200;" 
+		  	 			data-6700="stroke-dashoffset:100;" />
+			<polyline 	points="835,277
+								803,252"
+					  	filter="url(#b10)" 
+					  	style="stroke-width: 30;
+					  		   stroke-dasharray:100;
+							   stroke-dashoffset:0;"
+		  	 			data-6650="stroke-dashoffset:300;" 
+		  	 			data-6730="stroke-dashoffset:200;" 
+		  	 			data-6800="stroke-dashoffset:100;" />
+			<polyline 	points="779,368
+								737,457"
+					  	filter="url(#b10)" 
+					  	style="stroke-width: 30;
+					  		   stroke-dasharray:100;
+							   stroke-dashoffset:0;"
+		  	 			data-6650="stroke-dashoffset:300;" 
+		  	 			data-6730="stroke-dashoffset:200;" 
+		  	 			data-6800="stroke-dashoffset:100;" />
+
+			</svg>
 
 
-
-
-		<img src="map1.png" style="position:absolute;"
-		data-6400 = "display: block;"
-		data-6401 = "display: none;">
-		<img src="map2.png" style="position:absolute;"
-		data-6400 = "display: none;"
-		data-6401 = "display: block;">
->
-
+		<img src="map2.png" style="position:absolute;">
 	</section>
 	</main>
 	<script type="text/javascript">
@@ -423,8 +550,8 @@
 				$( "#time" ).text(h + ":" + m);
 			});
 			$(window).resize(function() {
-			  var h = $(window).height();
-			  var w = $(window).width();
+			  var h = $("main").height();
+			  var w = $("main").width();
 			  var o = $("section").position();
 			  console.log (o);
 			  if (h>w) {
@@ -438,8 +565,8 @@
 			  }
 			});
 			$( document ).ready(function() {
-			    var h = $(window).height();
-			  	var w = $(window).width();
+			    var h = $("main").height();
+			  	var w = $("main").width();
 			  	if (h>w) {
 				  $("section").css({
 				  	'transform' : 'scale(' + (w/1400/1.01) + ')'
