@@ -94,6 +94,10 @@
 			opacity: 0.9;
 		}
 
+		#img {
+			z-index: 9999;
+		}
+
 		p {
 			position: absolute; 
 			bottom: 0px; 
@@ -103,6 +107,19 @@
 			font-size: 20px
 			font-weight: 400;
 			line-height: 1.3;
+  		}
+
+  		#fog1{
+  			position:absolute;
+  			left: -25%;
+  			width: 150%;
+  			opacity: 0.3;  			
+  		}
+  		#fog2 {
+  			position:absolute;
+  			right: -50%;
+  			width: 150%;
+  			opacity: 1;
   		}
 
 	</style>
@@ -123,7 +140,6 @@
 				<feGaussianBlur in="SourceGraphic" stdDeviation="5" />
 			</filter></defs>
 		</svg>
-
 		<section
 			data-6400 = "display: block;"
 			data-6401 = "display: none;">
@@ -300,7 +316,68 @@
 			  	 			data-start="stroke-width: 20; stroke-opacity:1;"
 			  	 			data-2500="stroke-dashoffset:0;"/>
 			</svg>
+			<img src="map1.png" style="position:absolute">
+		</section>
+		<!-------------------------------------------------------------------------------------------------------------------------------->
+		<section
+			data-6400 = "display: none;"
+			data-6401 = "display: block;">
 
+			<svg id="black" width="1400" height="1200">
+				<polygon 	fill="black"
+							points="872,0 1400,470 1400,0" />
+			</svg>
+			<svg id="black" width="1400" height="1200">
+				<polyline 	points="1321,349
+									1185,506
+									860,236
+									441,725"
+						  	filter="url(#b10)" 
+						  	style="stroke-width: 100;
+						  		   stroke-dasharray:1300;
+								   stroke-dashoffset:0;" 
+							data-6400="stroke-dashoffset:1300;"
+			  	 			data-6700="stroke-dashoffset:0;" />
+			  	 <polyline 	points="1052,736
+									1080,648
+									1198,526
+									1182,503"
+						  	filter="url(#b10)" 
+						  	style="stroke-width: 100; 
+						  		   stroke-dasharray:300;
+								   stroke-dashoffset:0;" 
+			  	 			data-6400="stroke-dashoffset:300;"
+			  	 			data-6450="stroke-dashoffset:0;" />
+			</svg>
+
+			<img src="map2-gold.png" style="position:absolute;">
+
+			<svg id="black" width="1400" height="1200">
+				<polyline 	points="429,375
+									322,527"
+						  	filter="url(#b5)" 
+						  	style="stroke-width: 50;" />
+			</svg>
+
+			<svg id="black" width="100" height="100" 
+				 style="margin-left:-50px; margin-top:-50px; 
+				 		left:1038px; top:330px; "
+				 data-6400="opacity:0; transform:scale(10);"
+				 data-6500="opacity:1"
+				 data-7000="transform:scale(30);"	>
+	  			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
+	  		</svg>
+	  		<svg id="black" width="100" height="100" 
+				 style="margin-left:-50px; margin-top:-50px; 
+				 		left:783px; top:198px; "
+				 data-6400="opacity:0; transform:scale(10);"
+				 data-6500="opacity:1"
+				 data-7000="transform:scale(30);"	>
+	  			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
+	  		</svg>
+			<img src="map2.png" style="position:absolute;">
+		</section>
+		<section id="img" style="background: transparent;">
 			<div style="width: 500px"
 			   data-start = "opacity: 1; left: 800px; top: 300px; display: block"  
 			   data-500   = "opacity: 1; left: 800px; top: 290px; display: block"  
@@ -414,166 +491,9 @@
 			    <img src="https://cdn.thestandnews.com/media/photos/cache/66615751_2305620629523544_3338879783177027584_n_jxLSU_1200x0.jpg">
 			   	<p>21:00<br>清場行動一觸即發，警方三面夾攻，一群防暴警察由沙田鄕事會路向源禾路推進，並高舉紅旗，沙田大會堂前的防暴警亦開始推進，而沙燕橋的防暴警察亦推進至鄕事會路及源禾路交界。</p>
 			</div>
-			<img src="map1.png" style="position:absolute">
 		</section>
-		<section
-			data-6400 = "display: none;"
-			data-6401 = "display: block;">
-
-			<svg id="black" width="1400" height="1200">
-				<polygon 	fill="black"
-							points="872,0 1400,470 1400,0" />
-			</svg>
-			<svg id="black" width="1400" height="1200">
-				<polyline 	points="1321,349
-									1185,506
-									860,236
-									441,725"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 100;
-						  		   stroke-dasharray:1300;
-								   stroke-dashoffset:0;" 
-							data-6400="stroke-dashoffset:1300;"
-			  	 			data-6700="stroke-dashoffset:0;" />
-			  	 <polyline 	points="1052,736
-									1080,648
-									1198,526
-									1182,503"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 100; 
-						  		   stroke-dasharray:300;
-								   stroke-dashoffset:0;" 
-			  	 			data-6400="stroke-dashoffset:300;"
-			  	 			data-6450="stroke-dashoffset:0;" />
-			</svg>
-
-			<img src="map2-gold.png" style="position:absolute;">
-
-			<svg id="black" width="1400" height="1200">
-				<polyline 	points="429,375
-									322,527"
-						  	filter="url(#b5)" 
-						  	style="stroke-width: 50;" />
-			</svg>
-
-			<svg id="black" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px; 
-				 		left:1038px; top:330px; "
-				 data-6400="opacity:0; transform:scale(10);"
-				 data-6500="opacity:1"
-				 data-7000="transform:scale(30);"	>
-	  			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
-	  		</svg>
-	  		<svg id="black" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px; 
-				 		left:783px; top:198px; "
-				 data-6400="opacity:0; transform:scale(10);"
-				 data-6500="opacity:1"
-				 data-7000="transform:scale(30);"	>
-	  			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
-	  		</svg>
-
-		<!--
-			<svg id="gold" width="1400" height="1200">
-				<polygon 	fill="gold"
-							filter="url(#b5)" 
-							data-6450  = "@points:887,216 905,199 1168,428 1141,449"
-							data-6550  = "@points:887,216 977,122 1228,346 1141,449"
-							data-6650  = "@points:887,216 887,216 1168,428 1168,428" />
-				<polygon 	fill="black"
-							filter="url(#b5)" 
-							data-6550  = "@points:977,122 977,122 1228,346 1228,346"
-							data-6650  = "@points:885,240 977,122 1228,346 1137,455" />
-				<polygon 	fill="gold"
-							filter="url(#b5)" 
-							data-6550  = "@points:855,264 1122,494 1122,494 858,270"
-							data-6650  = "@points:855,264 1122,494 1040,594 764,360"
-							data-6750  = "@points:855,264 855,264 764,360 764,360" />
-				<polygon 	fill="black"
-							filter="url(#b5)" 
-							data-6650  = "@points:1122,494 1122,494 1040,594 1040,594"
-							data-6750  = "@points:855,264 1122,494 1040,594 764,360" />
-				<polygon 	fill="gold"
-							filter="url(#b5)" 
-							data-6400  = "@points:770,122 857,200 427,686 333,600" />
-				<polygon 	fill="gold"
-							filter="url(#b5)" 
-							data-6400  = "@points:725,446 754,468 603,663 505,582 565,524 616,570" />
-				<polygon 	fill="gold"
-							filter="url(#b5)" 
-							data-6400  = "@points:416,402 476,453 422,514 371,466" />
-			</svg>
-			<svg id="gold" width="1400" height="1200">
-				<polygon 	fill="gold"
-							filter="url(#b5)" 
-							data-6400  = "@points:747,663 785,697 698,788 655,753 717,723" />
-			</svg>
-
-			<svg id="gold" width="1400" height="1200">
-				<polyline 	points="1321,349
-									1185,506
-									860,236
-									459,696"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 60;
-						  		   stroke-dasharray:1300;
-								   stroke-dashoffset:0;" 
-							data-6400="stroke-dashoffset:2600;"
-			  	 			data-6700="stroke-dashoffset:1300;" />
-			</svg>
-
-			<svg id="gold" width="1400" height="1200">
-				<polyline 	points="913,244
-									878,281"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 30;
-						  		   stroke-dasharray:100;
-								   stroke-dashoffset:0;"
-			  	 			data-6450="stroke-dashoffset:300;" 
-			  	 			data-6630="stroke-dashoffset:200;" 
-			  	 			data-6700="stroke-dashoffset:100;" />
-				<polyline 	points="1022,339
-									990,384"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 30;
-						  		   stroke-dasharray:100;
-								   stroke-dashoffset:0;"
-			  	 			data-6450="stroke-dashoffset:300;" 
-			  	 			data-6630="stroke-dashoffset:200;" 
-			  	 			data-6700="stroke-dashoffset:100;" />
-				<polyline 	points="1125,435
-									1102,476"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 30;
-						  		   stroke-dasharray:100;
-								   stroke-dashoffset:0;"
-			  	 			data-6450="stroke-dashoffset:300;" 
-			  	 			data-6630="stroke-dashoffset:200;" 
-			  	 			data-6700="stroke-dashoffset:100;" />
-				<polyline 	points="835,277
-									803,252"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 30;
-						  		   stroke-dasharray:100;
-								   stroke-dashoffset:0;"
-			  	 			data-6650="stroke-dashoffset:300;" 
-			  	 			data-6730="stroke-dashoffset:200;" 
-			  	 			data-6800="stroke-dashoffset:100;" />
-				<polyline 	points="779,368
-									737,457"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 30;
-						  		   stroke-dasharray:100;
-								   stroke-dashoffset:0;"
-			  	 			data-6650="stroke-dashoffset:300;" 
-			  	 			data-6730="stroke-dashoffset:200;" 
-			  	 			data-6800="stroke-dashoffset:100;" />
-
-				</svg>
-		-->
-
-			<img src="map2.png" style="position:absolute;">
-		</section>
+	<img id="fog1" src="fog1.png">
+	<img id="fog2" src="fog2.png">
 	</main>
 	<script type="text/javascript">
 			var s = skrollr.init();
@@ -619,6 +539,8 @@
 				  });
 			  }
 
+
+
 			  var time = [0, 167, 1750, 2000, 2250, 3003, 3667, 4333, 4933, 6000, 99999];
 			  $("#next").click(function() {
 			  	var scroll = Math.ceil(window.scrollY);
@@ -640,6 +562,29 @@
 			  		};
 			  	};
 			  });
+
+			  function fogloop1() {
+				  $("#fog1").animate ({
+				  	left: "0%", opacity: Math.random()}, 30000, function() {
+				  	 $("#fog1").animate ({
+				  		left: "-25%", opacity: Math.random()}, 30000, function() {
+				  			fogloop1()
+				  		});
+				  	});
+			  };
+			   function fogloop2() {
+				  $("#fog2").animate ({
+				  	right: "-25%", opacity: Math.random()}, 28000, function() {
+				  	 $("#fog2").animate ({
+				  		right: "-50%", opacity: Math.random()}, 28000, function() {
+				  			fogloop2()
+				  		});
+				  	});
+			  };
+
+			  fogloop1();
+			  fogloop2();
+
 			});		
 	</script>	
 </body>
