@@ -86,9 +86,25 @@
 
 		.thumbnail {
 			position: absolute;
+			overflow: hidden;
 			box-shadow: 0 0 100px 10px rgba(0,0,0,0.75);
 			box-shadow: inset 0px 0px 100px -50px rgba(0,0,0,0.75);
 		}
+
+		.thumbnail img {
+			opacity: 0.7;
+			-webkit-transition: opacity 0.2s; 
+  			transition: opacity 0.2s;
+
+		}
+
+		.thumbnail img:hover {
+			cursor: pointer;
+			opacity: 1;
+			-webkit-transition: opacity 0.2s; 
+  			transition: opacity 0.2s;
+		}
+
 
 		#copy {
 			z-index: 100;
@@ -120,8 +136,8 @@
 			bottom: 0%;
 			padding: 10px; 
 			color: white;
-			font-size: 20px;
-			text-shadow: 0 0 10px black;
+			font-size: 15px;
+			text-shadow: 0 0 10px 50px black;
 			font-weight: 900;
 			line-height: 1.5;
 			letter-spacing: 1px;
@@ -405,29 +421,91 @@
 			<img src="map2.png" style="position:absolute; border: 0;">
 		</section>
 		<section id="copy" style="background: transparent;">
-			<div class="thumbnail" 
-			   data-start = "opacity: 1; left: 800px; top: 300px; display: block"  
-			   data-500   = "opacity: 1; left: 800px; top: 290px; display: block"  
-			   data-600   = "opacity: 0; left: 800px; top: 240px; display: none">
+
+			<div class="thumbnail" style="width: 300px; height: 200px;"
+			   data-start = "opacity: 1; left: 1000px; top: 90px; display: block"  
+			   data-500   = "opacity: 1; left: 1000px; top: 80px; display: block"  
+			   data-600   = "opacity: 0; left: 1000px; top: 30px; display: none">
 				  <a><img 
-				  	src="https://live.staticflickr.com/65535/48278621006_8834e40121_z.jpg" 
-				  	alt="<p>15:00 (香港獨立媒體圖片)<br>距離沙田遊行起步約一小時，沙田源禾路與沙田鄉事會路十字路口交界現已實行交通管制，大部份行車路段已經清空，約10多輛警車正停泊於源禾路游泳池外。</p>"
+				  	src="https://live.staticflickr.com/65535/48278707017_a056887548_h.jpg" 
+				  	alt="<p> (香港獨立媒體圖片)<br>連鎖快餐店吉野家facebook發布「獅子狗」廣告，其後撤回激起輿論反響。今日（14日）社區組織發起沙田大遊行，沙田好運中心吉野家分店嚴陣以待，以巨型木板圍封外牆玻璃，有網民嘲吉野家為遊行人士建築連儂牆。</p>"
 				  	href="https://www.inmediahk.net/node/1065663"
-				  	width="500"></a>
+				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail"
+			<div class="thumbnail" style="width: 400px; height: 200px;"
+			   data-start = "opacity: 1; left: 900px; top: 300px; display: block"  
+			   data-500   = "opacity: 1; left: 900px; top: 290px; display: block"  
+			   data-600   = "opacity: 0; left: 900px; top: 240px; display: none">
+				  <a><img 
+				  	src="https://live.staticflickr.com/65535/48278621006_8834e40121_z.jpg" 
+				  	alt="<p> (香港獨立媒體圖片)<br>距離沙田遊行起步約一小時，沙田源禾路與沙田鄉事會路十字路口交界現已實行交通管制，大部份行車路段已經清空，約10多輛警車正停泊於源禾路游泳池外。</p>"
+				  	href="https://www.inmediahk.net/node/1065663"
+				  	style="width: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 200px; height: 280px;"
+			   data-start = "opacity: 0; left: 760px; bottom: -50px" 
+			   data-167   = "opacity: 1; left: 760px; bottom: 0px; display: block"  
+			   data-500  = "opacity: 1; left: 760px; bottom: 10px; display: block"  
+			   data-600  = "opacity: 0; left: 760px; bottom: 60px; display: none" >
+				  <a>
+				  	<img 
+				  	  src="https://live.staticflickr.com/65535/48278569756_1768e9840e_b.jpg" 
+				  	  alt="<p>15:02 (香港獨立媒體圖片)<br>沙田遊行將於下午3時半出發，現時超過1,000人已在翠田街球場一帶聚集，準備起步。市民原本由行人隧道進入球場，但由於人數眾多，部份人走出翠田街馬路，經車路進入球場。</p>"
+				  	  href="https://www.inmediahk.net/node/1065663"
+				  	  style="height: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 500px; height: 280px;"
 			   data-start = "opacity: 0; left: 250px; bottom: -50px" 
 			   data-167   = "opacity: 1; left: 250px; bottom: 0px; display: block"  
-			   data-1000  = "opacity: 1; left: 250px; bottom: 10px; display: block"  
-			   data-1100  = "opacity: 0; left: 250px; bottom: 60px; display: none" >
-				  <a >
-				  	<img 
+			   data-500  = "opacity: 1; left: 250px; bottom: 10px; display: block"  
+			   data-600  = "opacity: 0; left: 250px; bottom: 60px; display: none" >
+				  <a><img 
 				  	  src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071415275364947.jpg" 
 				  	  alt="<p>15:10 (星島日報圖片)<br>在起點翠田街足球場，由於人數眾多，比原定提早20分鐘開始起步。</p>"
 				  	  href="http://std.stheadline.com/instant/articles/detail/1043935/即時-香港-逃犯條例-沙田遊行隊伍拉起黑布提前起步-大圍站迫滿黑衣人流"
-				  	  width="500"></a>
-				 
+				  	  style="width: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 350px; height: 200px;"
+			   data-start = "display: none" 
+			   data-500   = "opacity: 0; left: 10px; top: 680px; display: block" 
+			   data-600   = "opacity: 1; left: 10px; top: 630px; display: block"  
+			   data-1650  = "opacity: 1; left: 10px; top: 620px; display: block"  
+			   data-1750  = "opacity: 0; left: 10px; top: 570px; display: none" >
+				  <a><img 
+				  	  src="https://live.staticflickr.com/65535/48278872301_68e68b7e2b_b.jpg" 
+				  	  alt="<p>15:43 (香港獨立媒體圖片)<br>有「爸爸媽媽」在文化博物館外，為示威者準備了涼茶及水站予示威者作補給，示威者拍手感謝支持。示威者沿沙田正街進入希爾頓中心，警方在大埔公路大圍段架設路障。</p>"
+				  	  href="https://www.inmediahk.net/node/1065663"
+				  	  style="width: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 350px; height: 300px;"
+			   data-start = "display: none" 
+			   data-500   = "opacity: 0; left: 10px; top: 370px; display: block" 
+			   data-600   = "opacity: 1; left: 10px; top: 320px; display: block"  
+			   data-1650  = "opacity: 1; left: 10px; top: 310px; display: block"  
+			   data-1750  = "opacity: 0; left: 10px; top: 260px; display: none" >
+				  <a><img 
+				  	  src="https://live.staticflickr.com/65535/48278958382_49d1163fc0_b.jpg" 
+				  	  alt="<p>16:00 (香港獨立媒體圖片)<br>有市民在偉華中心天橋掛起寫有「壽終正寢，奠，借屍還魂」的黑布，遊行的市民立即高叫「林鄭月娥，壽終正寢」。</p>"
+				  	  href="https://www.inmediahk.net/node/1065663"
+				  	  style="height: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 450px; height: 200px;"
+			   data-start = "display: none" 
+			   data-500   = "opacity: 0; left: 10px; top: 160px; display: block" 
+			   data-600   = "opacity: 1; left: 10px; top: 110px; display: block"  
+			   data-1650  = "opacity: 1; left: 10px; top: 100px; display: block"  
+			   data-1750  = "opacity: 0; left: 10px; top: 50px; display: none" >
+				  <a><img 
+				  	  src="https://live.staticflickr.com/65535/48279068827_8912907054_b.jpg" 
+				  	  alt="<p>16:16 (香港獨立媒體圖片)<br>遊行隊伍隊頭沿沙田正街走過新城市廣場，轉入沙田廣場外。有市民在沙田廣場天橋為示威者打氣。沙田中心則關閉側門，防止示威者進入。示威者對天橋上的市民揮手，希望他們加入行動。</p>"
+				  	  href="https://www.inmediahk.net/node/1065663"
+				  	  style="width: 100%;"></a>
 			</div>
 
 			<div class="thumbnail" 
