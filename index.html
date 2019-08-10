@@ -31,7 +31,7 @@
 			margin-top: -600px;
 		}
 
-		#log, #time, #button{
+		#log, #time {
 			position: fixed;
 			z-index: 100;
 			font-size: 2em;
@@ -39,25 +39,33 @@
 			color: white;
 		}
 
+		#button {
+			position: fixed;
+			padding: 20px;
+			width: 400px;
+			height: 50px;
+			right: 0;
+			bottom: 0;
+			z-index: 100;
+		}
+
+		#next, #prev, #time {
+			position: relative;
+			float: right;
+			margin: 0 10px;
+			bottom: 0;
+			font-weight: bold;
+			font-size: 4em;
+			line-height:0.7;
+			color: #c8c8c8;
+		}
+
+		#next:hover, #prev:hover {
+			cursor: pointer;			
+		}
+
 		#log {
 			top: 10px;
-		}
-		
-		#time {
-			bottom: 0;
-			right: 0;
-			padding: 10px;
-			font-weight: bold;
-			font-size: 10vw;
-		}
-
-		#button {
-			bottom: 10%;
-			right: 0;
-			padding: 10px;
-			font-weight: bold;
-			font-size: 10vw;
-
 		}
 
 		svg {
@@ -168,8 +176,11 @@
 </head>
 <body>
 	<div id="log"></div>
-	<div id="time">15:00</div>
-	<div id="button"><span id="prev"> < </span><span id="next"> > </span></div>
+	<div id="button">
+		<span id="next"> > </span>
+		<div id="time">15:00</div>
+		<span id="prev"> < </span>
+	</div>
 	<main>
 		<svg>
 			<defs><filter id="b15" width="300%" height="300%" x="-50%" y="-50%">
@@ -424,8 +435,8 @@
 
 			<div class="thumbnail" style="width: 300px; height: 200px;"
 			   data-start = "opacity: 1; left: 1000px; top: 90px; display: block"  
-			   data-100   = "opacity: 1; left: 1000px; top: 80px; display: block"  
-			   data-200   = "opacity: 0; left: 1000px; top: 30px; display: none">
+			   data-50   = "opacity: 1; left: 1000px; top: 80px; display: block"  
+			   data-100   = "opacity: 0; left: 1000px; top: 30px; display: none">
 				  <a><img 
 				  	src="https://live.staticflickr.com/65535/48278707017_a056887548_h.jpg" 
 				  	alt="<p> (香港獨立媒體圖片)<br>連鎖快餐店吉野家facebook發布「獅子狗」廣告，其後撤回激起輿論反響。今日（14日）社區組織發起沙田大遊行，沙田好運中心吉野家分店嚴陣以待，以巨型木板圍封外牆玻璃，有網民嘲吉野家為遊行人士建築連儂牆。</p>"
@@ -435,8 +446,8 @@
 
 			<div class="thumbnail" style="width: 400px; height: 200px;"
 			   data-start = "opacity: 1; left: 900px; top: 300px; display: block"  
-			   data-100   = "opacity: 1; left: 900px; top: 290px; display: block"  
-			   data-200   = "opacity: 0; left: 900px; top: 240px; display: none">
+			   data-50   = "opacity: 1; left: 900px; top: 290px; display: block"  
+			   data-100   = "opacity: 0; left: 900px; top: 240px; display: none">
 				  <a><img 
 				  	src="https://live.staticflickr.com/65535/48278621006_8834e40121_z.jpg" 
 				  	alt="<p> (香港獨立媒體圖片)<br>距離沙田遊行起步約一小時，沙田源禾路與沙田鄉事會路十字路口交界現已實行交通管制，大部份行車路段已經清空，約10多輛警車正停泊於源禾路游泳池外。</p>"
@@ -495,12 +506,12 @@
 				  	  style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 450px; height: 200px;"
+			<div class="thumbnail" style="width: 400px; height: 200px;"
 			   data-start = "display: none" 
-			   data-500   = "opacity: 0; left: 10px; top: 160px; display: block" 
-			   data-600   = "opacity: 1; left: 10px; top: 110px; display: block"  
-			   data-1650  = "opacity: 1; left: 10px; top: 100px; display: block"  
-			   data-1750  = "opacity: 0; left: 10px; top: 50px; display: none" >
+			   data-500   = "opacity: 0; left: 50px; top: 160px; display: block" 
+			   data-600   = "opacity: 1; left: 50px; top: 110px; display: block"  
+			   data-1650  = "opacity: 1; left: 50px; top: 100px; display: block"  
+			   data-1750  = "opacity: 0; left: 50px; top: 50px; display: none" >
 				  <a><img 
 				  	  src="https://live.staticflickr.com/65535/48279068827_8912907054_b.jpg" 
 				  	  alt="<p>16:16 (香港獨立媒體圖片)<br>遊行隊伍隊頭沿沙田正街走過新城市廣場，轉入沙田廣場外。有市民在沙田廣場天橋為示威者打氣。沙田中心則關閉側門，防止示威者進入。示威者對天橋上的市民揮手，希望他們加入行動。</p>"
@@ -529,7 +540,7 @@
 			   data-2000  = "opacity: 0; left: 20px; top: 240px; display: none">
 			    <a><img 
 				  	src="https://live.staticflickr.com/65535/48279217312_0025b3d8ff_b.jpg" 
-				  	alt="<p>16:45 (香港獨立媒體圖片)<br>(16:45) 遊行隊伍隊頭沿沙田鄉事會路到達Home Square，沙田區議員許鋭宇呼籲示威者按原定路線前往終點沙田站巴士總站。</p>"
+				  	alt="<p>16:45 (香港獨立媒體圖片)<br>遊行隊伍隊頭沿沙田鄉事會路到達Home Square，沙田區議員許鋭宇呼籲示威者按原定路線前往終點沙田站巴士總站。</p>"
 				  	href="https://www.inmediahk.net/node/1065663"
 				  	style="height: 100%;"></a>
 			</div>
@@ -547,12 +558,12 @@
 				  	style="width: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 300px; height: 300px;"
+			<div class="thumbnail" style="width: 350px; height: 250px;"
 			   data-start = "display: none"
-			   data-1900 = "opacity: 0; right: 20px; top: 600px; display: block" 
-			   data-2000 = "opacity: 1; right: 20px; top: 550px; display: block" 
-			   data-2150 = "opacity: 1; right: 20px; top: 540px; display: block" 
-			   data-2250 = "opacity: 0; right: 20px; top: 490px; display: none">
+			   data-1900 = "opacity: 0; right: 320px; top: 600px; display: block" 
+			   data-2000 = "opacity: 1; right: 320px; top: 550px; display: block" 
+			   data-2150 = "opacity: 1; right: 320px; top: 540px; display: block" 
+			   data-2250 = "opacity: 0; right: 320px; top: 490px; display: none">
 			   <a><img 
 				  	src="https://live.staticflickr.com/65535/48279187051_e04dd35560_b.jpg" 
 				  	alt="<p>17:00 (香港獨立媒體圖片)<br>源禾路發生衝突，有示威者向警方投擲雜物，其後多名軍裝警員手持警棍衝向示威者，並施放胡椒噴霧。其後警方退守至源禾路泳池一帶，立法會議員郭家麒到場了解情況並要求見指揮官，一名警務人員要求郭家麒立即離開。郭要求其展示委任證，該名警務人員聲稱執行職務期間不便展示委任證。</p>"
@@ -785,7 +796,7 @@
 
 
 
-			var time = [0, 167, 1000, 1750, 2000, 2250, 3003, 3750, 4333, 4933, 6000, 6250, 6500, 6750, 7000, 99999];
+			var time = [0, 167, 1000, 1750, 2000, 2250, 3003, 3750, 5000, 6000, 6500, 6750, 7000, 99999];
 			$("#next").click(function() {
 			  	var scroll = Math.ceil(window.scrollY);
 			  	console.log(scroll);
