@@ -33,7 +33,7 @@
 
 		#log, #time, #button{
 			position: fixed;
-			z-index: 9999;
+			z-index: 100;
 			font-size: 2em;
 			font-weight: 900;
 			color: white;
@@ -84,30 +84,53 @@
 			border-radius: 50%;
 		}
 
-		div {
-			position: absolute; 
-			z-index: 9999;
+		.thumbnail {
+			position: absolute;
+			box-shadow: 0 0 100px black;
 		}
 
-		div img {
+		#copy {
+			z-index: 100;
+		}
+
+		#lightbox{
+			background: rgba(0, 0, 0, 0.7);
+			position: fixed;
+			z-index: 200;
 			width: 100%;
-			opacity: 0.9;
+			height: 100%;
 		}
 
-		#img {
-			z-index: 9999;
+		#frame {
+			position:relative;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			top: 10%;
+			width: 80%;	
+			max-width: 1024px;
+			min-width: 600px;
+			height: auto;
 		}
 
-		p {
+		#frame p {
 			position: absolute; 
-			bottom: 0px; 
+			display: block;
+			top: 90%;
 			padding: 10px; 
-			background: rgba(0,0,0,0.25);
 			color: white;
-			font-size: 20px
-			font-weight: 400;
-			line-height: 1.3;
-  		}
+			font-size: 20px;
+			text-shadow: 0 0 30px black;
+			font-weight: 900;
+			line-height: 1.5;
+			letter-spacing: 1px;
+		}
+
+		#frame img {
+			object-fit: contain;
+			max-width: 1024px;
+			max-height: 600px;
+		}
 
   		#fog1{
   			position:fixed;
@@ -318,7 +341,8 @@
 			  	 			data-start="stroke-width: 20; stroke-opacity:1;"
 			  	 			data-2500="stroke-dashoffset:0;"/>
 			</svg>
-			<img src="map1.png" style="position:absolute">
+			<img src="map1.png" style="position:absolute;
+">
 		</section>
 		<!-------------------------------------------------------------------------------------------------------------------------------->
 		<section
@@ -377,126 +401,173 @@
 				 data-7000="transform:scale(30);"	>
 	  			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
 	  		</svg>
-			<img src="map2.png" style="position:absolute;">
+			<img src="map2.png" style="position:absolute; border: 0;">
 		</section>
-		<section id="img" style="background: transparent;">
-			<div style="width: 500px"
+		<section id="copy" style="background: transparent;">
+			<div class="thumbnail" 
 			   data-start = "opacity: 1; left: 800px; top: 300px; display: block"  
 			   data-500   = "opacity: 1; left: 800px; top: 290px; display: block"  
 			   data-600   = "opacity: 0; left: 800px; top: 240px; display: none">
-				  <a target="_blank" href="https://www.inmediahk.net/node/1065663"><img src="https://live.staticflickr.com/65535/48278621006_8834e40121_z.jpg" ></a>
-				  <p>15:00 (香港獨立媒體圖片)<br>距離沙田遊行起步約一小時，沙田源禾路與沙田鄉事會路十字路口交界現已實行交通管制，大部份行車路段已經清空，約10多輛警車正停泊於源禾路游泳池外。</p>
+				  <a><img 
+				  	src="https://live.staticflickr.com/65535/48278621006_8834e40121_z.jpg" 
+				  	alt="<p>15:00 (香港獨立媒體圖片)<br>距離沙田遊行起步約一小時，沙田源禾路與沙田鄉事會路十字路口交界現已實行交通管制，大部份行車路段已經清空，約10多輛警車正停泊於源禾路游泳池外。</p>"
+				  	href="https://www.inmediahk.net/node/1065663"
+				  	width="500"></a>
 			</div>
 
-			<div style="width: 500px"
+			<div class="thumbnail"
 			   data-start = "opacity: 0; left: 250px; bottom: -50px" 
 			   data-167   = "opacity: 1; left: 250px; bottom: 0px; display: block"  
 			   data-1000  = "opacity: 1; left: 250px; bottom: 10px; display: block"  
 			   data-1100  = "opacity: 0; left: 250px; bottom: 60px; display: none" >
-				  <a target="_blank" href="http://std.stheadline.com/instant/articles/detail/1043935/即時-香港-逃犯條例-沙田遊行隊伍拉起黑布提前起步-大圍站迫滿黑衣人流"><img src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071415275364947.jpg"></a>
-				 <p>15:10 (星島日報圖片)<br>在起點翠田街足球場，由於人數眾多，比原定提早20分鐘開始起步。</p>
+				  <a >
+				  	<img 
+				  	  src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071415275364947.jpg" 
+				  	  alt="<p>15:10 (星島日報圖片)<br>在起點翠田街足球場，由於人數眾多，比原定提早20分鐘開始起步。</p>"
+				  	  href="http://std.stheadline.com/instant/articles/detail/1043935/即時-香港-逃犯條例-沙田遊行隊伍拉起黑布提前起步-大圍站迫滿黑衣人流"
+				  	  width="500"></a>
+				 
 			</div>
 
-			<div style="width: 500px" 
+			<div class="thumbnail" 
 			   data-start = "display: none"
 			   data-1650  = "opacity: 0; left: 20px; top: 340px; display: block"
 			   data-1750  = "opacity: 1; left: 20px; top: 290px; display: block" 
 			   data-2750  = "opacity: 1; left: 20px; top: 280px; display: block" 
 			   data-2850  = "opacity: 0; left: 20px; top: 230px; display: none">
-				 <a target="_blank" href="https://m.mingpao.com/ins/港聞/article/20190714/s00001/1563088298405/【逃犯條例-沙田示威】7-14文字紀錄-下午遊行-晚上新城市廣場衝突%ef%bc%88附短片%ef%bc%89"><img src="https://fs.mingpao.com/ins/20190714/s00001/5d252448bd5a6143d24589eda85e3930.jpg"></a>
-				<p>16:45 (明報圖片)<br>遊行隊頭出發到達終點，與此同時，起點翠田街足球場的所有市民已經出發，仍有市民直接由港鐵大圍站直接進入車公廟路遊行路線。</p>
+			    <a><img 
+				  	src="https://fs.mingpao.com/ins/20190714/s00001/5d252448bd5a6143d24589eda85e3930.jpg" 
+				  	alt="<p>16:45 (明報圖片)<br>遊行隊頭出發到達終點，與此同時，起點翠田街足球場的所有市民已經出發，仍有市民直接由港鐵大圍站直接進入車公廟路遊行路線。</p>"
+				  	href="https://m.mingpao.com/ins/港聞/article/20190714/s00001/1563088298405/【逃犯條例-沙田示威】7-14文字紀錄-下午遊行-晚上新城市廣場衝突%ef%bc%88附短片%ef%bc%89"
+				  	width="500"></a>				
 			</div>
 
-			<div style="width: 500px"
+			<div class="thumbnail"
 			   data-start = "display: none"
 			   data-1900 = "opacity: 0; right: 20px; top: 290px; display: block" 
 			   data-2000 = "opacity: 1; right: 20px; top: 240px; display: block" 
 			   data-2500 = "opacity: 1; right: 20px; top: 230px; display: block" 
 			   data-2600 = "opacity: 0; right: 20px; top: 180px; display: none">
-			   <a target="_blank" href="http://std.stheadline.com/instant/articles/detail/1044040/%E5%8D%B3%E6%99%82-%E9%A6%99%E6%B8%AF-%E9%80%83%E7%8A%AF%E6%A2%9D%E4%BE%8B-%E6%B2%99%E7%94%B0%E7%88%86%E8%A1%9D%E7%AA%81%E8%AD%A6%E5%AF%9F%E6%94%BE%E8%83%A1%E6%A4%92%E5%99%B4%E9%9C%A7-%E7%A4%BA%E5%A8%81%E8%80%85%E6%8A%95%E6%93%B2%E7%89%A9%E5%93%81%E8%A8%AD%E8%B7%AF%E9%9A%9C"><img src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071417303568762.jpg"></a>
-				<p>17:00 (星島日報圖片)<br>源禾路發生衝突，有示威者向警方投擲雜物，其後多名軍裝警員手持警棍衝向示威者，並施放胡椒噴霧。其後警方退守至源禾路泳池一帶，立法會議員郭家麒到場了解情況並要求見指揮官，一名警務人員要求郭家麒立即離開。郭要求其展示委任證，該名警務人員聲稱執行職務期間不便展示委任證。</p>
+			   <a><img 
+				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071417303568762.jpg" 
+				  	alt="<p>17:00 (星島日報圖片)<br>源禾路發生衝突，有示威者向警方投擲雜物，其後多名軍裝警員手持警棍衝向示威者，並施放胡椒噴霧。其後警方退守至源禾路泳池一帶，立法會議員郭家麒到場了解情況並要求見指揮官，一名警務人員要求郭家麒立即離開。郭要求其展示委任證，該名警務人員聲稱執行職務期間不便展示委任證。</p>"
+				  	href="http://std.stheadline.com/instant/articles/detail/1044040/%E5%8D%B3%E6%99%82-%E9%A6%99%E6%B8%AF-%E9%80%83%E7%8A%AF%E6%A2%9D%E4%BE%8B-%E6%B2%99%E7%94%B0%E7%88%86%E8%A1%9D%E7%AA%81%E8%AD%A6%E5%AF%9F%E6%94%BE%E8%83%A1%E6%A4%92%E5%99%B4%E9%9C%A7-%E7%A4%BA%E5%A8%81%E8%80%85%E6%8A%95%E6%93%B2%E7%89%A9%E5%93%81%E8%A8%AD%E8%B7%AF%E9%9A%9C"
+				  	width="500"></a>				
 			</div>
 
-			<div style="width: 400px"
+			<!--
+			<div class="thumbnail"
 			   data-start = "display: none"
 			   data-2150 = "opacity: 0; left: 900px; top: 250px; display: block" 
 			   data-2250 = "opacity: 1; left: 900px; top: 200px; display: block" 
 			   data-2750 = "opacity: 1; left: 900px; top: 190px; display: block" 
 			   data-2850 = "opacity: 0; left: 900px; top: 140px; display: none">
+			   <a><img 
+				  	src="" 
+				  	alt=""
+				  	href=""
+				  	width="500"></a>
 				<p>17:15<br>警方在源禾路沙田賽馬會游泳池外架起防線，與示威者對峙，有九巴受影響未能前進。</p>
 			</div>
+			-->
 
-			<div style="width: 400px"
+			<div class="thumbnail" style="width: 400px"
 			   data-start = "display: none"
 			   data-2900 = "opacity: 0; left: 10px; top: 450px; display: block" 
 			   data-3000 = "opacity: 1; left: 10px; top: 400px; display: block" 
 			   data-4000 = "opacity: 1; left: 10px; top: 390px; display: block" 
 			   data-4100 = "opacity: 0; left: 10px; top: 340px; display: none">
-			   <a target="_blank" href="https://news.mingpao.com/ins/%e6%b8%af%e8%81%9e/article/20190714/s00001/1563088298405/%e3%80%90%e9%80%83%e7%8a%af%e6%a2%9d%e4%be%8b-%e6%b2%99%e7%94%b0%e7%a4%ba%e5%a8%81%e3%80%917-14%e6%96%87%e5%ad%97%e7%b4%80%e9%8c%84-%e4%b8%8b%e5%8d%88%e9%81%8a%e8%a1%8c-%e6%99%9a%e4%b8%8a%e6%96%b0%e5%9f%8e%e5%b8%82%e5%bb%a3%e5%a0%b4%e8%a1%9d%e7%aa%81%ef%bc%88%e9%99%84%e7%9f%ad%e7%89%87%ef%bc%89"><img src="https://video3.mingpao.com/inews/201907/20190714-shatin-aid.jpg"></a>
-			   	<p>18:02 (明報圖片)<br>在沙田源禾路，警方與示威者對峙。沙田偉華中心外，遊行協辦單位沙田區政向在場遊行人士呼籲，指前線義士需要大量保鮮紙、索帶、頭盔及口罩等物資，呼籲市民可幫忙購買，並籲市民「團結一致，對抗暴政」。在場遊行人士亦築成人鏈傳送物資。</p>
+			   <a><img 
+				  	src="https://video3.mingpao.com/inews/201907/20190714-shatin-aid.jpg" 
+				  	alt="<p>18:02 (明報圖片)<br>在沙田源禾路，警方與示威者對峙。沙田偉華中心外，遊行協辦單位沙田區政向在場遊行人士呼籲，指前線義士需要大量保鮮紙、索帶、頭盔及口罩等物資，呼籲市民可幫忙購買，並籲市民「團結一致，對抗暴政」。在場遊行人士亦築成人鏈傳送物資。</p>"
+				  	href="https://news.mingpao.com/ins/%e6%b8%af%e8%81%9e/article/20190714/s00001/1563088298405/%e3%80%90%e9%80%83%e7%8a%af%e6%a2%9d%e4%be%8b-%e6%b2%99%e7%94%b0%e7%a4%ba%e5%a8%81%e3%80%917-14%e6%96%87%e5%ad%97%e7%b4%80%e9%8c%84-%e4%b8%8b%e5%8d%88%e9%81%8a%e8%a1%8c-%e6%99%9a%e4%b8%8a%e6%96%b0%e5%9f%8e%e5%b8%82%e5%bb%a3%e5%a0%b4%e8%a1%9d%e7%aa%81%ef%bc%88%e9%99%84%e7%9f%ad%e7%89%87%ef%bc%89"
+				  	width="500"></a>
 			</div>
 
-			<div style="width: 500px"
+			<div class="thumbnail" style="width: 500px"
 			   data-start = "display: none"
 			   data-3500 = "opacity: 0; right: 0px; top: 250px; display: block" 
 			   data-3600 = "opacity: 1; right: 0px; top: 200px; display: block" 
 			   data-4000 = "opacity: 1; right: 0px; top: 190px; display: block" 
 			   data-4100 = "opacity: 0; right: 0px; top: 140px; display: none">
-			   <img src="https://cdn.thestandnews.com/media/photos/cache/66583011_2305350629550544_7038596871450787840_n_wnNWs_1200x0.jpg">
-				<p>18:40 (立場新聞圖片)<br>在源禾路的警方更換全副武裝，配備長盾及防暴槍的警員上最前線防守，全部警員均沒有戴上警員編號及委任證。</p>
+			   <a><img 
+				  	src="https://cdn.thestandnews.com/media/photos/cache/66583011_2305350629550544_7038596871450787840_n_wnNWs_1200x0.jpg" 
+				  	alt="<p>18:40 (立場新聞圖片)<br>在源禾路的警方更換全副武裝，配備長盾及防暴槍的警員上最前線防守，全部警員均沒有戴上警員編號及委任證。</p>"
+				  	href="_blank"
+				  	width="500"></a>
 			</div>
 
-			<div style="width: 400px"
+			<div class="thumbnail" style="width: 400px"
 			   data-start = "display: none"
 			   data-4000 = "opacity: 0; right: 50px; top: 70px; display: block" 
 			   data-4100 = "opacity: 1; right: 50px; top: 20px; display: block" 
 			   data-5900 = "opacity: 1; right: 50px; top: 10px; display: block" 
 			   data-6000 = "opacity: 0; right: 50px; top: -40px; display: none">
-			    <img src="https://fs.mingpao.com/ins/20190714/s00001/62592bf797dc0ce4b02cea8e9dc13680.jpg">
-				<p>19:10 (明報圖片)<br>大批警員集結於瀝源邨，部份警員進入瀝源商場，有市民怒罵「黑警」。</p>
+			   <a><img 
+				  	src="https://fs.mingpao.com/ins/20190714/s00001/62592bf797dc0ce4b02cea8e9dc13680.jpg" 
+				  	alt="<p>19:10 (明報圖片)<br>大批警員集結於瀝源邨，部份警員進入瀝源商場，有市民怒罵「黑警」。</p>"
+				  	href="_blank"
+				  	width="500"></a>
 			</div>
 
-			<div style="width: 400px"
+			<!--
+			<div class="thumbnail" style="width: 400px"
 			   data-start = "display: none"
 			   data-4050 = "opacity: 0; left: 10px; top: 250px; display: block" 
 			   data-4150 = "opacity: 1; left: 10px; top: 200px; display: block" 
 			   data-5900 = "opacity: 1; left: 10px; top: 190px; display: block" 
 			   data-6000 = "opacity: 0; left: 10px; top: 140px; display: none">
-			   	<p>19:15<br>遊行約於晚上7時15分結束，大批市民在港鐵沙田站排隊購票離開。</p>
+			   <a><img 
+				  	src="" 
+				  	alt="<p>19:15<br>遊行約於晚上7時15分結束，大批市民在港鐵沙田站排隊購票離開。</p>"
+				  	href=""
+				  	width="500"></a>
 			</div>
+			-->
 
-			<div style="width: 500px"
+			<div class="thumbnail" style="width: 500px"
 			   data-start = "display: none"
 			   data-4100 = "opacity: 0; right: 200px; top: 550px; display: block" 
 			   data-4200 = "opacity: 1; right: 200px; top: 500px; display: block" 
 			   data-5900 = "opacity: 1; right: 200px; top: 490px; display: block" 
 			   data-6000 = "opacity: 0; right: 200px; top: 440px; display: none">
-			    <img src="https://fs.mingpao.com/ins/20190714/s00001/65fc695da723b577a8bc09692e2bacb0.jpg">
-			   	<p>19:20 (明報圖片)<br>源禾路部份示威者入夜後開始撤離，他們呼籲在場示威者「要走一起走」，並讓較後方的示威者先行撤退。防暴警察於沙燕橋上推進。</p>
+			   <a><img 
+				  	src="https://fs.mingpao.com/ins/20190714/s00001/65fc695da723b577a8bc09692e2bacb0.jpg" 
+				  	alt="<p>19:20 (明報圖片)<br>源禾路部份示威者入夜後開始撤離，他們呼籲在場示威者「要走一起走」，並讓較後方的示威者先行撤退。防暴警察於沙燕橋上推進。</p>"
+				  	href="_blank"
+				  	width="500"></a>
 			</div>
 
-			<div style="width: 400px"
+			<div class="thumbnail" style="width: 400px"
 			   data-start = "display: none"
 			   data-4900 = "opacity: 0; left: 40px; top: 300px; display: block" 
 			   data-5000 = "opacity: 1; left: 40px; top: 250px; display: block" 
 			   data-5900 = "opacity: 1; left: 40px; top: 240px; display: block" 
 			   data-6000 = "opacity: 0; left: 40px; top: 190px; display: none">
-			    <img src="https://cdn.hk01.com/di/media/images/3032749/org/2d458712d1ae8a35dc69d0d910badb15.jpg/c0FexaxC2Mr0fJuVIqOhzv67txx9NQWqdNMI7HTTCOw">
-			   	<p>19:56 (香港01圖片)<br>大會堂百步梯放映會改為和平集會，此活動不反對通知書至晚上11時。</p>
+			   <a><img 
+				  	src="https://cdn.hk01.com/di/media/images/3032749/org/2d458712d1ae8a35dc69d0d910badb15.jpg/c0FexaxC2Mr0fJuVIqOhzv67txx9NQWqdNMI7HTTCOw"
+				  	alt="<p>19:56 (香港01圖片)<br>大會堂百步梯放映會改為和平集會，此活動不反對通知書至晚上11時。</p>"
+				  	href="_blank"
+				  	width="500"></a>
 			</div>
 
-			<div style="width: 500px"
+			<div class="thumbnail" style="width: 500px"
 			   data-start = "display: none"
 			   data-5900 = "opacity: 0; left: 768px; top: 550px; display: block" 
 			   data-6000 = "opacity: 1; left: 768px; top: 500px; display: block" 
 			   data-6400 = "opacity: 1; left: 768px; top: 490px; display: none" >
-			    <img src="https://cdn.thestandnews.com/media/photos/cache/66615751_2305620629523544_3338879783177027584_n_jxLSU_1200x0.jpg">
-			   	<p>21:00<br>清場行動一觸即發，警方三面夾攻，一群防暴警察由沙田鄕事會路向源禾路推進，並高舉紅旗，沙田大會堂前的防暴警亦開始推進，而沙燕橋的防暴警察亦推進至鄕事會路及源禾路交界。</p>
+			   <a><img 
+				  	src="https://cdn.thestandnews.com/media/photos/cache/66615751_2305620629523544_3338879783177027584_n_jxLSU_1200x0.jpg" 
+				  	alt="<p>21:00<br>清場行動一觸即發，警方三面夾攻，一群防暴警察由沙田鄕事會路向源禾路推進，並高舉紅旗，沙田大會堂前的防暴警亦開始推進，而沙燕橋的防暴警察亦推進至鄕事會路及源禾路交界。</p>"
+				  	href="_blank"
+				  	width="500"></a>
 			</div>
+
 		</section>
 	<img id="fog1" src="fog1.png">
 	<img id="fog2" src="fog2.png">
 	</main>
+	<div id="lightbox" style="display: none"></div>
 	<script type="text/javascript">
 			var s = skrollr.init();
 			$("section").on( "mousemove", function( event ) {
@@ -543,8 +614,8 @@
 
 
 
-			  var time = [0, 167, 1750, 2000, 2250, 3003, 3667, 4333, 4933, 6000, 6250, 6500, 6750, 7000, 99999];
-			  $("#next").click(function() {
+			var time = [0, 167, 1750, 2000, 2250, 3003, 3667, 4333, 4933, 6000, 6250, 6500, 6750, 7000, 99999];
+			$("#next").click(function() {
 			  	var scroll = Math.ceil(window.scrollY);
 			  	console.log(scroll);
 			  	for ( var i = 0, l = time.length; i < l; i++ ) {
@@ -554,8 +625,9 @@
 			  			}
 			  		};
 			  	};
-			  });
-			  $("#prev").click(function() {
+			 });
+
+			$("#prev").click(function() {
 			  	var scroll = Math.ceil(window.scrollY);
 			  	console.log(scroll);
 			  	for ( var i = 0, l = time.length; i < l; i++ ) {
@@ -563,29 +635,48 @@
 			  			$("html, body").stop().animate({scrollTop:time[i-1]}, 1000);
 			  		};
 			  	};
-			  });
+			});
 
-			  function fogloop1() {
+			$('.thumbnail').click(function(){
+				var img_adress = $(this).find('img').attr('src');
+				var img_href = $(this).find('img').attr('href');
+				var img_description = $(this).find('img').attr('alt');
+				console.log(img_adress);
+				console.log(img_href);
+				console.log(img_description);
+				$("#lightbox").fadeIn();
+				$("#lightbox").html(
+					"<div id='frame'>" + 
+					"<a target='_blank' href=" + img_href + ">" +
+					"<img src=" + img_adress + " width='1200'></a>" + img_description + "</div>"
+				)
+			});
+
+			$('#lightbox').click(function(){
+				$("#lightbox").fadeOut();
+			});
+
+			function fogloop1() {
 				  $("#fog1").animate ({
 				  	left: "0%", opacity: Math.random()}, 30000, function() {
 				  	 $("#fog1").animate ({
 				  		left: "-25%", opacity: Math.random()}, 30000, function() {
 				  			fogloop1()
-				  		});
 				  	});
-			  };
-			   function fogloop2() {
+				});
+			};
+			function fogloop2() {
 				  $("#fog2").animate ({
 				  	right: "-25%", opacity: Math.random()}, 28000, function() {
 				  	 $("#fog2").animate ({
 				  		right: "-50%", opacity: Math.random()}, 28000, function() {
 				  			fogloop2()
-				  		});
 				  	});
-			  };
+				 });
+			};
 
-			  fogloop1();
-			  fogloop2();
+			fogloop1();
+			fogloop2();
 
 			});		
 	</script>	
