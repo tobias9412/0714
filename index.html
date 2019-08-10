@@ -10,13 +10,14 @@
 		html {
 			background: #181818;
 			font-family: 'Noto Serif TC', serif;
-			/*overflow: hidden;*/
+			overflow: hidden;
 		}
 
 		main {
 			position: fixed;
-			width: 80%;
-			height: 100%;
+			width: 90%;
+			height: 95%;
+			top: 2%;
 		}
 
 		section {
@@ -28,7 +29,6 @@
 			top: 50%;
 			margin-left: -700px;
 			margin-top: -600px;
-			overflow: hidden;
 		}
 
 		#log, #time, #button{
@@ -110,15 +110,17 @@
   		}
 
   		#fog1{
-  			position:absolute;
+  			position:fixed;
   			left: -25%;
-  			width: 150%;
+ 			width: 150%;
+ 			height: auto;
   			opacity: 0.3;  			
   		}
   		#fog2 {
-  			position:absolute;
+  			position:fixed;
   			right: -50%;
   			width: 150%;
+ 			height: auto;
   			opacity: 1;
   		}
 
@@ -541,7 +543,7 @@
 
 
 
-			  var time = [0, 167, 1750, 2000, 2250, 3003, 3667, 4333, 4933, 6000, 99999];
+			  var time = [0, 167, 1750, 2000, 2250, 3003, 3667, 4333, 4933, 6000, 6250, 6500, 6750, 7000, 99999];
 			  $("#next").click(function() {
 			  	var scroll = Math.ceil(window.scrollY);
 			  	console.log(scroll);
