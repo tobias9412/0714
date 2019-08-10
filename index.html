@@ -2,865 +2,1594 @@
 <html>
 <head>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-	<script type="text/javascript" src="skrollr.min.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC:400,900&display=swap&subset=chinese-traditional" rel="stylesheet">	<link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<link href="reset.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC:200,900&display=swap&subset=chinese-traditional" rel="stylesheet"> 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<style>
 		html {
-			background: #181818;
 			font-family: 'Noto Serif TC', serif;
-			/*overflow: hidden;*/
+			letter-spacing: .1em;
+			background-color: #0D0D0D;
+			overflow-x: hidden;
+			overflow-y: scroll;
+		}
+
+		body {
+			overflow: hidden;
+			background-color: #F7F2EB;
+		}
+
+		.loading{
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			background: url("loading.gif") center no-repeat black ;
+			z-index: 9999;
+		}
+
+		mark, .mark {
+			background: #f1dd38;
+		}
+
+		.wording span {
+			text-decoration: line-through;
+			background: #f1dd38;
+		}
+
+		.bar {
+			position: fixed;
+			float: left;
+			display: block;
+			overflow: hidden;
+			width: 40px;
+			height: 100%;
+			background-color: #f1dd38;
+			z-index: 30;
+		}
+
+		.bar li {
+			width: 40px;
+			margin: 50px 5px;
+			font-weight: 900;
+			font-size: 1.8em;
+			line-height: 1.2em;
+			list-style-type: none;
+		}
+
+ 		menu {
+			position: fixed;
+			float: left;
+			display: block;
+			overflow-y: scroll;
+			width: 100%;
+			height: 100%;
+			z-index: 20;
+			background-color: #0D0D0D;
+		}
+
+		menu ul {
+			padding: 0 25px;
+			margin-left: calc(40px + 6vh);
+		}
+
+		menu li {
+			margin: 10px;
+			color: white;
+			font-weight: 900;
+			font-size: 1.5em;
+		}
+
+		menu li span {
+			color: white;
+			font-size: .5em;
 		}
 
 		main {
-			position: fixed;
-			width: 90%;
-			height: 95%;
-			top: 2%;
-		}
-
-		section {
-			background: #c8c8c8;
-			position: absolute;
-			width: 1400px;
-			height: 1200px;
-			left: 50%; 
-			top: 50%;
-			margin-left: -700px;
-			margin-top: -600px;
-		}
-
-		#log, #time {
-			position: fixed;
-			z-index: 100;
-			font-size: 2em;
-			font-weight: 900;
-			color: white;
-		}
-
-		#button {
-			position: fixed;
-			padding: 20px;
-			width: 400px;
-			height: 50px;
-			right: 0;
-			bottom: 0;
-			z-index: 100;
-		}
-
-		#next, #prev, #time {
 			position: relative;
 			float: right;
-			margin: 0 10px;
-			bottom: 0;
-			font-weight: bold;
-			font-size: 4em;
-			line-height:0.7;
-			color: #c8c8c8;
-		}
-
-		#next:hover, #prev:hover {
-			cursor: pointer;			
-		}
-
-		#log {
-			top: 10px;
-		}
-
-		svg {
-			border: solid red 0px;
-			position: absolute;
-		}
-
-		polyline {
-			fill:none; 
-			stroke-linecap:round;
-			stroke-linejoin:round;
-		}
-
-		#gold {
-			stroke:#FFD300;
-		}
-
-		#black {
-			stroke:black;
-		}
-
-		.circle {
-			position: absolute;
-			border-radius: 50%;
-		}
-
-		.thumbnail {
-			position: absolute;
 			overflow: hidden;
-			box-shadow: 0 0 100px 10px rgba(0,0,0,0.75);
-			box-shadow: inset 0px 0px 100px -50px rgba(0,0,0,0.75);
+			width: 0;
 		}
 
-		.thumbnail img {
-			opacity: 0.9;
-			-webkit-transition: opacity 0.2s; 
-  			transition: opacity 0.2s;
-
-		}
-
-		.thumbnail img:hover {
-			cursor: pointer;
-			opacity: 1;
-			-webkit-transition: opacity 0.2s; 
-  			transition: opacity 0.2s;
-		}
-
-
-		#copy {
-			z-index: 100;
-		}
-
-		#lightbox{
-			background: rgba(0, 0, 0, 0.7);
-			position: fixed;
-			z-index: 200;
+		session {
+			float: left;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			-webkit-overflow-scrolling: touch;
+			white-space: nowrap;
 			width: 100%;
 			height: 100%;
+			min-height: 400px;
+			border-bottom: solid black 5px;
+			border-left: solid black 2px;
 		}
 
-		#frame {
-			position:relative;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			top: 10%;
-			width: 100%;	
-			max-width: 800px;
-			min-width: 600px;
+		article {
+			vertical-align: top;
+			width: calc(95vw - 40px);
+			max-width: 1300px;
+			min-width: 700px;
 			height: auto;
+			display: inline-block;
+			padding: 10px;
+			margin: 50px 10px 50px 50px;
+			border-right: solid lightgrey 1px;
 		}
 
-		#frame p {
-			position: absolute; 
-			display: block;
-			bottom: 0%;
-			padding: 10px; 
-			color: white;
-			font-size: 15px;
-			text-shadow: 0 0 10px black;
+		heading {
+			display:inline-block;
+			white-space: nowrap; 
+			position: absolute;
+			overflow: visible;
+			margin: 15px 60px;
 			font-weight: 900;
-			line-height: 1.5;
-			letter-spacing: 1px;
+			font-size: 1.5em;
+			line-height: 1.2em;
+			margin-bottom: 10px;
+			text-decoration: underline;
 		}
 
-		#frame img {
-			object-fit: contain;
-			max-width: 800px;
-			max-height: 600px;
+		.expand {
+			display: block;
+			position: absolute;
+			margin: 15px 60px;
+			font-weight: 900;
+			font-size: 1.5em;
 		}
 
-  		#fog1{
-  			position:fixed;
-  			left: -25%;
- 			width: 150%;
- 			height: auto;
-  			opacity: 0.3;  			
+
+		title {
+			display:block;
+			position: sticky;
+			top: 20px;
+			float: left;
+			writing-mode: vertical-lr;
+			white-space: nowrap; 
+		    padding: 20px 20px 25px 65px;
+			font-weight: 900;
+			font-size: 4vh;
+			color: rgba(0, 0, 0, 0);
+  			-webkit-text-stroke: 1px #f1dd38;
   		}
-  		#fog2 {
-  			position:fixed;
-  			right: -50%;
-  			width: 150%;
- 			height: auto;
-  			opacity: 1;
-  		}
+
+  		@supports (-ms-ime-align:auto) {
+		    title {
+				position: relative;
+		    }
+		}
+
+		h1 {
+			display:block;
+			white-space: normal;
+			font-weight: 900;
+			font-size: 2em;
+			line-height: 1.2em;
+			margin-bottom: 10px;
+		}
+
+		h3 {
+			font-weight: 900;
+			font-size: 1em;
+			line-height: １.2em;
+		}
+
+		#presentbutton, #yesbutton, #nobutton, #absentbutton, #abstainbutton, #prev, #next {
+			text-align: center;
+			margin: 1em;
+			font-weight: 900;
+			font-size: 1.5em;
+			margin: 20px 5px 5px 5px;
+		}
+
+		#presentbutton, #yesbutton, #nobutton, #absentbutton, #abstainbutton {
+			float:left;
+		}
+
+		#prev, #next {
+			float:right;
+		}
+
+		#presentbutton:hover, #yesbutton:hover, #nobutton:hover, #absentbutton:hover, #abstainbutton:hover, #prev:hover, #next:hover {
+			background: #f1dd38;
+		}
+
+
+		.container{
+			position: relative;
+			margin: auto;
+			width: calc(85vw - 40px);
+			min-width: 700px;
+			max-width: 1280px;
+			height: 45vw;
+			min-height: 350px;
+			max-height: 640px;
+		}
+
+		.wording {
+			position: relative;
+			overflow: auto;
+			width: 90%;
+			max-width: 1280px;
+			height: 200px;
+			margin: 50px 10px auto;
+			display:block;
+		}
+
+		.wording p {
+			font-size: 1em;
+			line-height: 1.6em;
+			white-space: normal;
+		}
+
+		.circle{
+			position:absolute;
+			border-radius: 50%;
+			width: 5%;
+			height: 9%;
+			background: transparent;
+			text-align: center
+		}
+
+		.circle li {
+  			display: inline-block; 
+			list-style-type:none;
+			font-weight: 900;
+			font-size: 1vw;
+			color: white;
+			text-align: center;
+			margin-top: 33%;
+   		}
+
+		@media screen and (max-width: 700px) {
+		.circle li {
+		     font-size: 8px;
+		  }
+		}
+
+		@media screen and (min-width: 1280px) {
+		.circle li {
+		     font-size: 14px;
+		  }
+		}
+
+		.popup {
+			position: absolute;
+			overflow: visible;
+			width: 250px;
+			height: 80px;
+			z-index: 10;
+		}
+
+		.popup ul {
+			position: absolute;
+			display: block;
+			line-height: 1.5em;
+		}
+
+		.popup span {
+			font-weight: 900;
+			font-size: 1.3em;
+		}
+
+		.namelist {
+			float: left;
+			width: 100%;
+			height: 100%;
+			margin: 100px 0;
+		}
+
+		ol.yes, ol.no, ol.absent, ol.abstain {
+			float: left;
+			display: block;
+			width:25%;
+		}
+
+		.circle#鄺俊宇 {top: 95%; left: 0%; }
+		.circle#涂謹申{top: 85%; left: 1%; }
+		.circle#c3{top: 75%; left: 3%; }
+		.circle#姚松炎{top: 65%; left: 6%; }
+		.circle#許智峯{top: 65%; left: 6%; }
+		.circle#邵家臻{top: 57.5%; left: 10.5%; }
+		.circle#梁耀忠{top: 50%; left: 15%; }
+		.circle#林卓廷{top: 95%; left: 8%; }
+		.circle#尹兆堅{top: 85%; left: 9%; }
+		.circle#黃碧雲{top: 75%; left: 11%; }
+		.circle#葉建源{top: 67.5%; left: 16%; }
+		.circle#李國麟{top: 60%; left: 21%; }
+		.circle#胡志偉{top: 95%; left: 16%; }
+		.circle#莫乃光{top: 85%; left: 17%; }
+		.circle#梁繼昌{top: 75%; left: 21%; }
+		.circle#郭榮鏗{top: 70%; left: 27%; }
+		.circle#譚文豪{top: 95%; left: 24%; }
+		.circle#郭家麒{top: 85%; left: 27%; }
+		.circle#毛孟靜{top: 80%; left: 33%; }
+		.circle#陳淑莊{top: 95%; left: 32%; }
+		.circle#楊岳橋{top: 87.5%; left: 39%; }
+		.circle#游蕙禎{top: 26%; left: 30%; }
+		.circle#鄭松泰{top: 23%; left: 36%; }
+		.circle#梁頌恆{top: 23%; left: 36%; }
+		.circle#陳凱欣{top: 21%; left: 42%; }
+		.circle#馬逢國{top: 20%; left: 48%; }
+		.circle#廖長江{top: 19%; left: 54%; }
+		.circle#張超雄{top: 40%; left: 24%; }
+		.circle#朱凱廸{top: 36%; left: 30%; }
+		.circle#羅冠聰{top: 33%; left: 36%; }
+		.circle#區諾軒{top: 33%; left: 36%; }
+		.circle#劉小麗{top: 31%; left: 42%; }
+		.circle#謝偉銓{top: 31%; left: 42%; }
+		.circle#陳振英{top: 30%; left: 48%; }
+		.circle#姚思榮{top: 29%; left: 54%; }
+		.circle#梁國雄{top: 51%; left: 30%; }
+		.circle#范國威{top: 51%; left: 30%; }
+		.circle#陳志全{top: 45%; left: 36%; }
+		.circle#陳沛然{top: 41%; left: 42%; }
+		.circle#陳健波{top: 40%; left: 48%; }
+		.circle#吳永嘉{top: 39%; left: 54%; }
+		.circle#田北辰{top: 58%; left: 36%; }
+		.circle#容海恩{top: 53%; left: 42%; }
+		.circle#葉劉淑儀{top: 50%; left: 48%; }
+		.circle#易志明{top: 49%; left: 54%; }
+		.circle#邵家輝{top: 65%; left: 42%; }
+		.circle#鍾國斌{top: 61%; left: 48%; }
+		.circle#張宇人{top: 60%; left: 54%; }
+		.circle#謝偉俊{top: 73%; left: 48%; }
+		.circle#石禮謙{top: 71%; left: 54%; }
+		.circle#郭偉强{top: 19%; left: 66%; }
+		.circle#麥美娟{top: 20%; left: 72%; }
+		.circle#陸頌雄{top: 21%; left: 78%; }
+		.circle#潘兆平{top: 23%; left: 84%; }
+		.circle#鄭泳舜{top: 26%; left: 90%; }
+		.circle#何啟明{top: 29%; left: 66%; }
+		.circle#黃國健{top: 30%; left: 72%; }
+		.circle#何君堯{top: 31%; left: 78%; }
+		.circle#劉國勳{top: 33%; left: 84%; }
+		.circle#陳恒鑌{top: 37%; left: 90%; }
+		.circle#柯創盛{top: 43%; left: 95%; }
+		.circle#葛珮帆{top: 39%; left: 66%; }
+		.circle#梁志祥{top: 40%; left: 72%; }
+		.circle#周浩鼎{top: 41%; left: 78%; }
+		.circle#黃定光{top: 45%; left: 84%; }
+		.circle#何俊賢{top: 49%; left: 90%; }
+		.circle#李慧琼{top: 49%; left: 66%; }
+		.circle#陳克勤{top: 50%; left: 72%; }
+		.circle#張國鈞{top: 53%; left: 78%; }
+		.circle#蔣麗芸{top: 58%; left: 84%; }
+		.circle#梁美芬{top: 60%; left: 66%; }
+		.circle#林健鋒{top: 61%; left: 72%; }
+		.circle#劉業強{top: 65%; left: 78%; }
+		.circle#盧偉國{top: 71%; left: 66%; }
+		.circle#張華峰{top: 73%; left: 72%; }
+
+			/*
+			#c1{top: 95%; left: 0%; }
+			#c2{top: 85%; left: 1%; }
+			#c3{top: 75%; left: 3%; }
+			#c4{top: 65%; left: 6%; }
+			#c5{top: 57.5%; left: 10.5%; }
+			#c6{top: 50%; left: 15%; }
+			#c7{top: 95%; left: 8%; }
+			#c8{top: 85%; left: 9%; }
+			#c9{top: 75%; left: 11%; }
+			#c10{top: 67.5%; left: 16%; }
+			#c11{top: 60%; left: 21%; }
+			#c12{top: 95%; left: 16%; }
+			#c13{top: 85%; left: 17%; }
+			#c14{top: 75%; left: 21%; }
+			#c15{top: 70%; left: 27%; }
+			#c16{top: 95%; left: 24%; }
+			#c17{top: 85%; left: 27%; }
+			#c18{top: 80%; left: 33%; }
+			#c19{top: 95%; left: 32%; }
+			#c20{top: 87.5%; left: 39%; }
+			#c21{top: 26%; left: 30%; }
+			#c22{top: 23%; left: 36%; }
+			#c23{top: 21%; left: 42%; }
+			#c24{top: 20%; left: 48%; }
+			#c25{top: 19%; left: 54%; }
+			#c26{top: 40%; left: 24%; }
+			#c27{top: 36%; left: 30%; }
+			#c28{top: 33%; left: 36%; }
+			#c29{top: 31%; left: 42%; }
+			#c30{top: 30%; left: 48%; }
+			#c31{top: 29%; left: 54%; }
+			#c32{top: 51%; left: 30%; }
+			#c33{top: 45%; left: 36%; }
+			#c34{top: 41%; left: 42%; }
+			#c35{top: 40%; left: 48%; }
+			#c36{top: 39%; left: 54%; }
+			#c37{top: 58%; left: 36%; }
+			#c38{top: 53%; left: 42%; }
+			#c39{top: 50%; left: 48%; }
+			#c40{top: 49%; left: 54%; }
+			#c41{top: 65%; left: 42%; }
+			#c42{top: 61%; left: 48%; }
+			#c43{top: 60%; left: 54%; }
+			#c44{top: 73%; left: 48%; }
+			#c45{top: 71%; left: 54%; }
+			#c46{top: 19%; left: 66%; }
+			#c47{top: 20%; left: 72%; }
+			#c48{top: 21%; left: 78%; }
+			#c49{top: 23%; left: 84%; }
+			#c50{top: 26%; left: 90%; }
+			#c51{top: 29%; left: 66%; }
+			#c52{top: 30%; left: 72%; }
+			#c53{top: 31%; left: 78%; }
+			#c54{top: 33%; left: 84%; }
+			#c55{top: 36%; left: 90%; }
+			#c56{top: 40%; left: 95%; }
+			#c57{top: 39%; left: 66%; }
+			#c58{top: 40%; left: 72%; }
+			#c59{top: 41%; left: 78%; }
+			#c60{top: 45%; left: 84%; }
+			#c61{top: 51%; left: 90%; }
+			#c62{top: 49%; left: 66%; }
+			#c63{top: 50%; left: 72%; }
+			#c64{top: 53%; left: 78%; }
+			#c65{top: 58%; left: 84%; }
+			#c66{top: 60%; left: 66%; }
+			#c67{top: 61%; left: 72%; }
+			#c68{top: 65%; left: 78%; }
+			#c69{top: 71%; left: 66%; }
+			#c70{top: 73%; left: 72%; }
+			*/
+
+		/*民建聯*/
+		.circle#程介南, .circle#蔡素玉, .circle#馬力, .circle#曾鈺成, .circle#鍾樹根, .circle#張國鈞, .circle#曾鈺成, .circle#蔣麗芸, .circle#鄭泳舜, .circle#陳婉嫻, .circle#陳鑑林, .circle#黃國健, .circle#柯創盛, .circle#譚耀宗, .circle#張學明, .circle#王國興, .circle#梁志祥, .circle#陳恒鑌, .circle#劉江華, .circle#李國英, .circle#陳克勤, .circle#葛珮帆, .circle#黃容根, .circle#何俊賢, .circle#陳榮燦, .circle#陳國強, .circle#王國興, .circle#潘佩璆, .circle#黃定光, .circle#葉國謙, .circle#劉國勳, .circle#李慧琼, .circle#周浩鼎,  .circle#楊耀忠, .circle#陳鑑林, .circle#蔡素玉 {
+			background-color: #0437C5;
+		}
+
+		/*經民聯*/
+		.circle#梁美芬, .circle#劉皇發, .circle#劉業強, .circle#盧偉國, .circle#石禮謙, .circle#林健鋒, .circle#梁君彥, .circle#張華峰, .circle#吳永嘉 {
+			background-color:#04BCDE;
+		}
+
+		/*工聯會*/
+		.circle#王國興, .circle#郭偉强, .circle#陳婉嫻, .circle#黃國健, .circle#王國興, .circle#麥美娟, .circle#鄺志堅, .circle#王國興, .circle#潘佩璆, .circle#葉偉明, .circle#郭偉强, .circle#鄧家彪, .circle#何啟明, .circle#陸頌雄, .circle#陳婉嫻{
+			background-color:#D40D12;
+		}
+
+		/*自由黨*/
+		.circle#周梁淑怡, .circle#田北俊,.circle#劉皇發, .circle#劉健儀, .circle#易志明, .circle#何承天, .circle#夏佳理, .circle#楊孝華, .circle#田北俊, .circle#丁午壽, .circle#梁君彥, .circle#梁劉柔芬, .circle#鍾國斌, .circle#周梁淑怡, .circle#方剛, .circle#邵家輝, .circle#張宇人, .circle#劉皇發, .circle#何世柱 {
+			background-color:#1BBF17;
+		}
+
+
+		/*新民黨*/
+		.circle#葉劉淑儀, .circle#容海恩{
+			background-color:#36B1BF ;
+		}
+
+		/*新世紀論壇*/
+		.circle#何君堯, .circle#馬逢國, .circle#吳清輝, .circle#馬逢國{
+			background-color:#206D77 ;
+		}
+
+		/*創建力量*/
+		.circle#謝偉俊{
+			background-color:#E500D6 ;
+		}
+
+		/*實政圓桌*/
+		.circle#田北辰{
+			background-color:#66CAF2 ;
+		}
+
+		/*港九勞工社團聯會*/
+		.circle#李啟明, .circle#李鳳英, .circle#潘兆平{
+			background-color:#24A560 ;
+		}
+
+		/*民主黨*/
+		.circle#李柱銘, .circle#楊森, .circle#甘乃威, .circle#單仲偕, .circle#許智峯, .circle#劉千石, .circle#涂謹申, .circle#黃碧雲, .circle#司徒華, .circle#李華明, .circle#胡志偉, .circle#李永達, .circle#何俊仁, .circle#陳偉業, .circle#尹兆堅, .circle#鄭家富, .circle#黃成智, .circle#劉慧卿, .circle#林卓廷, .circle#張文光, .circle#何敏嘉, .circle#羅致光, .circle#單仲偕, .circle#何俊仁, .circle#涂謹申, .circle#鄺俊宇 {
+			background-color:#6BE850 ;
+		}
+
+		/*公民黨*/
+		.circle#余若薇, .circle#陳淑莊, .circle#陳家洛, .circle#梁家傑, .circle#譚文豪, .circle#湯家驊, .circle#楊岳橋, .circle#毛孟靜, .circle#郭家麒, .circle#譚香文, .circle#吳靄儀, .circle#郭榮鏗 {
+			background-color:#A361C4 ;
+		}
+
+		/*公共專業聯盟*/
+		.circle#梁繼昌, .circle#莫乃光 {
+			background-color:#22A2F2 ;
+		}
+
+		/*香港教育專業人員協會*/
+ 		.circle#葉建源 {
+			background-color:#2A8732;
+		}
+
+		/*專業議政*/
+		.circle#姚松炎 {
+			background-color:#69357F;
+		}
+
+		/*工黨*/
+		.circle#何秀蘭, .circle#李卓人, .circle#張超雄, .circle#張國柱{
+			background-color:#F29F05;
+		}
+
+		/*人民力量*/
+		.circle#黃毓民, .circle#陳偉業, .circle#陳志全{
+			background-color: #FFD600;
+		}
+
+		/*街坊工友服務處*/
+		.circle#梁耀忠{
+			background-color: #E8AE0C;
+		}
+
+		/*香港本土*/
+		.circle#毛孟靜{
+			background-color: #BA6C35 ;
+		}
+
+		/*新民主同盟*/
+		.circle#范國威{
+			background-color: ##F2780C ;
+		}
+
+		/*土地正義聯盟*/
+		.circle#朱凱廸{
+			background-color: #83553C ;
+		}
+
+		/*熱血公民*/
+		.circle#鄭松泰{
+			background-color: #F2B705;
+		}
+
+		/*青年新政*/
+		.circle#游蕙禎, .circle#梁頌恆{
+			background-color: #FF8066;
+		}
+
+		/*社會民主連線*/ 
+		.circle#梁國雄 {
+			background-color: #BF0426;
+		}
+
+		/*香港眾志*/ 
+		.circle#羅冠聰 {
+		background-color: #43D993;
+		}
+
+		/*小麗民主教室*/
+		.circle#劉小麗 {
+		background-color: #FBE04C;
+		color: white;
+		}
+
+		/*獨立*/
+		.circle#區諾軒, .circle#陳凱欣, .circle#陳健波, .circle#陳沛然, .circle#李國麟, .circle#謝偉銓, .circle#邵家臻, .circle#姚思榮, .circle#廖長江, .circle#陳振英{
+		background-color: #BFBFBF;
+		}
 
 	</style>
 </head>
 <body>
-	<div id="log"></div>
-	<div id="button">
-		<span id="next"> > </span>
-		<div id="time">15:00</div>
-		<span id="prev"> < </span>
+	<div class="loading"></div>
+	<div class="bar"><li>目錄</li></div>
+	<menu><title>第六屆立法會(2016至2020年)投票紀錄</title><ul></ul></menu>
+	<main></main>
+	<div class='popup'>
+		<ul id='鄺俊宇'>
+			<li><mark><span>鄺俊宇議員</span></mark></li>
+			<li><mark>．功能界別 – 區議會(第二)</mark></li>
+			<li><mark>．民主黨</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id='涂謹申'>
+			<li><mark><span>涂謹申議員</span></mark></li>
+			<li><mark>．功能界別 – 區議會(第二) </mark></li>
+			<li><mark>．民主黨</mark></li>
+			<li><mark>．律師</mark></li>
+		</ul>
+		<ul id = '梁耀忠'>
+			<li><mark><span>梁耀忠議員</span></mark></li>
+			<li><mark>．功能界別 – 區議會(第二) </mark></li>
+			<li><mark>．街坊工友服務處</mark></li>
+			<li><mark>．全職立法會議員</mark></li>
+		</ul>
+		<ul id = '石禮謙'>
+			<li><mark><span>石禮謙議員, GBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 地產及建造界</mark></li>
+			<li><mark>．香港經濟民生聯盟</mark></li>
+			<li><mark>．公司董事</mark></li>
+		</ul>
+		<ul id = '張宇人'>
+			<li><mark><span>張宇人議員, GBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 飲食界</mark></li>
+			<li><mark>．自由黨</mark></li>
+			<li><mark>．商人、立法會議員</mark></li>
+		</ul>
+		<ul id = '李國麟'>
+			<li><mark><span>李國麟議員, SBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 衞生服務界</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．香港公開大學護理及健康學院院長及教授</mark></li>
+		</ul>
+		<ul id = '林健鋒'>
+			<li><mark><span>林健鋒議員, GBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 商界（第一）</mark></li>
+			<li><mark>．香港經濟民生聯盟</mark></li>
+			<li><mark>．商人</mark></li>
+		</ul>
+		<ul id = '黃定光'>
+			<li><mark><span>黃定光議員, GBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 進出口界</mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．商人</mark></li>
+		</ul>
+		<ul id = '李慧琼'>
+			<li><mark><span>李慧琼議員, SBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 區議會(第二) </mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．會計師、立法會議員</mark></li>
+		</ul>
+		<ul id = '陳克勤'>
+			<li><mark><span>陳克勤議員, BBS, JP</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>
+			<li><mark>．民主建港協進聯盟、新界社團聯會</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id = '陳健波'>
+			<li><mark><span>陳健波議員, GBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 保險界</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．立法會議員、立橋保險集團控股有限公司行政總裁</mark></li>
+		</ul>
+		<ul id = '梁美芬'>
+			<li><mark><span>梁美芬議員, SBS, JP</span></mark></li>
+			<li><mark>．地方選區 – 九龍西</mark></li>
+			<li><mark>．香港經濟民生聯盟、西九新動力</mark></li>
+			<li><mark>．香港城市大學法學院副教授、香港執業大律師</mark></li>
+		</ul>
+		<ul id = '黃國健'>
+			<li><mark><span>黃國健議員, SBS, JP</span></mark></li>
+			<li><mark>．地方選區 – 九龍東</mark></li>
+			<li><mark>．香港工會聯合會</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id = '葉劉淑儀'>
+			<li><mark><span>葉劉淑儀議員, GBS, JP</span></mark></li>
+			<li><mark>．地方選區 – 香港島</mark></li>
+			<li><mark>．新民黨</mark></li>
+			<li><mark>．匯賢智庫理事會主席、海上絲綢之路協會聯席主席</mark></li>
+		</ul>
+		<ul id = '謝偉俊'>
+			<li><mark><span>謝偉俊議員, JP</span></mark></li>
+			<li><mark>．地方選區 – 九龍東</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．律師</mark></li>
+		</ul>
+		<ul id = '毛孟靜'>
+			<li><mark><span>毛孟靜議員</span></mark></li>
+			<li><mark>．地方選區 – 九龍西</mark></li>
+			<li><mark>．香港本土</mark></li>
+		</ul>
+		<ul id = '田北辰'>
+			<li><mark><span>田北辰議員, BBS, JP</span></mark></li>
+			<li><mark>．地方選區 – 新界西</mark></li>
+			<li><mark>．實政圓桌</mark></li>
+			<li><mark>．立法會議員、企業家</mark></li>
+		</ul>
+		<ul id = '何俊賢'>
+			<li><mark><span>何俊賢議員, BBS</span></mark></li>
+			<li><mark>．功能界別 – 漁農界</mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id = '易志明'>
+			<li><mark><span>易志明議員, SBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 航運交通界</mark></li>
+			<li><mark>．自由黨</mark></li>
+			<li><mark>．九龍倉有限公司董事、海港企業有限公司董事、現代貨箱碼頭有限公司董事、香港空運貨站有限公司董事、天星小輪有限公司董事</mark></li>
+		</ul>
+		<ul id = '胡志偉'>
+			<li><mark><span>胡志偉議員, MH</span></mark></li>
+			<li><mark>．地方選區 – 九龍東</mark></li>
+			<li><mark>．民主黨</mark></li>
+			<li><mark>．立法會議員、黃大仙區議會議員</mark></li>
+		</ul>
+		<ul id = '姚思榮'>
+			<li><mark><span>姚思榮議員, BBS</span></mark></li>
+			<li><mark>．功能界別 – 旅遊界</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．香港中國旅行社董事長</mark></li>
+		</ul>
+		<ul id = '馬逢國'>
+			<li><mark><span>馬逢國議員, SBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 體育、演藝、文化及出版界</mark></li>
+			<li><mark>．新世紀論壇</mark></li>
+			<li><mark>．執行董事</mark></li>
+		</ul>
+		<ul id = '莫乃光'>
+			<li><mark><span>莫乃光議員, JP</span></mark></li>
+			<li><mark>．功能界別 – 資訊科技界</mark></li>
+			<li><mark>．公共專業聯盟、專業議政</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id = '陳志全'>
+			<li><mark><span>陳志全議員</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>
+			<li><mark>．人民力量</mark></li>
+			<li><mark>．全職立法會議員</mark></li>
+		</ul>
+		<ul id = '陳恒鑌'>
+			<li><mark><span>陳恒鑌議員, BBS, JP</span></mark></li>
+			<li><mark>．地方選區 – 新界西</mark></li>
+			<li><mark>．民主建港協進聯盟、新界社團聯會</mark></li>
+			<li><mark>．立法會議員、荃灣區議會議員</mark></li>
+		</ul>
+		<ul id = '梁志祥'>
+			<li><mark><span>梁志祥議員, SBS, MH, JP</span></mark></li>
+			<li><mark>．地方選區 – 新界西</mark></li>
+			<li><mark>．民主建港協進聯盟、新界社團聯會</mark></li>
+			<li><mark>．立法會議員、元朗區議會議員</mark></li>
+		</ul>
+		<ul id = '梁繼昌'>
+			<li><mark><span>梁繼昌議員</span></mark></li>
+			<li><mark>．功能界別 – 會計界</mark></li>
+			<li><mark>．公共專業聯盟、專業議政</mark></li>
+			<li><mark>．資深稅務顧問、非執業會計師</mark></li>
+		</ul>
+		<ul id = '麥美娟'>
+			<li><mark><span>麥美娟議員, BBS, JP</span></mark></li>
+			<li><mark>．地方選區 – 新界西</mark></li>
+			<li><mark>．香港工會聯合會</mark></li>
+			<li><mark>．立法會議員、葵青區議會議員</mark></li>
+		</ul>
+		<ul id = '郭偉强'>
+			<li><mark><span>郭偉强議員, JP</span></mark></li>
+			<li><mark>．地方選區 – 香港島</mark></li>
+			<li><mark>．香港工會聯合會</mark></li>
+			<li><mark>．立法會議員、東區區議會議員</mark></li>
+		</ul>
+		<ul id = '郭榮鏗'>
+			<li><mark><span>郭榮鏗議員</span></mark></li>
+			<li><mark>．功能界別 – 法律界</mark></li>
+			<li><mark>．公民黨、專業議政</mark></li>
+			<li><mark>．大律師</mark></li>
+		</ul>
+		<ul id = '張華峰'>
+			<li><mark><span>張華峰議員, SBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 金融服務界</mark></li>
+			<li><mark>．香港經濟民生聯盟</mark></li>
+			<li><mark>．證券交易商</mark></li>
+		</ul>
+		<ul id = '張超雄'>
+			<li><mark><span>張超雄議員</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>
+			<li><mark>．工黨</mark></li>
+			<li><mark>．大學講師</mark></li>
+		</ul>
+		<ul id = '黃碧雲'>
+			<li><mark><span>黃碧雲議員</span></mark></li>
+			<li><mark>．地方選區 – 九龍西</mark></li>
+			<li><mark>．民主黨</mark></li>
+			<li><mark>．香港理工大學講師</mark></li>
+		</ul>
+		<ul id = '葉建源'>
+			<li><mark><span>葉建源議員</span></mark></li>
+			<li><mark>．功能界別 – 教育界</mark></li>
+			<li><mark>．香港教育專業人員協會、專業議政</mark></li>
+			<li><mark>．立法會議員、教師</mark></li>
+		</ul>
+		<ul id = '葛珮帆'>
+			<li><mark><span>葛珮帆議員, BBS, JP</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id = '廖長江'>
+			<li><mark><span>廖長江議員, GBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 商界(第二) </mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．大律師</mark></li>
+		</ul>
+		<ul id = '潘兆平'>
+			<li><mark><span>潘兆平議員, BBS, MH</span></mark></li>
+			<li><mark>．功能界別 – 勞工界</mark></li>
+			<li><mark>．港九勞工社團聯會</mark></li>
+			<li><mark>．工會工作者</mark></li>
+		</ul>
+		<ul id = '蔣麗芸'>
+			<li><mark><span>蔣麗芸議員, SBS, JP</span></mark></li>
+			<li><mark>．地方選區 – 九龍西</mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id = '盧偉國'>
+			<li><mark><span>盧偉國議員, SBS, MH, JP</span></mark></li>
+			<li><mark>．功能界別 – 工程界</mark></li>
+			<li><mark>．香港經濟民生聯盟</mark></li>
+			<li><mark>．工程師</mark></li>
+		</ul>
+		<ul id = '鍾國斌'>
+			<li><mark><span>鍾國斌議員</span></mark></li>
+			<li><mark>．功能界別 – 紡織及製衣界</mark></li>
+			<li><mark>．自由黨</mark></li>
+			<li><mark>．商人</mark></li>
+		</ul>
+		<ul id = '楊岳橋'>
+			<li><mark><span>楊岳橋議員</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>
+			<li><mark>．公民黨</mark></li>
+			<li><mark>．執業大律師 </mark></li>
+		</ul>
+		<ul id = '尹兆堅'>
+			<li><mark><span>尹兆堅議員</span></mark></li>
+			<li><mark>．地方選區 – 新界西</mark></li>
+			<li><mark>．民主黨</mark></li>
+			<li><mark>．全職立法會議員</mark></li>
+		</ul>
+		<ul id = '朱凱廸'>
+			<li><mark><span>朱凱廸議員</span></mark></li>
+			<li><mark>．地方選區 – 新界西</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．社區組織者</mark></li>
+		</ul>
+		<ul id = '吳永嘉'>
+			<li><mark><span>吳永嘉議員, BBS, JP</span></mark></li>
+			<li><mark>．功能界別 – 工業界（第二）</mark></li>
+			<li><mark>．香港經濟民生聯盟</mark></li>
+			<li><mark>．董事</mark></li>
+		</ul>
+		<ul id = '何君堯'>
+			<li><mark><span>何君堯議員, JP</span></mark></li>
+			<li><mark>．地方選區 – 新界西</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．何君柱律師樓高級合伙人</mark></li>
+		</ul>
+		<ul id = '何啟明'>
+			<li><mark><span>何啟明議員</span></mark></li>
+			<li><mark>．功能界別 – 勞工界</mark></li>
+			<li><mark>．香港工會聯合會</mark></li>
+			<li><mark>．立法會議員、觀塘區議會議員</mark></li>
+		</ul>
+		<ul id = '林卓廷'>
+			<li><mark><span>林卓廷議員</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>v
+			<li><mark>．民主黨</mark></li>
+			<li><mark>．立法會議員、北區區議會議員</mark></li>
+		</ul>
+		<ul id = '周浩鼎'>
+			<li><mark><span>周浩鼎議員</span></mark></li>
+			<li><mark>．功能界別 – 區議會(第二) </mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．執業律師</mark></li>
+		</ul>
+		<ul id = '邵家輝'>
+			<li><mark><span>邵家輝議員, JP</span></mark></li>
+			<li><mark>．功能界別 – 批發及零售界</mark></li>
+			<li><mark>．自由黨</mark></li>
+			<li><mark>．公司董事</mark></li>
+		</ul>
+		<ul id = '邵家臻'>
+			<li><mark><span>邵家臻議員</span></mark></li>
+			<li><mark>．功能界別 – 社會福利界</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．大學講師</mark></li>
+		</ul>
+		<ul id = '柯創盛'>
+			<li><mark><span>柯創盛議員, MH</span></mark></li>
+			<li><mark>．地方選區 – 九龍東</mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id = '容海恩'>
+			<li><mark><span>容海恩議員, JP</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>
+			<li><mark>．新民黨、公民力量</mark></li>
+			<li><mark>．大律師</mark></li>
+		</ul>
+		<ul id = '陳沛然'>
+			<li><mark><span>陳沛然議員</span></mark></li>
+			<li><mark>．功能界別 – 醫學界</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．醫生</mark></li>
+		</ul>
+		<ul id = '陳振英'>
+			<li><mark><span>陳振英議員, JP</span></mark></li>
+			<li><mark>．功能界別 – 金融界</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．顧問</mark></li>
+		</ul>
+		<ul id = '陳淑莊'>
+			<li><mark><span>陳淑莊議員</span></mark></li>
+			<li><mark>．地方選區 – 香港島</mark></li>
+			<li><mark>．公民黨</mark></li>
+			<li><mark>．執業大律師</mark></li>
+		</ul>
+		<ul id = '張國鈞'>
+			<li><mark><span>張國鈞議員, JP</span></mark></li>
+			<li><mark>．地方選區 – 香港島</mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．執業律師 </mark></li>
+		</ul>
+		<ul id = '許智峯'>
+			<li><mark><span>許智峯議員</span></mark></li>
+			<li><mark>．地方選區 – 香港島</mark></li>
+			<li><mark>．民主黨</mark></li>
+			<li><mark>．全職立法會議員</mark></li>
+		</ul>
+		<ul id = '陸頌雄'>
+			<li><mark><span>陸頌雄議員, JP</span></mark></li>
+			<li><mark>．功能界別 – 勞工界</mark></li>
+			<li><mark>．香港工會聯合會</mark></li>
+			<li><mark>．立法會議員、元朗區議會議員</mark></li>
+		</ul>
+		<ul id = '劉國勳'>
+			<li><mark><span>劉國勳議員, MH</span></mark></li>
+			<li><mark>．功能界別 – 區議會(第一) </mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id = '劉業強'>
+			<li><mark><span>劉業強議員, BBS, MH, JP</span></mark></li>
+			<li><mark>．功能界別 – 鄉議局</mark></li>
+			<li><mark>．香港經濟民生聯盟</mark></li>
+			<li><mark>．永同益集團有限公司副主席</mark></li>
+		</ul>
+		<ul id = '鄭松泰'>
+			<li><mark><span>鄭松泰議員</span></mark></li>
+			<li><mark>．地方選區 – 新界西</mark></li>
+			<li><mark>．熱血公民</mark></li>
+			<li><mark>．全職立法會議員</mark></li>
+		</ul>
+		<ul id = '譚文豪'>
+			<li><mark><span>譚文豪議員</span></mark></li>
+			<li><mark>．地方選區 – 九龍東</mark></li>
+			<li><mark>．公民黨</mark></li>
+			<li><mark>．飛機師 </mark></li>
+		</ul>
+		<ul id = '范國威'>
+			<li><mark><span>范國威議員</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>
+			<li><mark>．新民主同盟</mark></li>
+			<li><mark>．立法會議員、西貢區議會議員</mark></li>
+		</ul>
+		<ul id = '區諾軒'>
+			<li><mark><span>區諾軒議員</span></mark></li>
+			<li><mark>．地方選區 – 香港島</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．立法會議員、南區區議會議員、香港中文大學通識課程兼任講師</mark></li>
+		</ul>
+		<ul id = '鄭泳舜'>
+			<li><mark><span>鄭泳舜議員, MH, JP</span></mark></li>
+			<li><mark>．地方選區 – 九龍西</mark></li>
+			<li><mark>．民主建港協進聯盟</mark></li>
+			<li><mark>．立法會議員、深水埗區議會議員</mark></li>
+		</ul>
+		<ul id = '謝偉銓'>
+			<li><mark><span>謝偉銓議員, BBS</span></mark></li>
+			<li><mark>．功能界別 - 建築、測量、都市規劃及園境界</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．測量師</mark></li>
+		</ul>
+		<ul id = '陳凱欣'>
+			<li><mark><span>陳凱欣議員</span></mark></li>
+			<li><mark>．地方選區 – 九龍西</mark></li>
+			<li><mark>．無所屬政治團體</mark></li>
+			<li><mark>．立法會議員</mark></li>
+		</ul>
+		<ul id = '梁頌恆'>
+			<li><mark><span>梁頌恆議員</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>
+			<li><mark>．青年新政 </mark></li>
+		</ul>
+		<ul id = '游蕙禎'>
+			<li><mark><span>游蕙禎議員</span></mark></li>
+			<li><mark>．地方選區 – 九龍西</mark></li>
+			<li><mark>．青年新政 </mark></li>
+		</ul>
+		<ul id = '梁國雄'>
+			<li><mark><span>梁國雄議員</span></mark></li>
+			<li><mark>．地方選區 – 新界東</mark></li>
+			<li><mark>．社會民主連線</mark></li>
+		</ul>
+		<ul id = '羅冠聰'>
+			<li><mark><span>羅冠聰議員</span></mark></li>
+			<li><mark>．地方選區 – 香港島</mark></li>
+			<li><mark>．香港眾志</mark></li>
+		</ul>
+		<ul id = '姚松炎'>
+			<li><mark><span>姚松炎議員</span></mark></li>
+			<li><mark>．功能界別 - 建築、測量、都市規劃及園境界</mark></li>
+			<li><mark>．專業議政</mark></li>
+		</ul>
+		<ul id = '劉小麗'>
+			<li><mark><span>劉小麗議員</span></mark></li>
+			<li><mark>．地方選區 – 九龍西</mark></li>
+			<li><mark>．小麗民主教室</mark></li>
+		</ul>
 	</div>
-	<main>
-		<svg>
-			<defs><filter id="b15" width="300%" height="300%" x="-50%" y="-50%">
-				<feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-			</filter></defs>
-			<defs><filter id="b10" width="200%" height="200%" x="-50%" y="-50%">
-				<feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-			</filter></defs>
-			<defs><filter id="b5" width="200%" height="200%" x="-50%" y="-50%">
-				<feGaussianBlur in="SourceGraphic" stdDeviation="5" />
-			</filter></defs>
-		</svg>
-		<section
-			data-6400 = "display: block;"
-			data-6401 = "display: none;">
-			<svg id="gold" width="1400" height="1200">
-				<polyline 	points="105,963 
-				  					194,900 
-				  					243,884
-				  					276,884
-				  					360,893
-									350,912
-									410,893
-									434,900
-									512,844
-									418,705
-									386,597
-									460,571
-									442,466
-									620,260
-									719,336
-									759,291
-									550,110
-									512,134
-									493,168
-									501,225
-									488,275"
-						  	filter="url(#b10)"
-							style="	stroke-width:30;
-									stroke-dasharray:2000; 
-									stroke-dashoffset:0" 
-						  	data-start="display: block;"
-						  	data-167="stroke-dashoffset:6000" 
-						  	data-1750="stroke-dashoffset:4000" 
-						  	data-2500="stroke-dashoffset:4000" 
-						  	data-4250="stroke-dashoffset:2150"
-						  	data-6401="display: none;"/>
-			</svg>
+<script>
+	$(document).ready(function(){
 
-			<svg id="gold" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px; 
-				 		left:761px; top:294px; "
-			  	 data-start="display: block;"
-			  	 data-1700= "opacity: 0;"
-	  			 data-2000= "opacity: 1;" 
-	  			 data-2500= "transform: scale(1);"
-	  			 data-4000= "transform: scale(1.5);"
-	  			 data-6250= "transform: scale(1);"
-	  			 data-6400= "transform: scale(0);"
-	  			 data-6411= "display: none;">
-	  			 <circle cx="50" cy="50" r="30" stroke="none" fill="gold" filter="url(#b10)" />
-	  		</svg>
+		$(".popup").children().hide();
 
-			<svg id="gold" width="1400" height="1200">
-				<polyline 	points="776,266 
-				  					830,215"
-							style="stroke-width:20;
-								   stroke-dasharray:80;
-								   stroke-dashoffset:0" 
-						  	filter="url(#b10)" 
-						  	data-start="display: block;"
-			  	 			data-2000="stroke-dashoffset:80;"
-			  	 			data-2500="stroke-dashoffset:0;"/
-			  	 			data-6250="stroke-dashoffset:60;"/
-			  	 			data-6400="stroke-dashoffset:80;"/
-						  	data-6401="display: none;"/>
-			</svg>
+		$(".bar").on('click', function(){
+			var windowW = $(window).width();
+			var menuW = $("menu").width();
+			var mainW = $("main").width();
+			if (menuW/windowW > mainW/windowW) {
+				$("menu").animate({width: "40px"}, 500, "easeOutCirc");
+				$("main").animate({width: "100%"}, 500, "easeOutCirc");
+			} else {
+				$("menu").animate({width: "100%"}, 500, "easeOutCirc");
+				$("main").animate({width: "0%"}, 500, "easeOutCirc");
+			};
+		});
 
-			<svg id="gold" width="1400" height="1200"
-				data-start="display: block;"
-				data-3800= "opacity: 0"
-				data-4000= "opacity: 1"
-				data-6401= "display: none;">
-				<polyline 	points="623,261
-									721,334
-									781,238"
-							style="stroke-dasharray:600;
-								   stroke-dashoffset:0;
-								   stroke-width:10; " 
-						  	filter="url(#b5)" />
-			</svg>
-
-			<svg id="gold" width="1400" height="1200"
-				data-start="display: block;"
-				data-2500= "opacity: 0"
-				data-3000= "opacity: 1"
-				data-3800= "opacity: 1"
-				data-4000= "opacity: 0"
-				data-6401= "display: none;">
-				<polyline 	points="453,522
-									442,459
-									623,261
-									721,334
-									781,238"
-							style="stroke-dasharray:600;
-								   stroke-dashoffset:0;
-								   stroke-width:10; " 
-						  	filter="url(#b5)" />
-			</svg>
-
-			<svg id="gold" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px; 
-				 		left:590px; top:382px; 
-				 		z-index: 100;"
-			  	 data-start="display: block;"
-			  	 data-4500= "opacity: 0; transform: scale(0) rotate(-45deg);"
-	  			 data-5000= "opacity: 0.75; transform: scale(1) rotate(-45deg);" 
-	  			 data-6401= "display: none;">
-	  			 <rect x="15" y="30" width="70" height="40"  stroke="none" fill="gold" filter="url(#b5)" />
-	  		</svg>
-
-			<svg id="black" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px; 
-				 		transform: scale(0.5)"
-				 data-start="display: block;"
-				 data-2000="left:771px; top:291px; opacity: 0.5"
-				 data-2500="left:854px; top:179px; opacity: 1"
-	 			 data-6250="left:860px; top:175px; transform: scale(0.75); "
-	 			 data-6400="left:759px; top:290px; transform: scale(0.5); "
-	 			 data-6401="display: none;">
-	 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
-	  		</svg>
-
-			<svg id="black" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px;"
-				 data-start="display: block;"
-				 data-3750="left:877px; top:400px; opacity: 0"
-				 data-4250="left:820px; top:342px; opacity: 1"
-				 data-6250="left:820px; top:342px;"
-				 data-6400="left:772px; top:300px;"
-				 data-6401="display: none;">
-	 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
-	  		</svg>
-
-			<svg id="black" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px;"
-				 data-start="display: block;"
-				 data-3750="left:639px; top:179px; opacity: 0"
-				 data-4250="left:691px; top:231px; opacity: 1"
-				 data-6250="left:691px; top:231px;"
-				 data-6400="left:747px; top:278px;"
-				 data-6401="display: none;">
-	 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
-	  		</svg>
-
-	  		<svg id="black" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px;
-				 		left: 412px; top: 584px"
-				 data-start="display: block;"
-				 data-3250="opacity: 0"
-				 data-3750="opacity: 1"
-				 data-6401="display: none;">
-	 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
-	  		</svg>
-
-	  		<svg id="black" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px;
-				 		transform: scale(0.75)"
-				 data-start="display: block;"
-				 data-4100="opacity: 0;"
-				 data-4600="opacity: 1;"
-				 data-6250="left: 680px; top: 400px;"
-				 data-6400="left: 700px; top: 368px;"
-				 data-6401="display: none;">
-	 			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
-	  		</svg>
-
-			<svg id="black" width="1400" height="1200"
-				data-start="display: block;"
-				data-3500= "opacity: 0"
-				data-4000= "opacity: 1"
-				data-6401="display: none;">
-				<polyline 	points="660,157
-									739,220"
-						  	filter="url(#b5)" 
-			  	 			data-start="stroke-width: 20; stroke-opacity:1;"
-			  	 			data-2500="stroke-dashoffset:0;"/>
-			</svg>
-			<img src="map1.png" style="position:absolute;
-">
-		</section>
-		<!-------------------------------------------------------------------------------------------------------------------------------->
-		<section
-			data-6400 = "display: none;"
-			data-6401 = "display: block;">
-
-			<svg id="black" width="1400" height="1200">
-				<polygon 	fill="black"
-							points="872,0 1400,470 1400,0" />
-			</svg>
-			<svg id="black" width="1400" height="1200">
-				<polyline 	points="1321,349
-									1185,506
-									860,236
-									441,725"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 100;
-						  		   stroke-dasharray:1300;
-								   stroke-dashoffset:0;" 
-							data-6400="stroke-dashoffset:1300;"
-			  	 			data-6700="stroke-dashoffset:0;" />
-			  	 <polyline 	points="1052,736
-									1080,648
-									1198,526
-									1182,503"
-						  	filter="url(#b10)" 
-						  	style="stroke-width: 100; 
-						  		   stroke-dasharray:300;
-								   stroke-dashoffset:0;" 
-			  	 			data-6400="stroke-dashoffset:300;"
-			  	 			data-6450="stroke-dashoffset:0;" />
-			</svg>
-
-			<img src="map2-gold.png" style="position:absolute;">
-
-			<svg id="black" width="1400" height="1200">
-				<polyline 	points="429,375
-									322,527"
-						  	filter="url(#b5)" 
-						  	style="stroke-width: 50;" />
-			</svg>
-
-			<svg id="black" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px; 
-				 		left:1038px; top:330px; "
-				 data-6400="opacity:0; transform:scale(10);"
-				 data-6500="opacity:1"
-				 data-7000="transform:scale(30);"	>
-	  			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
-	  		</svg>
-	  		<svg id="black" width="100" height="100" 
-				 style="margin-left:-50px; margin-top:-50px; 
-				 		left:783px; top:198px; "
-				 data-6400="opacity:0; transform:scale(10);"
-				 data-6500="opacity:1"
-				 data-7000="transform:scale(30);"	>
-	  			 <circle cx="50" cy="50" r="30" stroke="none" fill="black" filter="url(#b10)" />
-	  		</svg>
-			<img src="map2.png" style="position:absolute; border: 0;">
-		</section>
-		<section id="copy" style="background: transparent;">
-
-			<div class="thumbnail" style="width: 300px; height: 200px;"
-			   data-start = "opacity: 1; left: 1000px; top: 90px; display: block"  
-			   data-50   = "opacity: 1; left: 1000px; top: 80px; display: block"  
-			   data-100   = "opacity: 0; left: 1000px; top: 30px; display: none">
-				  <a><img 
-				  	src="https://live.staticflickr.com/65535/48278707017_a056887548_h.jpg" 
-				  	alt="<p> (香港獨立媒體圖片)<br>連鎖快餐店吉野家facebook發布「獅子狗」廣告，其後撤回激起輿論反響。今日（14日）社區組織發起沙田大遊行，沙田好運中心吉野家分店嚴陣以待，以巨型木板圍封外牆玻璃，有網民嘲吉野家為遊行人士建築連儂牆。</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="height: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 400px; height: 200px;"
-			   data-start = "opacity: 1; left: 900px; top: 300px; display: block"  
-			   data-50   = "opacity: 1; left: 900px; top: 290px; display: block"  
-			   data-100   = "opacity: 0; left: 900px; top: 240px; display: none">
-				  <a><img 
-				  	src="https://live.staticflickr.com/65535/48278621006_8834e40121_z.jpg" 
-				  	alt="<p> (香港獨立媒體圖片)<br>距離沙田遊行起步約一小時，沙田源禾路與沙田鄉事會路十字路口交界現已實行交通管制，大部份行車路段已經清空，約10多輛警車正停泊於源禾路游泳池外。</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 200px; height: 280px;"
-			   data-start = "opacity: 0; left: 760px; bottom: -50px" 
-			   data-167   = "opacity: 1; left: 760px; bottom: 0px; display: block"  
-			   data-500  = "opacity: 1; left: 760px; bottom: 10px; display: block"  
-			   data-600  = "opacity: 0; left: 760px; bottom: 60px; display: none" >
-				  <a>
-				  	<img 
-				  	  src="https://live.staticflickr.com/65535/48278569756_1768e9840e_b.jpg" 
-				  	  alt="<p>15:02 (香港獨立媒體圖片)<br>沙田遊行將於下午3時半出發，現時超過1,000人已在翠田街球場一帶聚集，準備起步。市民原本由行人隧道進入球場，但由於人數眾多，部份人走出翠田街馬路，經車路進入球場。</p>"
-				  	  href="https://www.inmediahk.net/node/1065663"
-				  	  style="height: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 500px; height: 280px;"
-			   data-start = "opacity: 0; left: 250px; bottom: -50px" 
-			   data-167   = "opacity: 1; left: 250px; bottom: 0px; display: block"  
-			   data-500  = "opacity: 1; left: 250px; bottom: 10px; display: block"  
-			   data-600  = "opacity: 0; left: 250px; bottom: 60px; display: none" >
-				  <a><img 
-				  	  src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071415275364947.jpg" 
-				  	  alt="<p>15:10 (星島日報圖片)<br>在起點翠田街足球場，由於人數眾多，比原定提早20分鐘開始起步。</p>"
-				  	  href="http://std.stheadline.com/instant/articles/detail/1043935/即時-香港-逃犯條例-沙田遊行隊伍拉起黑布提前起步-大圍站迫滿黑衣人流"
-				  	  style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 350px; height: 200px;"
-			   data-start = "display: none" 
-			   data-500   = "opacity: 0; left: 10px; top: 680px; display: block" 
-			   data-600   = "opacity: 1; left: 10px; top: 630px; display: block"  
-			   data-1650  = "opacity: 1; left: 10px; top: 620px; display: block"  
-			   data-1750  = "opacity: 0; left: 10px; top: 570px; display: none" >
-				  <a><img 
-				  	  src="https://live.staticflickr.com/65535/48278872301_68e68b7e2b_b.jpg" 
-				  	  alt="<p>15:43 (香港獨立媒體圖片)<br>有「爸爸媽媽」在文化博物館外，為示威者準備了涼茶及水站予示威者作補給，示威者拍手感謝支持。示威者沿沙田正街進入希爾頓中心，警方在大埔公路大圍段架設路障。</p>"
-				  	  href="https://www.inmediahk.net/node/1065663"
-				  	  style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 350px; height: 300px;"
-			   data-start = "display: none" 
-			   data-500   = "opacity: 0; left: 10px; top: 370px; display: block" 
-			   data-600   = "opacity: 1; left: 10px; top: 320px; display: block"  
-			   data-1650  = "opacity: 1; left: 10px; top: 310px; display: block"  
-			   data-1750  = "opacity: 0; left: 10px; top: 260px; display: none" >
-				  <a><img 
-				  	  src="https://live.staticflickr.com/65535/48278958382_49d1163fc0_b.jpg" 
-				  	  alt="<p>16:00 (香港獨立媒體圖片)<br>有市民在偉華中心天橋掛起寫有「壽終正寢，奠，借屍還魂」的黑布，遊行的市民立即高叫「林鄭月娥，壽終正寢」。</p>"
-				  	  href="https://www.inmediahk.net/node/1065663"
-				  	  style="height: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 400px; height: 200px;"
-			   data-start = "display: none" 
-			   data-500   = "opacity: 0; left: 50px; top: 160px; display: block" 
-			   data-600   = "opacity: 1; left: 50px; top: 110px; display: block"  
-			   data-1650  = "opacity: 1; left: 50px; top: 100px; display: block"  
-			   data-1750  = "opacity: 0; left: 50px; top: 50px; display: none" >
-				  <a><img 
-				  	  src="https://live.staticflickr.com/65535/48279068827_8912907054_b.jpg" 
-				  	  alt="<p>16:16 (香港獨立媒體圖片)<br>遊行隊伍隊頭沿沙田正街走過新城市廣場，轉入沙田廣場外。有市民在沙田廣場天橋為示威者打氣。沙田中心則關閉側門，防止示威者進入。示威者對天橋上的市民揮手，希望他們加入行動。</p>"
-				  	  href="https://www.inmediahk.net/node/1065663"
-				  	  style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 400px; height: 200px;"
-			   data-start = "display: none"
-			   data-1650  = "opacity: 0; left: 20px; top: 140px; display: block"
-			   data-1750  = "opacity: 1; left: 20px; top: 90px; display: block" 
-			   data-1900  = "opacity: 1; left: 20px; top: 80px; display: block" 
-			   data-2000  = "opacity: 0; left: 20px; top: 30px; display: none">
-			    <a><img 
-				  	src="https://fs.mingpao.com/ins/20190714/s00001/5d252448bd5a6143d24589eda85e3930.jpg" 
-				  	alt="<p>16:45 (明報圖片)<br>遊行隊頭出發到達終點，與此同時，起點翠田街足球場的所有市民已經出發，仍有市民直接由港鐵大圍站直接進入車公廟路遊行路線。</p>"
-				  	href="https://m.mingpao.com/ins/港聞/article/20190714/s00001/1563088298405/【逃犯條例-沙田示威】7-14文字紀錄-下午遊行-晚上新城市廣場衝突%ef%bc%88附短片%ef%bc%89"
-				  	style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 300px; height: 250px;"
-			   data-start = "display: none"
-			   data-1650  = "opacity: 0; left: 20px; top: 350px; display: block"
-			   data-1750  = "opacity: 1; left: 20px; top: 300px; display: block" 
-			   data-1900  = "opacity: 1; left: 20px; top: 290px; display: block" 
-			   data-2000  = "opacity: 0; left: 20px; top: 240px; display: none">
-			    <a><img 
-				  	src="https://live.staticflickr.com/65535/48279217312_0025b3d8ff_b.jpg" 
-				  	alt="<p>16:45 (香港獨立媒體圖片)<br>遊行隊伍隊頭沿沙田鄉事會路到達Home Square，沙田區議員許鋭宇呼籲示威者按原定路線前往終點沙田站巴士總站。</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="height: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 500px; height: 300px;"
-			   data-start = "display: none"
-			   data-1900 = "opacity: 0; right: 20px; top: 290px; display: block" 
-			   data-2000 = "opacity: 1; right: 20px; top: 240px; display: block" 
-			   data-2150 = "opacity: 1; right: 20px; top: 230px; display: block" 
-			   data-2250 = "opacity: 0; right: 20px; top: 180px; display: none">
-			   <a><img 
-				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071417303568762.jpg" 
-				  	alt="<p>17:00 (星島日報圖片)<br>源禾路發生衝突，有示威者向警方投擲雜物，其後多名軍裝警員手持警棍衝向示威者，並施放胡椒噴霧。其後警方退守至源禾路泳池一帶，立法會議員郭家麒到場了解情況並要求見指揮官，一名警務人員要求郭家麒立即離開。郭要求其展示委任證，該名警務人員聲稱執行職務期間不便展示委任證。</p>"
-				  	href="http://std.stheadline.com/instant/articles/detail/1044040/%E5%8D%B3%E6%99%82-%E9%A6%99%E6%B8%AF-%E9%80%83%E7%8A%AF%E6%A2%9D%E4%BE%8B-%E6%B2%99%E7%94%B0%E7%88%86%E8%A1%9D%E7%AA%81%E8%AD%A6%E5%AF%9F%E6%94%BE%E8%83%A1%E6%A4%92%E5%99%B4%E9%9C%A7-%E7%A4%BA%E5%A8%81%E8%80%85%E6%8A%95%E6%93%B2%E7%89%A9%E5%93%81%E8%A8%AD%E8%B7%AF%E9%9A%9C"
-				  	style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 350px; height: 250px;"
-			   data-start = "display: none"
-			   data-1900 = "opacity: 0; right: 320px; top: 600px; display: block" 
-			   data-2000 = "opacity: 1; right: 320px; top: 550px; display: block" 
-			   data-2150 = "opacity: 1; right: 320px; top: 540px; display: block" 
-			   data-2250 = "opacity: 0; right: 320px; top: 490px; display: none">
-			   <a><img 
-				  	src="https://live.staticflickr.com/65535/48279187051_e04dd35560_b.jpg" 
-				  	alt="<p>17:00 (香港獨立媒體圖片)<br>源禾路發生衝突，有示威者向警方投擲雜物，其後多名軍裝警員手持警棍衝向示威者，並施放胡椒噴霧。其後警方退守至源禾路泳池一帶，立法會議員郭家麒到場了解情況並要求見指揮官，一名警務人員要求郭家麒立即離開。郭要求其展示委任證，該名警務人員聲稱執行職務期間不便展示委任證。</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="height: 100%;"></a>
-			</div>
-
-
-			<!--
-			<div class="thumbnail"
-			   data-start = "display: none"
-			   data-2150 = "opacity: 0; left: 900px; top: 250px; display: block" 
-			   data-2250 = "opacity: 1; left: 900px; top: 200px; display: block" 
-			   data-2750 = "opacity: 1; left: 900px; top: 190px; display: block" 
-			   data-2850 = "opacity: 0; left: 900px; top: 140px; display: none">
-			   <a><img 
-				  	src="" 
-				  	alt=""
-				  	href=""
-				  	width="500"></a>
-				<p>17:15<br>警方在源禾路沙田賽馬會游泳池外架起防線，與示威者對峙，有九巴受影響未能前進。</p>
-			</div>
-			-->
-
-			<div class="thumbnail" style="width: 400px; height: 250px;"
-			   data-start = "display: none"
-			   data-2900 = "opacity: 0; left: 10px; top: 500px; display: block" 
-			   data-3000 = "opacity: 1; left: 10px; top: 450px; display: block" 
-			   data-3650 = "opacity: 1; left: 10px; top: 440px; display: block" 
-			   data-3750 = "opacity: 0; left: 10px; top: 390px; display: none">
-			   <a><img 
-				  	src="https://video3.mingpao.com/inews/201907/20190714-shatin-aid.jpg" 
-				  	alt="<p>18:02 (明報圖片)<br>沙田偉華中心外，遊行協辦單位沙田區政向在場遊行人士呼籲，指前線義士需要大量保鮮紙、索帶、頭盔及口罩等物資，呼籲市民可幫忙購買，並籲市民「團結一致，對抗暴政」。在場遊行人士亦築成人鏈傳送物資。</p>"
-				  	href="https://news.mingpao.com/ins/%e6%b8%af%e8%81%9e/article/20190714/s00001/1563088298405/%e3%80%90%e9%80%83%e7%8a%af%e6%a2%9d%e4%be%8b-%e6%b2%99%e7%94%b0%e7%a4%ba%e5%a8%81%e3%80%917-14%e6%96%87%e5%ad%97%e7%b4%80%e9%8c%84-%e4%b8%8b%e5%8d%88%e9%81%8a%e8%a1%8c-%e6%99%9a%e4%b8%8a%e6%96%b0%e5%9f%8e%e5%b8%82%e5%bb%a3%e5%a0%b4%e8%a1%9d%e7%aa%81%ef%bc%88%e9%99%84%e7%9f%ad%e7%89%87%ef%bc%89"
-				  	style="height: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 400px; height: 300px;"
-			   data-start = "display: none"
-			   data-2900 = "opacity: 0; left: 110px; top: 760px; display: block" 
-			   data-3000 = "opacity: 1; left: 110px; top: 710px; display: block" 
-			   data-3650 = "opacity: 1; left: 110px; top: 700px; display: block" 
-			   data-3750 = "opacity: 0; left: 110px; top: 650px; display: none">
-			   <a><img 
-				  	src="https://live.staticflickr.com/65535/48279470001_ef88879c23_b.jpg" 
-				  	alt="<p>18:02 (香港獨立媒體圖片)<br>沙田偉華中心外，遊行協辦單位沙田區政向在場遊行人士呼籲，指前線義士需要大量保鮮紙、索帶、頭盔及口罩等物資，呼籲市民可幫忙購買，並籲市民「團結一致，對抗暴政」。在場遊行人士亦築成人鏈傳送物資。</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="height: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 400px; height: 300px;"
-			   data-start = "display: none"
-			   data-3650 = "opacity: 0; right: 10px; top: 250px; display: block" 
-			   data-3750 = "opacity: 1; right: 10px; top: 200px; display: block" 
-			   data-4000 = "opacity: 1; right: 10px; top: 190px; display: block" 
-			   data-4100 = "opacity: 0; right: 10px; top: 140px; display: none">
-			   <a><img 
-				  	src="https://live.staticflickr.com/65535/48279710116_348b9fc09a_b.jpg" 
-				  	alt="<p>18:40 (香港獨立媒體圖片)<br>在源禾路的警方更換全副武裝，配備長盾及防暴槍的警員上最前線防守，全部警員均沒有戴上警員編號及委任證。</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="height: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 400px; height: 200px;"
-			   data-start = "display: none"
-			   data-3650 = "opacity: 0; right: 10px; top: 560px; display: block" 
-			   data-3750 = "opacity: 1; right: 10px; top: 510px; display: block" 
-			   data-4000 = "opacity: 1; right: 10px; top: 500px; display: block" 
-			   data-4100 = "opacity: 0; right: 10px; top: 450px; display: none">
-			   <a><img 
-				  	src="https://live.staticflickr.com/65535/48279871247_9b70589f4b_b.jpg" 
-				  	alt="<p>18:44 (香港獨立媒體圖片)<br>配備全副防暴裝備的警員，於晚上約六點半進駐源禾路前線。有示威者與警方發生衝突，大批警員將其逼至行人路，立法會議員鄭松泰上前了解，被大批警員包圍。期間有警員情緒激動，兩名警員手持胡椒噴霧，對準示威者及鄭松泰，需由其他在場人士分隔。</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 300px; height: 300px;"
-			   data-start = "display: none"
-			   data-3650 = "opacity: 0; right: 420px; top: 460px; display: block" 
-			   data-3750 = "opacity: 1; right: 420px; top: 410px; display: block" 
-			   data-4000 = "opacity: 1; right: 420px; top: 400px; display: block" 
-			   data-4100 = "opacity: 0; right: 420px; top: 350px; display: none">
-			   <a><img 
-				  	src="https://live.staticflickr.com/65535/48279871097_1753cf402a_b.jpg" 
-				  	alt="<p>18:51 (香港獨立媒體圖片)<br>超過十名民主派沙田區議員包括程張迎、吳錦雄、丘文俊、黎梓恩等在警方防線前開咪，要求會見現場的指揮官，強調不希望重演昨日上水的流血事件，但沒有得到回應。</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="height: 100%;"></a>
-			</div>
-
-			<div class="thumbnail"
-			   data-start = "display: none"
-			   data-4000 = "opacity: 0; right: 50px; top: 70px; display: block" 
-			   data-4100 = "opacity: 1; right: 50px; top: 20px; display: block" 
-			   data-5900 = "opacity: 1; right: 50px; top: 10px; display: block" 
-			   data-6000 = "opacity: 0; right: 50px; top: -40px; display: none">
-			   <a><img 
-				  	src="https://fs.mingpao.com/ins/20190714/s00001/62592bf797dc0ce4b02cea8e9dc13680.jpg" 
-				  	alt="<p>19:10 (明報圖片)<br>大批警員集結於瀝源邨，部份警員進入瀝源商場，有市民怒罵「黑警」。</p>"
-				  	href="_blank"
-				  	width="500"></a>
-			</div>
-
-			<!--
-			<div class="thumbnail" style="width: 400px"
-			   data-start = "display: none"
-			   data-4050 = "opacity: 0; left: 10px; top: 250px; display: block" 
-			   data-4150 = "opacity: 1; left: 10px; top: 200px; display: block" 
-			   data-5900 = "opacity: 1; left: 10px; top: 190px; display: block" 
-			   data-6000 = "opacity: 0; left: 10px; top: 140px; display: none">
-			   <a><img 
-				  	src="" 
-				  	alt="<p>19:15<br>遊行約於晚上7時15分結束，大批市民在港鐵沙田站排隊購票離開。</p>"
-				  	href=""
-				  	width="500"></a>
-			</div>
-			-->
-
-			<div class="thumbnail" style="width: 300px; height: 150px;"
-			   data-start = "display: none"
-			   data-4000 = "opacity: 0; right: 220px; top: 600px; display: block" 
-			   data-4100 = "opacity: 1; right: 220px; top: 550px; display: block" 
-			   data-5900 = "opacity: 1; right: 220px; top: 540px; display: block" 
-			   data-6000 = "opacity: 0; right: 220px; top: 490px; display: none">
-			   <a><img 
-				  	src="https://live.staticflickr.com/65535/48279920336_d04a48bedc_b.jpg" 
-				  	alt="<p>19:10 (香港獨立媒體圖片)<br>多名區議員及立法會議員與警方交涉不果，立法會議員區諾軒籲示威者再三考慮清楚，並指將與其他立法會議員包括朱凱廸、陳志全及民主派沙田區議員坐在警方防線前，保護群眾緩和場面，稱「呢個係我責任嚟。」</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 200px; height: 200px;"
-			   data-start = "display: none"
-			   data-4000 = "opacity: 0; right: 10px; top: 550px; display: block" 
-			   data-4100 = "opacity: 1; right: 10px; top: 500px; display: block" 
-			   data-5900 = "opacity: 1; right: 10px; top: 490px; display: block" 
-			   data-6000 = "opacity: 0; right: 10px; top: 440px; display: none">
-			   <a><img 
-				  	src="https://fs.mingpao.com/ins/20190714/s00001/65fc695da723b577a8bc09692e2bacb0.jpg" 
-				  	alt="<p>19:20 (明報圖片)<br>源禾路部份示威者入夜後開始撤離，他們呼籲在場示威者「要走一起走」，並讓較後方的示威者先行撤退。防暴警察於沙燕橋上推進。</p>"
-				  	href="_blank"
-				  	style="height: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 350px; height: 200px;"
-			   data-start = "display: none"
-			   data-4000 = "opacity: 0; right: 10px; top: 760px; display: block" 
-			   data-4100 = "opacity: 1; right: 10px; top: 710px; display: block" 
-			   data-5900 = "opacity: 1; right: 10px; top: 700px; display: block" 
-			   data-6000 = "opacity: 0; right: 10px; top: 650px; display: none">
-			   <a><img 
-				  	src="https://live.staticflickr.com/65535/48280071587_e7f0548925_b.jpg" 
-				  	alt="<p>19:20 (香港獨立媒體圖片)<br>源禾路部份示威者入夜後開始撤離，他們呼籲在場示威者「要走一起走」，並讓較後方的示威者先行撤退。防暴警察於沙燕橋上推進。</p>"
-				  	href="_blank"
-				  	style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail"
-			   data-start = "display: none"
-			   data-4900 = "opacity: 0; left: 40px; top: 300px; display: block" 
-			   data-5000 = "opacity: 1; left: 40px; top: 250px; display: block" 
-			   data-5900 = "opacity: 1; left: 40px; top: 240px; display: block" 
-			   data-6000 = "opacity: 0; left: 40px; top: 190px; display: none">
-			   <a><img 
-				  	src="https://cdn.hk01.com/di/media/images/3032749/org/2d458712d1ae8a35dc69d0d910badb15.jpg/c0FexaxC2Mr0fJuVIqOhzv67txx9NQWqdNMI7HTTCOw"
-				  	alt="<p>19:56 (香港01圖片)<br>大會堂百步梯放映會改為和平集會，此活動不反對通知書至晚上11時。</p>"
-				  	href="_blank"
-				  	width="500"></a>
-			</div>
-
-			<div class="thumbnail" 
-			   data-start = "display: none"
-			   data-5900 = "opacity: 0; left: 768px; top: 550px; display: block" 
-			   data-6000 = "opacity: 1; left: 768px; top: 500px; display: block" 
-			   data-6400 = "opacity: 1; left: 768px; top: 490px; display: none" >
-			   <a><img 
-				  	src="https://cdn.thestandnews.com/media/photos/cache/66615751_2305620629523544_3338879783177027584_n_jxLSU_1200x0.jpg" 
-				  	alt="<p>21:00<br>清場行動一觸即發，警方三面夾攻，一群防暴警察由沙田鄕事會路向源禾路推進，並高舉紅旗，沙田大會堂前的防暴警亦開始推進，而沙燕橋的防暴警察亦推進至鄕事會路及源禾路交界。</p>"
-				  	href="_blank"
-				  	width="500"></a>
-			</div>
-
-		</section>
-	<img id="fog1" src="fog1.png">
-	<img id="fog2" src="fog2.png">
-	</main>
-	<div id="lightbox" style="display: none"></div>
-	<script type="text/javascript">
-			var s = skrollr.init();
-			$("section").on( "mousemove", function( event ) {
-				$( "#log" ).text( "pageX: " + event.offsetX + ", pageY: " + event.offsetY );
-			});
-  			$(window).scroll(function () {
-  				var h = 15+(window.scrollY-window.scrollY%1000)/1000;
-  				var m = (window.scrollY%1000)/1000*60;
-  				m = m.toFixed(0).toString();
-   				if (m == 60) {
-   					h = h + 1;
-   					m = "00";
-   				};
- 				if (m.length == 1) m = "0" + m; 
-				$( "#time" ).text(h + ":" + m);
-			});
-			$(window).resize(function() {
-			  var h = $("main").height();
-			  var w = $("main").width();
-			  var o = $("section").position();
-			  console.log (o);
-			  if (h>w) {
-				  $("section").css({
-				  	'transform' : 'scale(' + (w/1400/1.01) + ')'
-				  });
-			  } else {
-				  $("section").css({
-				  	'transform' : 'scale(' + (h/1200/1.01) + ')'
-				  });
-			  }
-			});
-			$( document ).ready(function() {
-			    var h = $("main").height();
-			  	var w = $("main").width();
-			  	if (h>w) {
-				  $("section").css({
-				  	'transform' : 'scale(' + (w/1400/1.01) + ')'
-				  });
-			  } else {
-				  $("section").css({
-				  	'transform' : 'scale(' + (h/1200/1.01) + ')'
-				  });
-			  }
-
-
-
-			var time = [0, 167, 1000, 1750, 2000, 2250, 3003, 3750, 5000, 6000, 6500, 6750, 7000, 99999];
-			$("#next").click(function() {
-			  	var scroll = Math.ceil(window.scrollY);
-			  	console.log(scroll);
-			  	for ( var i = 0, l = time.length; i < l; i++ ) {
-			  		if ((scroll >= time[i]) && (scroll < time[i+1])) {
-			  			if (i !== time.length-2) {
-			  				$("html, body").stop().animate({scrollTop:time[i+1]}, 1000);
-			  			}
-			  		};
-			  	};
-			 });
-
-			$("#prev").click(function() {
-			  	var scroll = Math.ceil(window.scrollY);
-			  	console.log(scroll);
-			  	for ( var i = 0, l = time.length; i < l; i++ ) {
-			  		if ((scroll >= time[i]) && (scroll < time[i+1])) {
-			  			$("html, body").stop().animate({scrollTop:time[i-1]}, 1000);
-			  		};
-			  	};
+		$("main").on('mouseenter touchstart', '.circle', function() {
+				var ID = this.id;
+				$(".popup").children().hide();
+				if (ID === "鄺俊宇") {$(".popup").find("#鄺俊宇").fadeIn(100);};
+				if (ID === "涂謹申") {$(".popup").find("#涂謹申").fadeIn(100);};
+				if (ID === "許智峯") {$(".popup").find("#許智峯").fadeIn(100);};
+				if (ID === "邵家臻") {$(".popup").find("#邵家臻").fadeIn(100);};
+				if (ID === "梁耀忠") {$(".popup").find("#梁耀忠").fadeIn(100);};
+				if (ID === "林卓廷") {$(".popup").find("#林卓廷").fadeIn(100);};
+				if (ID === "尹兆堅") {$(".popup").find("#尹兆堅").fadeIn(100);};
+				if (ID === "黃碧雲") {$(".popup").find("#黃碧雲").fadeIn(100);};
+				if (ID === "葉建源") {$(".popup").find("#葉建源").fadeIn(100);};
+				if (ID === "李國麟") {$(".popup").find("#李國麟").fadeIn(100);};
+				if (ID === "胡志偉") {$(".popup").find("#胡志偉").fadeIn(100);};
+				if (ID === "莫乃光") {$(".popup").find("#莫乃光").fadeIn(100);};
+				if (ID === "梁繼昌") {$(".popup").find("#梁繼昌").fadeIn(100);};
+				if (ID === "郭榮鏗") {$(".popup").find("#郭榮鏗").fadeIn(100);};
+				if (ID === "譚文豪") {$(".popup").find("#譚文豪").fadeIn(100);};
+				if (ID === "郭家麒") {$(".popup").find("#郭家麒").fadeIn(100);};
+				if (ID === "毛孟靜") {$(".popup").find("#毛孟靜").fadeIn(100);};
+				if (ID === "陳淑莊") {$(".popup").find("#陳淑莊").fadeIn(100);};
+				if (ID === "楊岳橋") {$(".popup").find("#楊岳橋").fadeIn(100);};
+				if (ID === "鄭松泰") {$(".popup").find("#鄭松泰").fadeIn(100);};
+				if (ID === "陳凱欣") {$(".popup").find("#陳凱欣").fadeIn(100);};
+				if (ID === "馬逢國") {$(".popup").find("#馬逢國").fadeIn(100);};
+				if (ID === "廖長江") {$(".popup").find("#廖長江").fadeIn(100);};
+				if (ID === "張超雄") {$(".popup").find("#張超雄").fadeIn(100);};
+				if (ID === "朱凱廸") {$(".popup").find("#朱凱廸").fadeIn(100);};
+				if (ID === "區諾軒") {$(".popup").find("#區諾軒").fadeIn(100);};
+				if (ID === "謝偉銓") {$(".popup").find("#謝偉銓").fadeIn(100);};
+				if (ID === "陳振英") {$(".popup").find("#陳振英").fadeIn(100);};
+				if (ID === "姚思榮") {$(".popup").find("#姚思榮").fadeIn(100);};
+				if (ID === "范國威") {$(".popup").find("#范國威").fadeIn(100);};
+				if (ID === "陳志全") {$(".popup").find("#陳志全").fadeIn(100);};
+				if (ID === "陳沛然") {$(".popup").find("#陳沛然").fadeIn(100);};
+				if (ID === "陳健波") {$(".popup").find("#陳健波").fadeIn(100);};
+				if (ID === "吳永嘉") {$(".popup").find("#吳永嘉").fadeIn(100);};
+				if (ID === "田北辰") {$(".popup").find("#田北辰").fadeIn(100);};
+				if (ID === "容海恩") {$(".popup").find("#容海恩").fadeIn(100);};
+				if (ID === "葉劉淑儀") {$(".popup").find("#葉劉淑儀").fadeIn(100);};
+				if (ID === "易志明") {$(".popup").find("#易志明").fadeIn(100);};
+				if (ID === "邵家輝") {$(".popup").find("#邵家輝").fadeIn(100);};
+				if (ID === "鍾國斌") {$(".popup").find("#鍾國斌").fadeIn(100);};
+				if (ID === "張宇人") {$(".popup").find("#張宇人").fadeIn(100);};
+				if (ID === "謝偉俊") {$(".popup").find("#謝偉俊").fadeIn(100);};
+				if (ID === "石禮謙") {$(".popup").find("#石禮謙").fadeIn(100);};
+				if (ID === "郭偉强") {$(".popup").find("#郭偉强").fadeIn(100);};
+				if (ID === "麥美娟") {$(".popup").find("#麥美娟").fadeIn(100);};
+				if (ID === "陸頌雄") {$(".popup").find("#陸頌雄").fadeIn(100);};
+				if (ID === "潘兆平") {$(".popup").find("#潘兆平").fadeIn(100);};
+				if (ID === "鄭泳舜") {$(".popup").find("#鄭泳舜").fadeIn(100);};
+				if (ID === "何啟明") {$(".popup").find("#何啟明").fadeIn(100);};
+				if (ID === "黃國健") {$(".popup").find("#黃國健").fadeIn(100);};
+				if (ID === "何君堯") {$(".popup").find("#何君堯").fadeIn(100);};
+				if (ID === "劉國勳") {$(".popup").find("#劉國勳").fadeIn(100);};
+				if (ID === "陳恒鑌") {$(".popup").find("#陳恒鑌").fadeIn(100);};
+				if (ID === "柯創盛") {$(".popup").find("#柯創盛").fadeIn(100);};
+				if (ID === "葛珮帆") {$(".popup").find("#葛珮帆").fadeIn(100);};
+				if (ID === "梁志祥") {$(".popup").find("#梁志祥").fadeIn(100);};
+				if (ID === "周浩鼎") {$(".popup").find("#周浩鼎").fadeIn(100);};
+				if (ID === "黃定光") {$(".popup").find("#黃定光").fadeIn(100);};
+				if (ID === "何俊賢") {$(".popup").find("#何俊賢").fadeIn(100);};
+				if (ID === "李慧琼") {$(".popup").find("#李慧琼").fadeIn(100);};
+				if (ID === "陳克勤") {$(".popup").find("#陳克勤").fadeIn(100);};
+				if (ID === "張國鈞") {$(".popup").find("#張國鈞").fadeIn(100);};
+				if (ID === "蔣麗芸") {$(".popup").find("#蔣麗芸").fadeIn(100);};
+				if (ID === "梁美芬") {$(".popup").find("#梁美芬").fadeIn(100);};
+				if (ID === "林健鋒") {$(".popup").find("#林健鋒").fadeIn(100);};
+				if (ID === "劉業強") {$(".popup").find("#劉業強").fadeIn(100);};
+				if (ID === "盧偉國") {$(".popup").find("#盧偉國").fadeIn(100);};
+				if (ID === "張華峰") {$(".popup").find("#張華峰").fadeIn(100);};
+				if (ID === "梁頌恆") {$(".popup").find("#梁頌恆").fadeIn(100);};
+				if (ID === "游蕙禎") {$(".popup").find("#游蕙禎").fadeIn(100);};
+				if (ID === "梁國雄") {$(".popup").find("#梁國雄").fadeIn(100);};
+				if (ID === "羅冠聰") {$(".popup").find("#羅冠聰").fadeIn(100);};
+				if (ID === "姚松炎") {$(".popup").find("#姚松炎").fadeIn(100);};
+				if (ID === "劉小麗") {$(".popup").find("#劉小麗").fadeIn(100);};
+				$(".popup").css({"top": event.pageY + 10, "left": event.pageX})
 			});
 
-			$('.thumbnail').click(function(){
-				var img_adress = $(this).find('img').attr('src');
-				var img_href = $(this).find('img').attr('href');
-				var img_description = $(this).find('img').attr('alt');
-				console.log(img_adress);
-				console.log(img_href);
-				console.log(img_description);
-				$("#lightbox").fadeIn();
-				$("#lightbox").html(
-					"<div id='frame'>" + 
-					"<a target='_blank' href=" + img_href + ">" +
-					"<img src=" + img_adress + " width='1200'></a>" + img_description + "</div>"
-				)
+		$("main").on('mouseleave', ".container", function() {
+			$(".popup").children().fadeOut(100);
 			});
 
-			$('#lightbox').click(function(){
-				$("#lightbox").fadeOut();
-			});
+		$(".loading").fadeOut("slow");
 
-			function fogloop1() {
-				  $("#fog1").animate ({
-				  	left: "0%", opacity: Math.random()}, 30000, function() {
-				  	 $("#fog1").animate ({
-				  		left: "-25%", opacity: Math.random()}, 30000, function() {
-				  			fogloop1()
-				  	});
+		$.ajax({
+			type:"GET", 
+			url:"https://tobias9412.github.io/bob2019/data.json", 
+			dataType: "json", 
+			success: function(record){
+			$.each(record.meeting, function(key, meeting){
+				$("main").append("<session class='" + meeting.type + "'>");
+				$("." + meeting.type).append("<heading>" + meeting.motion + "</heading>")
+				$("menu ul").append("<li class='navigation' href=." + meeting.type + "><span>" + meeting.startdate + "</span><br>" + meeting.motion + "</li>");
+
+				$.each(meeting.vote, function(key, vote){
+					var articleID = vote.votedate.split("/")[2]+vote.votedate.split("/")[1]+vote.votedate.split("/")[0]+vote.votetime.split(":")[0]+vote.votetime.split(":")[1]+vote.votetime.split(":")[2];
+					
+					if (vote.movertype === "Member") {
+						$("." + meeting.type).append("<article data-aos='fade' id='" + articleID + "'>"); // 
+						$("." + meeting.type + " #" + articleID).append(
+						"<h1>" + vote.motionch+ "</h1>" + 
+						"<h3>投票時間: " + vote.votedate.split("/")[2] + "年" + vote.votedate.split("/")[1] + "月" + vote.votedate.split("/")[0] + "日 " + vote.votetime.split(":")[0] + "時" + vote.votetime.split(":")[1] + "分" + vote.votetime.split(":")[2] + "秒" + "</h3>"
+						);
+				
+						if (vote.voteseparatemechanism === "Yes") {
+							$("." + meeting.type + " #" + articleID).append(
+						"<h3>最後結果: " + vote.votesummary.overall.result + "</h3>" +
+						"<h3>功能界別: " + vote.votesummary.functionalconstituency.result + " — " + vote.votesummary.functionalconstituency.votecount + "投票 " + vote.votesummary.functionalconstituency.yescount + "贊成 " + vote.votesummary.functionalconstituency.nocount + "反對 " + vote.votesummary.functionalconstituency.abstaincount + "棄權 </h3>" +
+						"<h3>地方選區: " + vote.votesummary.geographicalconstituency.result + " — " + vote.votesummary.geographicalconstituency.votecount + "投票 " + vote.votesummary.geographicalconstituency.yescount + "贊成 " + vote.votesummary.geographicalconstituency.nocount + "反對 " + vote.votesummary.geographicalconstituency.abstaincount + "棄權 </h3>");
+							} 
+						else if (vote.voteseparatemechanism === "No") { 
+							$("." + meeting.type + " #" + articleID).append(
+							"<h3>最後結果: " + vote.votesummary.overall.result + " — " + vote.votesummary.overall.votecount + "投票 " + vote.votesummary.overall.yescount + "贊成 " + vote.votesummary.overall.nocount + "反對 " + vote.votesummary.overall.abstaincount + "棄權 </h3>");
+							};
+						} 
+
+					else if (vote.movertype === "Hand") {
+						$("." + meeting.type).append("<article data-aos='fade' id='" + articleID + "'>"); // 
+						$("." + meeting.type + " #" + articleID).append(
+						"<h1>" + vote.motionch+ "</h1>" + 
+						"<h3>投票時間: " + vote.votedate.split("/")[2] + "年" + vote.votedate.split("/")[1] + "月" + vote.votedate.split("/")[0] + "日</h3>");
+						$("." + meeting.type + " #" + articleID).append("<h3>最後結果: " + vote.votesummary.overall.result + " (舉手表決)</h3>");
+						
+						if (vote.votesummary.overall.result === "通過") {
+							$("." + meeting.type + " #" + articleID).append(
+							"<h3>主席認為議題獲得經由功能團體選舉產生及分區直接選舉產生的兩部分在席議員，分別以過半數贊成。"); 
+							}
+						else if (vote.votesummary.overall.result === "否決") {
+							$("." + meeting.type + " #" + articleID).append(
+							"<h3>主席認為議題獲得經由功能團體選舉產生及分區直接選舉產生的兩部分在席議員，分別以過半數反對。"); 
+							};
+						};
+					});
+					$("." + meeting.type).append("<h1 class='expand'><mark>投票詳情</mark></h1>");
 				});
-			};
-			function fogloop2() {
-				  $("#fog2").animate ({
-				  	right: "-25%", opacity: Math.random()}, 28000, function() {
-				  	 $("#fog2").animate ({
-				  		right: "-50%", opacity: Math.random()}, 28000, function() {
-				  			fogloop2()
-				  	});
-				 });
-			};
 
-			fogloop1();
-			fogloop2();
+				$(".expand").on('click', function() {
+					var target = $(this).parent().attr("class");
+					fetch(target);
+				});
 
-			});		
-	</script>	
+				$("menu li").on('click', function() {
+					var target = $(this).attr('href');
+
+					if (!$(target).hasClass("loaded")){
+						$(target).addClass("loaded");
+						fetch(target.substr(1));
+					};
+
+					if( $(target).length ) {
+						event.preventDefault();
+						$('html, body').stop().animate({
+							scrollTop:  $(target).offset().top
+						}, 1000);
+						$("menu").animate({width: "40px"}, 500, "easeOutCirc");
+						$("main").animate({width: "100%"}, 500, "easeOutCirc");
+					};
+				});
+			}
+		});	
+	});
+
+
+	function fetch(x){
+		$.ajax({
+		type:"GET", 
+		url:"https://tobias9412.github.io/bob2019/data.json", 
+		dataType: "json", 
+		success: function(record){
+			$.each(record.meeting, function(key, meeting){
+			if (meeting.type === x) {
+				$("." + meeting.type).children(".expand").fadeOut();
+				$.each(meeting.vote, function(key, vote){
+					var articleID = vote.votedate.split("/")[2]+vote.votedate.split("/")[1]+vote.votedate.split("/")[0]+vote.votetime.split(":")[0]+vote.votetime.split(":")[1]+vote.votetime.split(":")[2];
+					var containerPath = "." + meeting.type + " #" + articleID + " .container";
+
+					if (vote.movertype === "Member") {
+						$("." + meeting.type + " #" + articleID).append(
+							"<div class='container' data-aos='fade'>" +
+							"<h2 id='presentbutton'>出席</h2>" +
+							"<h2 id='yesbutton'>贊成</h2>" +
+							"<h2 id='nobutton'>反對</h2>" +
+							"<h2 id='abstainbutton'>棄權</h2>" +
+							"<h2 id='absentbutton'>缺席</h2>" +
+							"<h2 id='next'>下一條</h2>" +
+							"<h2 id='prev'>上一條</h2>" +
+							"<div class='circle' id='鄺俊宇'><li>鄺俊宇</li></div>" +
+							"<div class='circle' id='涂謹申'><li>涂謹申</li></div>" + 
+							"<div class='circle' id='許智峯'><li>許智峯</li></div>" +
+							"<div class='circle' id='邵家臻'><li>邵家臻</li></div>" +
+							"<div class='circle' id='梁耀忠'><li>梁耀忠</li></div>" +
+							"<div class='circle' id='林卓廷'><li>林卓廷</li></div>" +
+							"<div class='circle' id='尹兆堅'><li>尹兆堅</li></div>" +
+							"<div class='circle' id='黃碧雲'><li>黃碧雲</li></div>" +
+							"<div class='circle' id='葉建源'><li>葉建源</li></div>" +
+							"<div class='circle' id='李國麟'><li>李國麟</li></div>" +
+							"<div class='circle' id='胡志偉'><li>胡志偉</li></div>" +
+							"<div class='circle' id='莫乃光'><li>莫乃光</li></div>" +
+							"<div class='circle' id='梁繼昌'><li>梁繼昌</li></div>" +
+							"<div class='circle' id='郭榮鏗'><li>郭榮鏗</li></div>" +
+							"<div class='circle' id='譚文豪'><li>譚文豪</li></div>" +
+							"<div class='circle' id='郭家麒'><li>郭家麒</li></div>" +
+							"<div class='circle' id='毛孟靜'><li>毛孟靜</li></div>" +
+							"<div class='circle' id='陳淑莊'><li>陳淑莊</li></div>" +
+							"<div class='circle' id='楊岳橋'><li>楊岳橋</li></div>" +
+							"<div class='circle' id='鄭松泰'><li>鄭松泰</li></div>" +
+							"<div class='circle' id='陳凱欣'><li>陳凱欣</li></div>" +
+							"<div class='circle' id='馬逢國'><li>馬逢國</li></div>" +
+							"<div class='circle' id='廖長江'><li>廖長江</li></div>" +
+							"<div class='circle' id='張超雄'><li>張超雄</li></div>" +
+							"<div class='circle' id='朱凱廸'><li>朱凱廸</li></div>" +
+							"<div class='circle' id='區諾軒'><li>區諾軒</li></div>" +
+							"<div class='circle' id='謝偉銓'><li>謝偉銓</li></div>" +
+							"<div class='circle' id='陳振英'><li>陳振英</li></div>" +
+							"<div class='circle' id='姚思榮'><li>姚思榮</li></div>" +
+							"<div class='circle' id='范國威'><li>范國威</li></div>" +
+							"<div class='circle' id='陳志全'><li>陳志全</li></div>" +
+							"<div class='circle' id='陳沛然'><li>陳沛然</li></div>" +
+							"<div class='circle' id='陳健波'><li>陳健波</li></div>" +
+							"<div class='circle' id='吳永嘉'><li>吳永嘉</li></div>" +
+							"<div class='circle' id='田北辰'><li>田北辰</li></div>" +
+							"<div class='circle' id='容海恩'><li>容海恩</li></div>" +
+							"<div class='circle' id='葉劉淑儀'><li>葉劉<br>淑儀</li></div>" +
+							"<div class='circle' id='易志明'><li>易志明</li></div>" +
+							"<div class='circle' id='邵家輝'><li>邵家輝</li></div>" +
+							"<div class='circle' id='鍾國斌'><li>鍾國斌</li></div>" +
+							"<div class='circle' id='張宇人'><li>張宇人</li></div>" +
+							"<div class='circle' id='謝偉俊'><li>謝偉俊</li></div>" +
+							"<div class='circle' id='石禮謙'><li>石禮謙</li></div>" +
+							"<div class='circle' id='郭偉强'><li>郭偉强</li></div>" +
+							"<div class='circle' id='麥美娟'><li>麥美娟</li></div>" +
+							"<div class='circle' id='陸頌雄'><li>陸頌雄</li></div>" +
+							"<div class='circle' id='潘兆平'><li>潘兆平</li></div>" +
+							"<div class='circle' id='鄭泳舜'><li>鄭泳舜</li></div>" +
+							"<div class='circle' id='何啟明'><li>何啟明</li></div>" +
+							"<div class='circle' id='黃國健'><li>黃國健</li></div>" +
+							"<div class='circle' id='何君堯'><li>何君堯</li></div>" +
+							"<div class='circle' id='劉國勳'><li>劉國勳</li></div>" +
+							"<div class='circle' id='陳恒鑌'><li>陳恒鑌</li></div>" +
+							"<div class='circle' id='柯創盛'><li>柯創盛</li></div>" +
+							"<div class='circle' id='葛珮帆'><li>葛珮帆</li></div>" +
+							"<div class='circle' id='梁志祥'><li>梁志祥</li></div>" +
+							"<div class='circle' id='周浩鼎'><li>周浩鼎</li></div>" +
+							"<div class='circle' id='黃定光'><li>黃定光</li></div>" +
+							"<div class='circle' id='何俊賢'><li>何俊賢</li></div>" +
+							"<div class='circle' id='李慧琼'><li>李慧琼</li></div>" +
+							"<div class='circle' id='陳克勤'><li>陳克勤</li></div>" +
+							"<div class='circle' id='張國鈞'><li>張國鈞</li></div>" +
+							"<div class='circle' id='蔣麗芸'><li>蔣麗芸</li></div>" +
+							"<div class='circle' id='梁美芬'><li>梁美芬</li></div>" +
+							"<div class='circle' id='林健鋒'><li>林健鋒</li></div>" +
+							"<div class='circle' id='劉業強'><li>劉業強</li></div>" +
+							"<div class='circle' id='盧偉國'><li>盧偉國</li></div>" +
+							"<div class='circle' id='張華峰'><li>張華峰</li></div>" +
+							"<div class='circle' id='梁頌恆'><li>梁頌恆</li></div>" +
+							"<div class='circle' id='游蕙禎'><li>游蕙禎</li></div>" +
+							"<div class='circle' id='梁國雄'><li>梁國雄</li></div>" +
+							"<div class='circle' id='羅冠聰'><li>羅冠聰</li></div>" +
+							"<div class='circle' id='姚松炎'><li>姚松炎</li></div>" +
+							"<div class='circle' id='劉小麗'><li>劉小麗</li></div>" +
+							"</div>"
+						);
+
+						var ListPresent = new Array();
+						var ListYes = new Array();
+						var ListNo = new Array();
+						var ListAbsent = new Array();
+						var ListAbstain = new Array();
+
+						$.each(vote.individualvotes.member, function(key, member){
+							if (member.vote === "Present") {
+								ListPresent.push(member.namech);
+							} else if (member.vote === "Yes") {
+								ListYes.push(member.namech);
+							} else if (member.vote === "No") {
+								ListNo.push(member.namech);
+							} else if (member.vote === "Absent") {
+								ListAbsent.push(member.namech);
+							} else if (member.vote === "Abstain") {
+								ListAbstain.push(member.namech);
+							};
+						});
+
+						
+
+						$(containerPath).children().filter("#presentbutton").addClass("mark");
+
+						$(containerPath).children().each(function(){
+							var myId = this.id;
+							$.each(ListPresent, function (index, name){
+								if (myId === name) {
+									$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+								};
+							});
+
+							$.each(ListNo, function (index, name){
+								if (myId === name) {
+									$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+								};
+							});
+							$.each(ListYes, function (index, name){
+								if (myId === name) {
+									$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+								};
+							});
+							$.each(ListAbsent, function (index, name){
+								if (myId === name) {
+									$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+								};
+							});
+							$.each(ListAbstain, function (index, name){
+								if (myId === name) {
+									$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+								};
+							});
+						});
+
+						$(containerPath).children().filter("#presentbutton").click(function(){
+							$(containerPath).children().filter("h2").removeClass("mark");
+							$(this).addClass("mark");
+							$(containerPath).children().each(function(){
+								var myId = this.id;
+								$.each(ListPresent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+									};
+								});
+
+								$.each(ListNo, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+									};
+								});
+								$.each(ListYes, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+									};
+								});
+								$.each(ListAbsent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListAbstain, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+									};
+								});
+							});
+						});
+
+						$(containerPath).children().filter("#nobutton").click(function(){
+							$(containerPath).children().filter("h2").removeClass("mark");
+							$(this).addClass("mark");
+							$(containerPath).children().each(function(){
+								var myId = this.id;
+								$.each(ListPresent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+
+								$.each(ListNo, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+									};
+								});
+								$.each(ListYes, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListAbsent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListAbstain, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+							});
+						});
+
+						$(containerPath).children().filter("#yesbutton").click(function(){
+							$(containerPath).children().filter("h2").removeClass("mark");
+							$(this).addClass("mark");
+							$(containerPath).children().each(function(){
+								var myId = this.id;
+								$.each(ListPresent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+
+								$.each(ListNo, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListYes, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+									};
+								});
+								$.each(ListAbsent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListAbstain, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+							});
+						});
+
+						$(containerPath).children().filter("#absentbutton").click(function(){
+							$(containerPath).children().filter("h2").removeClass("mark");
+							$(this).addClass("mark");
+							$(containerPath).children().each(function(){
+								var myId = this.id;
+								$.each(ListPresent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+
+								$.each(ListNo, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListYes, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListAbsent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+									};
+								});
+								$.each(ListAbstain, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+							});
+						});
+
+						$(containerPath).children().filter("#abstainbutton").click(function(){
+							$(containerPath).children().filter("h2").removeClass("mark");
+							$(this).addClass("mark");
+							$(containerPath).children().each(function(){
+								var myId = this.id;
+								$.each(ListPresent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+
+								$.each(ListNo, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListYes, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListAbsent, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "0.1"});
+									};
+								});
+								$.each(ListAbstain, function (index, name){
+									if (myId === name) {
+										$(containerPath).children().filter("#"+name).animate({"opacity": "1"});
+									};
+								});
+							});
+						});
+					}
+
+				else if (vote.movertype === "Hand") {
+						$("." + meeting.type + " #" + articleID).append(
+							"<div class='container' data-aos='fade'>" +
+							"<h2 id='next'>下一條</h2>" +
+							"<h2 id='prev'>上一條</h2>");
+					};
+
+				$(containerPath).children().filter("#prev").click(function(){
+					var target = $("#" + $(this).parent().parent().prev().attr("id"));
+					if( target.length ) {
+						event.preventDefault();
+						target.parent().stop().animate({
+							scrollLeft: (target.offset().left + target.parent().scrollLeft()-52)
+						}, 1000);
+					};
+				});
+
+				$(containerPath).children().filter("#next").click(function(){
+					var target = $("#" + $(this).parent().parent().next().attr("id"));
+					if( target.length ) {
+						event.preventDefault();
+						target.parent().stop().animate({
+							scrollLeft: (target.offset().left + target.parent().scrollLeft()-52)
+						}, 1000, "easeOutCubic");
+					};
+				});
+				$("." + meeting.type + " #" + articleID).append("<div class='wording'><p>" + vote.wording + "</p></div>");		
+				});
+
+
+				$("." + meeting.type).find("article").first().find("#prev").hide();
+				$("." + meeting.type).find("article").last().find("#next").hide();
+
+				var dateArray = meeting.startdate.split('/');
+				var date = new Date(dateArray[2], dateArray[1]-1, dateArray[0]);
+
+				if (date > new Date(2016, 11-1, 9)) {
+					$("." + meeting.type).find("#梁頌恆").hide();	
+					$("." + meeting.type).find("#游蕙禎").hide();	
+				} else {
+					$("." + meeting.type).find("#鄭松泰").css({"top": "21%", "left": "42%"});	
+				}
+
+				if (date > new Date(2017, 7-1, 13)) {
+					$("." + meeting.type).find("#梁國雄").hide();	
+					$("." + meeting.type).find("#羅冠聰").hide();	
+					$("." + meeting.type).find("#姚松炎").hide();	
+					$("." + meeting.type).find("#劉小麗").hide();	
+				} else {
+					$("." + meeting.type).find("#許智峯").css({"top": "75%", "left": "3%"});	
+				};
+
+				if (date < new Date(2018, 3-1, 21)) {
+					$("." + meeting.type).find("#范國威").hide();	
+					$("." + meeting.type).find("#區諾軒").hide();	
+					$("." + meeting.type).find("#鄭泳舜").hide();	
+					$("." + meeting.type).find("#謝偉銓").hide();	
+				};
+
+				if (date < new Date(2018, 11-1, 28)) {
+					$("." + meeting.type).find("#陳凱欣").hide();	
+				};
+
+				console.log(meeting.motion);
+			};
+		});
+	}
+	});
+	};
+
+AOS.init();
+
+</script>
 </body>
 </html>
