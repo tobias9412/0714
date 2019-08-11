@@ -15,9 +15,20 @@
 
 		main {
 			position: fixed;
+			overflow: hidden;
+			left: 0;
+			min-width: 800px;
+			max-width: 1600px;
 			width: 90%;
-			height: 95%;
-			top: 2%;
+			height: 100%;
+		}
+
+		aside {
+			position: fixed;
+			right: 0;
+			z-index: 150;
+			width: 10%;
+			height: 100%;
 		}
 
 		section {
@@ -25,14 +36,16 @@
 			position: absolute;
 			width: 1400px;
 			height: 1200px;
-			left: 50%; 
+			left: 50%;
 			top: 50%;
 			margin-left: -700px;
 			margin-top: -600px;
+			transition: 0.1s;
+			overflow: hidden;
 		}
 
 		#log, #time {
-			position: fixed;
+			position: absolute;
 			z-index: 100;
 			font-size: 2em;
 			font-weight: 900;
@@ -40,7 +53,7 @@
 		}
 
 		#button {
-			position: fixed;
+			position: absolute;
 			padding: 20px;
 			right: 0;
 			bottom: 0;
@@ -55,6 +68,7 @@
 			font-size: 4em;
 			line-height: 0.5;
 			color: #c8c8c8;
+			text-shadow: 0 0 50px black;
 		}
 
 		#next, #prev {
@@ -70,6 +84,31 @@
 		#next:hover, #prev:hover {
 			cursor: pointer;			
 		}
+
+		h1, h2 {
+			position: absolute;
+			z-index: 100;
+			margin: 20px;
+			font-weight: 900;
+			writing-mode: vertical-rl;
+			color: #c8c8c8;
+			text-shadow: 0 0 50px black;
+  			white-space: nowrap;
+    	}
+
+ 		h2 {
+ 			right: 0px;
+			font-size: 3em;
+  		} 		
+
+  		h1 {
+ 			right: 55px;	
+			font-size: 4em;
+  		}
+
+  		h1 span, h2 span {
+ 			writing-mode: horizontal-tb;
+  		}
 
 		#log {
 			top: 10px;
@@ -181,12 +220,16 @@
 	</style>
 </head>
 <body>
-	<div id="log"></div>
+	<!--<div id="log"></div>-->
+	<aside>
 	<div id="button">
 		<span id="prev"> < </span>
 		<div id="time">15:00</div>
 		<span id="next"> > </span>
 	</div>
+	<h2><span>2<br>0<br>1<br>9</span>年<span>7</span>月<span>14</span>日</h2>
+	<h1>沙田遊行</h1>
+	</aside>
 	<main>
 		<svg>
 			<defs><filter id="b15" width="300%" height="300%" x="-50%" y="-50%">
@@ -591,10 +634,6 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-
-
-
-
 			<!--
 			<div class="thumbnail"
 			   data-start = "display: none"
@@ -791,29 +830,29 @@
 			});
 			$(window).resize(function() {
 			  var h = $("main").height();
-			  var w = $("main").width();
+			  var w = $("main").width()*0.85;
 			  var o = $("section").position();
 			  console.log (o);
 			  if (h>w) {
 				  $("section").css({
-				  	'transform' : 'scale(' + (w/1400/1.01) + ')'
+				  	'transform' : 'scale(' + (w/1400) + ')'
 				  });
 			  } else {
 				  $("section").css({
-				  	'transform' : 'scale(' + (h/1200/1.01) + ')'
+				  	'transform' : 'scale(' + (h/1200) + ')'
 				  });
 			  }
 			});
 			$( document ).ready(function() {
 			    var h = $("main").height();
-			  	var w = $("main").width();
+			  	var w = $("main").width()*0.85;
 			  	if (h>w) {
 				  $("section").css({
-				  	'transform' : 'scale(' + (w/1400/1.01) + ')'
+				  	'transform' : 'scale(' + (w/1400) + ')'
 				  });
 			  } else {
 				  $("section").css({
-				  	'transform' : 'scale(' + (h/1200/1.01) + ')'
+				  	'transform' : 'scale(' + (h/1200) + ')'
 				  });
 			  }
 
