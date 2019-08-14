@@ -10,7 +10,6 @@
 		html {
 			background: #181818;
 			font-family: 'Noto Serif TC', serif;
-			overflow: hidden;
 		}
 
 		nav {
@@ -22,18 +21,6 @@
 			overflow-y: hidden;
 			white-space: nowrap;
 			background: none;
-		}
-
-		nav ul {
-			position: relative;
-			margin: 10px 0;
-		}
-
-		nav ul li {
-			display: inline-block;
-			vertical-align: top;
-			margin: 0 20px;
-			list-style-type: none;
 		}
 
 		main {
@@ -57,6 +44,14 @@
 			background: none;
 		}
 
+
+		nav ul li {
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 20px;
+			list-style-type: none;
+		}
+
 		section {
 			background: #c8c8c8;
 			position: absolute;
@@ -70,14 +65,6 @@
 			overflow: hidden;
 		}
 
-		#log, #time {
-			position: absolute;
-			z-index: 100;
-			font-size: 2vh;
-			font-weight: 900;
-			color: white;
-		}
-
 		#button {
 			position: absolute;
 			padding: 20px;
@@ -86,7 +73,7 @@
 			z-index: 100;
 		}
 
-		#next, #prev, #time {
+		#next, #prev, #time, #log {
 			position: relative;
 			float: right;
 			clear: both;
@@ -105,6 +92,13 @@
 		#time {
 			top: -4px;
 			margin: 0px;
+		}
+
+		#log {
+			position:fixed;
+			top: 0;
+			left: 0;
+			z-index: 9999;
 		}
 
 		#next:hover, #prev:hover {
@@ -135,10 +129,6 @@
   		h1 span, h2 span {
  			writing-mode: horizontal-tb;
   		}
-
-		#log {
-			top: 10px;
-		}
 
 		svg {
 			border: solid red 0px;
@@ -246,7 +236,7 @@
 	</style>
 </head>
 <body>
-	<!--<div id="log"></div>-->
+	<div id="log"></div>
 	<nav>
 		<ul>
 			<li>6.9 <br>一百零三萬人大遊行</li>
@@ -683,21 +673,20 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<!--
-			<div class="thumbnail"
+			<
+			<div class="thumbnail" style="width: 500px; height: 400px;"
 			   data-start = "display: none"
-			   data-2150 = "opacity: 0; left: 900px; top: 250px; display: block" 
-			   data-2250 = "opacity: 1; left: 900px; top: 200px; display: block" 
-			   data-2750 = "opacity: 1; left: 900px; top: 190px; display: block" 
-			   data-2850 = "opacity: 0; left: 900px; top: 140px; display: none">
+			   data-2150 = "opacity: 0; right: 10px; top: 250px; display: block" 
+			   data-2250 = "opacity: 1; right: 10px; top: 200px; display: block" 
+			   data-2750 = "opacity: 1; right: 10px; top: 190px; display: block" 
+			   data-2850 = "opacity: 0; right: 10px; top: 140px; display: none">
 			   <a><img 
-				  	src="" 
-				  	alt=""
-				  	href=""
-				  	width="500"></a>
-				<p>17:15<br>警方在源禾路沙田賽馬會游泳池外架起防線，與示威者對峙，有九巴受影響未能前進。</p>
+				  	src="https://fs.mingpao.com/pns/20190715/s00006/720642a8a10648998fd326d810ad6408.jpg"
+				  	alt="<p>(明報圖片)<br>沙田示威中執勤的部分前線警員，昨日傍晚換上近月示威活動執勤時未見過的綠色特別工作服。警察公共關係科總警司謝振中表示警員執勤時頭盔貼上反光紙，做法並非要遮掩容貌。</p>"
+				  	href="https://news.mingpao.com/pns/%e8%a6%81%e8%81%9e/article/20190715/s00001/1563128592784/%e9%98%b2%e6%9a%b4%e6%9c%8d%e6%8f%9b%e6%96%b0%e8%a3%9d-%e9%9d%a2%e7%bd%a9%e8%b2%bc%e5%8f%8d%e5%85%89%e7%b4%99%e6%93%8b%e6%bf%80%e5%85%89"
+				  	style="height: 100%;"></a>
 			</div>
-			-->
+			
 
 			<div class="thumbnail" style="width: 400px; height: 250px;"
 			   data-start = "display: none"
@@ -831,7 +820,7 @@
 				  	style="width: 100%;"></a>
 			</div>
 
-			<div class="thumbnail"
+			<div class="thumbnail" style="width: 400px; height: 300px;"
 			   data-start = "display: none"
 			   data-4900 = "opacity: 0; left: 40px; top: 300px; display: block" 
 			   data-5000 = "opacity: 1; left: 40px; top: 250px; display: block" 
@@ -841,20 +830,147 @@
 				  	src="https://cdn.hk01.com/di/media/images/3032749/org/2d458712d1ae8a35dc69d0d910badb15.jpg/c0FexaxC2Mr0fJuVIqOhzv67txx9NQWqdNMI7HTTCOw"
 				  	alt="<p>19:56 (香港01圖片)<br>大會堂百步梯放映會改為和平集會，此活動不反對通知書至晚上11時。</p>"
 				  	href="_blank"
-				  	width="500"></a>
+				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" 
+			<div class="thumbnail" style="width: 600px; height: 600px;"
 			   data-start = "display: none"
-			   data-5900 = "opacity: 0; left: 768px; top: 550px; display: block" 
-			   data-6000 = "opacity: 1; left: 768px; top: 500px; display: block" 
-			   data-6400 = "opacity: 1; left: 768px; top: 490px; display: none" >
+			   data-5900 = "opacity: 0; right: 10px; top: 550px; display: block" 
+			   data-6000 = "opacity: 1; right: 10px; top: 500px; display: block" 
+			   data-6400 = "opacity: 1; right: 10px; top: 490px; display: none" >
 			   <a><img 
 				  	src="https://cdn.thestandnews.com/media/photos/cache/66615751_2305620629523544_3338879783177027584_n_jxLSU_1200x0.jpg" 
-				  	alt="<p>21:00<br>清場行動一觸即發，警方三面夾攻，一群防暴警察由沙田鄕事會路向源禾路推進，並高舉紅旗，沙田大會堂前的防暴警亦開始推進，而沙燕橋的防暴警察亦推進至鄕事會路及源禾路交界。</p>"
+				  	alt="<p>21:00 (立場新聞圖片)<br>清場行動一觸即發，警方三面夾攻，一群防暴警察由沙田鄕事會路向源禾路推進，並高舉紅旗，沙田大會堂前的防暴警亦開始推進，而沙燕橋的防暴警察亦推進至鄕事會路及源禾路交界。</p>"
 				  	href="_blank"
-				  	width="500"></a>
+				  	style="height: 100%;"></a>
 			</div>
+
+			<div class="thumbnail" style="width: 300px; height: 200px;"
+			   data-start = "display: none"
+			   data-6400 = "opacity: 1; right: 10px; bottom: 620px; display: block" 
+			   data-6900 = "opacity: 1; right: 10px; bottom: 630px; display: block"
+			   data-7000 = "opacity: 0; right: 10px; bottom: 680px; display: none">
+			   <a><img 
+				  	src="https://fs.mingpao.com/pns/20190716/s00006/a5c84befe85c432539a6e973648e4b2f.jpg" 
+				  	alt="<p>21:30 (明報圖片)<br>一批警員於新城市廣場外行人路追捕示威者，有防暴警將香港眾志常委朱恩浩制服在地後，180度扭傷其手腕。</p>"
+				  	href="https://news.mingpao.com/pns/%E8%A6%81%E8%81%9E/article/20190716/s00001/1563216591353/%E5%95%86%E5%A0%B4%E7%84%A1%E8%B7%AF%E9%80%80-%E9%95%B7%E5%82%98%E9%A3%9B%E6%A3%8D%E7%9B%BE%E8%88%9E-%E5%8C%85%E5%9C%8D%E5%8F%8D%E5%8C%85%E5%9C%8D-%E6%B7%B7%E6%88%B0%E8%AD%A6%E6%B0%91%E5%90%8C%E5%82%B7"
+				  	style="height: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 500px; height: 300px;"
+			   data-start = "display: none"
+			   data-6400 = "opacity: 1; right: 10px; bottom: 310px; display: block" 
+			   data-6900 = "opacity: 1; right: 10px; bottom: 320px; display: block"
+			   data-7000 = "opacity: 0; right: 10px; bottom: 370px; display: none">
+			   <a><img 
+				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071421580592613.jpg" 
+				  	alt="<p>21:25 (頭條日報圖片)<br>示威者退入橫壆街後，分別進入沙田中心商場及好運中心往新城市廣場方向撤退。警方進入橫壆街清場，警方進入好運中心帶走多人。</p>"
+				  	href="http://hd.stheadline.com/news/realtime/hk/1544169/%E5%8D%B3%E6%99%82-%E6%B8%AF%E8%81%9E-%E6%B2%99%E7%94%B0%E8%A1%9D%E7%AA%81-%E7%A4%BA%E5%A8%81%E8%80%85%E8%A1%9D%E5%85%A5%E5%A5%BD%E9%81%8B%E4%B8%AD%E5%BF%83%E6%B2%99%E7%94%B0%E4%B8%AD%E5%BF%83-%E9%98%B2%E6%9A%B4%E8%AD%A6%E5%AF%9F%E5%B8%B6%E8%B5%B0%E5%A4%9A%E4%BA%BA"
+				  	style="width: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 400px; height: 300px;"
+			   data-start = "display: none"
+			   data-6400 = "opacity: 1; right: 10px; bottom: 0px; display: block" 
+			   data-6900 = "opacity: 1; right: 10px; bottom: 10px; display: block"
+			   data-7000 = "opacity: 0; right: 10px; bottom: 60px; display: none">
+			   <a><img 
+				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071421580116799.jpg" 
+				  	alt="<p>(頭條日報圖片)<br>示威者退入橫壆街後，分別進入沙田中心商場及好運中心往新城市廣場方向撤退，有示威者向地下投擲物品。</p>"
+				  	href="http://hd.stheadline.com/news/realtime/hk/1544169/%E5%8D%B3%E6%99%82-%E6%B8%AF%E8%81%9E-%E6%B2%99%E7%94%B0%E8%A1%9D%E7%AA%81-%E7%A4%BA%E5%A8%81%E8%80%85%E8%A1%9D%E5%85%A5%E5%A5%BD%E9%81%8B%E4%B8%AD%E5%BF%83%E6%B2%99%E7%94%B0%E4%B8%AD%E5%BF%83-%E9%98%B2%E6%9A%B4%E8%AD%A6%E5%AF%9F%E5%B8%B6%E8%B5%B0%E5%A4%9A%E4%BA%BA"
+				  	style="height: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 400px; height: 300px;"
+			   data-start = "display: none"
+			   data-6400 = "opacity: 1; right: 420px; bottom: 0px; display: block" 
+			   data-6900 = "opacity: 1; right: 420px; bottom: 10px; display: block"
+			   data-7000 = "opacity: 0; right: 420px; bottom: 60px; display: none">
+			   <a><img 
+				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071421354912308.jpg" 
+				  	alt="<p>(頭條日報圖片)<br>防暴警察於商場平臺驅趕示威者。</p>"
+				  	href="http://hd.stheadline.com/news/realtime/hk/1544169/%E5%8D%B3%E6%99%82-%E6%B8%AF%E8%81%9E-%E6%B2%99%E7%94%B0%E8%A1%9D%E7%AA%81-%E7%A4%BA%E5%A8%81%E8%80%85%E8%A1%9D%E5%85%A5%E5%A5%BD%E9%81%8B%E4%B8%AD%E5%BF%83%E6%B2%99%E7%94%B0%E4%B8%AD%E5%BF%83-%E9%98%B2%E6%9A%B4%E8%AD%A6%E5%AF%9F%E5%B8%B6%E8%B5%B0%E5%A4%9A%E4%BA%BA"
+				  	style="height: 100%;"></a>
+			</div>
+
+
+			<div class="thumbnail" style="width: 400px; height: 300px;"
+			   data-start = "display: none"
+			   data-6400 = "opacity: 1; left: 10px; top: 10px; display: block" 
+			   data-6900 = "opacity: 1; left: 10px; top: 0px; display: block"
+			   data-7000 = "opacity: 0; left: 10px; top: -50x; display: none">
+			   <a><img 
+				  	src="https://live.staticflickr.com/65535/48280898837_761bd82faa_b.jpg"
+				  	alt="<p>21:30 (香港獨立媒體圖片)<br>約50名警員在沙田連城廣場，通往沙田火車站的範圍組成防線，示威者開傘準備。</p>"
+				  	href="https://www.inmediahk.net/node/1065663"
+				  	style="height: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 400px; height: 300px;"
+			   data-start = "display: none"
+			   data-6900 = "opacity: 0; left: 10px; top: 600px; display: block" 
+			   data-7000 = "opacity: 1; left: 10px; top: 550px; display: block" 
+			   data-7150 = "opacity: 1; left: 10px; top: 540px; display: block" 
+			   data-7250 = "opacity: 0; left: 10px; top: 490px; display: none">
+			   <a><img 
+				  	src="https://live.staticflickr.com/65535/48281056441_ba820fed68_b.jpg"
+				  	alt="<p>21:59 (香港獨立媒體圖片)<br>警察衝入沙田新城市廣場追逐示威者，雙方爆發激烈衝突，有市民及警員被打至倒地。</p>"
+				  	href="https://www.inmediahk.net/node/1065663"
+				  	style="height: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 400px; height: 300px;"
+			   data-start = "display: none"
+			   data-6900 = "opacity: 0; left: 10px; top: 910px; display: block" 
+			   data-7000 = "opacity: 1; left: 10px; top: 860px; display: block" 
+			   data-7150 = "opacity: 1; left: 10px; top: 850px; display: block" 
+			   data-7250 = "opacity: 0; left: 10px; top: 800px; display: none">
+			   <a><img 
+				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190715/_2019071508411938507.jpg"
+				  	alt="<p>22:00 (頭條日報圖片)<br>衝突期間遍地爛雨傘。</p>"
+				  	href="http://hd.stheadline.com/news/realtime/hk/1544274/%E5%8D%B3%E6%99%82-%E6%B8%AF%E8%81%9E-%E6%B2%99%E7%94%B0%E8%A1%9D%E7%AA%81-%E5%A4%9A%E5%9C%96-%E5%9C%B0%E4%B8%8A%E9%81%BA%E8%A1%80%E8%B7%A1-%E6%96%B0%E5%9F%8E%E5%B8%82%E5%BB%A3%E5%A0%B4%E6%BB%BF%E5%9C%B0%E7%88%9B%E9%9B%A8%E5%82%98%E6%B8%85%E6%BD%94%E5%B7%A5%E5%BF%99%E6%B8%85%E7%90%86"
+				  	style="height: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 300px; height: 600px;"
+			   data-start = "display: none"
+			   data-6900 = "opacity: 0; left: 420px; top: 810px; display: block" 
+			   data-7000 = "opacity: 1; left: 420px; top: 760px; display: block" 
+			   data-7150 = "opacity: 1; left: 420px; top: 750px; display: block" 
+			   data-7250 = "opacity: 0; left: 420px; top: 700px; display: none">
+			   <a><img 
+				  	src="https://static.stheadline.com/stheadline/news_res/2019/07/15/200645/wnnp002p01b.jpg"
+				  	alt="<p>(頭條日報圖片)<br>有示威者圍着一名倒地的警員，以長雨傘向他狂插施襲。</p>"
+				  	href="http://hd.stheadline.com/news/daily/hk/779834/%E6%97%A5%E5%A0%B1-%E6%B8%AF%E8%81%9E-%E6%B2%99%E7%94%B0%E5%A4%A7%E8%A1%9D%E7%AA%81-%E8%AD%A6%E6%A3%8D%E5%B0%8D%E9%9B%A8%E5%82%98-%E6%96%B0%E5%9F%8E%E5%B8%82%E5%BB%A3%E5%A0%B4%E8%82%89%E6%90%8F%E6%88%B0"
+				  	style="width: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 400px; height: 300px;"
+			   data-start = "display: none"
+			   data-7150 = "opacity: 0; left: 10px; top: 600px; display: block" 
+			   data-7250 = "opacity: 1; left: 10px; top: 550px; display: block" 
+			   data-7400 = "opacity: 1; left: 10px; top: 540px; display: block" 
+			   data-7500 = "opacity: 0; left: 10px; top: 490px; display: none">
+			   <a><img 
+				  	src="https://live.staticflickr.com/65535/48281222057_142500cb7d_b.jpg"
+				  	alt="<p>22:13 (香港獨立媒體圖片)<br>金鐘絕食者到達新城市廣場，已絕食11天、73歲的陳伯走到防暴警察防線前面，更跪下要求警方向後退。</p>"
+				  	href="https://www.inmediahk.net/node/1065663"
+				  	style="height: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 400px; height: 300px;"
+			   data-start = "display: none"
+			   data-7650 = "opacity: 0; left: 10px; top: 60px; display: block" 
+			   data-7750 = "opacity: 1; left: 10px; top: 10px; display: block" 
+			   data-7900 = "opacity: 1; left: 10px; top: 0px; display: block" 
+			   data-8000 = "opacity: 0; left: 10px; top: -50px; display: none">
+			   <a><img 
+				  	src="https://live.staticflickr.com/65535/48281360946_6238181c13_b.jpg"
+				  	alt="<p>22:45 (香港獨立媒體圖片)<br>晚上10時許，港鐵一度宣佈列車不停沙田站，但未即時停止服務，而是安排兩班空載列車接載市民。不過部份原定不停站的列車駛經沙田站時，被市民強行拉開車門，而原定的「尾班車」，有市民舉傘擋門，阻止列車開出，以等候更多市民上車。</p>"
+				  	href="https://www.inmediahk.net/node/1065663"
+				  	style="height: 100%;"></a>
+			</div>
+
 
 		</section>
 	<img id="fog1" src="fog1.png">
@@ -864,7 +980,7 @@
 	<script type="text/javascript">
 			var s = skrollr.init();
 			$("section").on( "mousemove", function( event ) {
-				$( "#log" ).text( "pageX: " + event.offsetX + ", pageY: " + event.offsetY );
+				$( "#log" ).text( "pageX: " + event.offsetX + ", pageY: " + event.offsetY + " , " + window.scrollY);
 			});
   			$(window).scroll(function () {
   				var h = 15+(window.scrollY-window.scrollY%1000)/1000;
