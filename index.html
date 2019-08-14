@@ -15,7 +15,8 @@
 		nav {
 			position: fixed;
 			z-index: 150;
-			width: 100%;
+			width: 90%;
+			left: 5%;
 			bottom: -17px;
 			color: white;
 			overflow-y: hidden;
@@ -26,21 +27,21 @@
 		main {
 			position: fixed;
 			overflow: hidden;
-			left: 0;
+			left: 5%;
 			bottom: 10%;
-			min-width: 800px;
+			min-width: 768px;
 			max-width: 1600px;
 			width: 90%;
 			height: 90%;
 		}
 
 		aside {
-			position: fixed;
+			position: absolute;
 			right: 0;
-			bottom: 10%;
+			top: 0;
 			z-index: 150;
 			width: 10%;
-			height: 90%;
+			height: 100%;
 			background: none;
 		}
 
@@ -57,7 +58,7 @@
 			position: absolute;
 			width: 1400px;
 			height: 1200px;
-			left: 50%;
+			left: 45%;
 			top: 50%;
 			margin-left: -700px;
 			margin-top: -600px;
@@ -194,7 +195,7 @@
 			margin-right: auto;
 			top: 10%;
 			width: 100%;	
-			max-width: 800px;
+			max-width: 750px;
 			min-width: 600px;
 			height: auto;
 		}
@@ -214,7 +215,7 @@
 
 		#frame img {
 			object-fit: contain;
-			max-width: 800px;
+			max-width: 750px;
 			max-height: 600px;
 		}
 
@@ -236,7 +237,7 @@
 	</style>
 </head>
 <body>
-	<div id="log"></div>
+	<!--<div id="log"></div>-->
 	<nav>
 		<ul>
 			<li>6.9 <br>一百零三萬人大遊行</li>
@@ -260,7 +261,8 @@
 			<li>7.26<br>和你飛集會</li>
 		</ul>
 	</nav>
-	<aside>
+	<main>
+		<aside>
 	<h2><span>2<br>0<br>1<br>9</span>年<span>7</span>月<span>14</span>日</h2>
 	<h1>沙田遊行</h1>
 		<div id="button">
@@ -268,8 +270,7 @@
 			<div id="time">15:00</div>
 			<span id="next"> > </span>
 		</div>
-	</aside>
-	<main>
+		</aside>
 		<svg>
 			<defs><filter id="b15" width="300%" height="300%" x="-50%" y="-50%">
 				<feGaussianBlur in="SourceGraphic" stdDeviation="10" />
@@ -521,7 +522,7 @@
 		</section>
 		<section id="copy" style="background: transparent;">
 
-			<div class="thumbnail" style="width: 300px; height: 200px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "opacity: 1; left: 1000px; top: 90px; display: block"  
 			   data-50   = "opacity: 1; left: 1000px; top: 80px; display: block"  
 			   data-100   = "opacity: 0; left: 1000px; top: 30px; display: none">
@@ -532,7 +533,7 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 200px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "opacity: 1; left: 900px; top: 300px; display: block"  
 			   data-50   = "opacity: 1; left: 900px; top: 290px; display: block"  
 			   data-100   = "opacity: 0; left: 900px; top: 240px; display: none">
@@ -540,14 +541,14 @@
 				  	src="https://live.staticflickr.com/65535/48278621006_8834e40121_z.jpg" 
 				  	alt="<p> (香港獨立媒體圖片)<br>距離沙田遊行起步約一小時，沙田源禾路與沙田鄉事會路十字路口交界現已實行交通管制，大部份行車路段已經清空，約10多輛警車正停泊於源禾路游泳池外。</p>"
 				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="width: 100%;"></a>
+				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 200px; height: 280px;"
-			   data-start = "opacity: 0; left: 760px; bottom: -50px" 
-			   data-167   = "opacity: 1; left: 760px; bottom: 0px; display: block"  
-			   data-500  = "opacity: 1; left: 760px; bottom: 10px; display: block"  
-			   data-600  = "opacity: 0; left: 760px; bottom: 60px; display: none" >
+			<div class="thumbnail" style="width: 200px; height: 200px;"
+			   data-start = "opacity: 0; left: 460px; bottom: -50px" 
+			   data-167   = "opacity: 1; left: 460px; bottom: 0px; display: block"  
+			   data-500  = "opacity: 1; left: 460px; bottom: 10px; display: block"  
+			   data-600  = "opacity: 0; left: 460px; bottom: 60px; display: none" >
 				  <a>
 				  	<img 
 				  	  src="https://live.staticflickr.com/65535/48278569756_1768e9840e_b.jpg" 
@@ -556,7 +557,7 @@
 				  	  style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 500px; height: 280px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "opacity: 0; left: 250px; bottom: -50px" 
 			   data-167   = "opacity: 1; left: 250px; bottom: 0px; display: block"  
 			   data-500  = "opacity: 1; left: 250px; bottom: 10px; display: block"  
@@ -565,23 +566,23 @@
 				  	  src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071415275364947.jpg" 
 				  	  alt="<p>15:10 (星島日報圖片)<br>在起點翠田街足球場，由於人數眾多，比原定提早20分鐘開始起步。</p>"
 				  	  href="http://std.stheadline.com/instant/articles/detail/1043935/即時-香港-逃犯條例-沙田遊行隊伍拉起黑布提前起步-大圍站迫滿黑衣人流"
-				  	  style="width: 100%;"></a>
+				  	  style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 350px; height: 200px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none" 
-			   data-500   = "opacity: 0; left: 10px; top: 680px; display: block" 
-			   data-600   = "opacity: 1; left: 10px; top: 630px; display: block"  
-			   data-1650  = "opacity: 1; left: 10px; top: 620px; display: block"  
-			   data-1750  = "opacity: 0; left: 10px; top: 570px; display: none" >
+			   data-500   = "opacity: 0; left: 10px; top: 580px; display: block" 
+			   data-600   = "opacity: 1; left: 10px; top: 530px; display: block"  
+			   data-1650  = "opacity: 1; left: 10px; top: 520px; display: block"  
+			   data-1750  = "opacity: 0; left: 10px; top: 470px; display: none" >
 				  <a><img 
 				  	  src="https://live.staticflickr.com/65535/48278872301_68e68b7e2b_b.jpg" 
 				  	  alt="<p>15:43 (香港獨立媒體圖片)<br>有「爸爸媽媽」在文化博物館外，為示威者準備了涼茶及水站予示威者作補給，示威者拍手感謝支持。示威者沿沙田正街進入希爾頓中心，警方在大埔公路大圍段架設路障。</p>"
 				  	  href="https://www.inmediahk.net/node/1065663"
-				  	  style="width: 100%;"></a>
+				  	  style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 350px; height: 300px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none" 
 			   data-500   = "opacity: 0; left: 10px; top: 370px; display: block" 
 			   data-600   = "opacity: 1; left: 10px; top: 320px; display: block"  
@@ -594,78 +595,65 @@
 				  	  style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 200px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none" 
-			   data-500   = "opacity: 0; left: 50px; top: 160px; display: block" 
-			   data-600   = "opacity: 1; left: 50px; top: 110px; display: block"  
-			   data-1650  = "opacity: 1; left: 50px; top: 100px; display: block"  
-			   data-1750  = "opacity: 0; left: 50px; top: 50px; display: none" >
+			   data-500   = "opacity: 0; left: 10px; top: 160px; display: block" 
+			   data-600   = "opacity: 1; left: 10px; top: 110px; display: block"  
+			   data-1650  = "opacity: 1; left: 10px; top: 100px; display: block"  
+			   data-1750  = "opacity: 0; left: 10px; top: 50px; display: none" >
 				  <a><img 
 				  	  src="https://live.staticflickr.com/65535/48279068827_8912907054_b.jpg" 
 				  	  alt="<p>16:16 (香港獨立媒體圖片)<br>遊行隊伍隊頭沿沙田正街走過新城市廣場，轉入沙田廣場外。有市民在沙田廣場天橋為示威者打氣。沙田中心則關閉側門，防止示威者進入。示威者對天橋上的市民揮手，希望他們加入行動。</p>"
 				  	  href="https://www.inmediahk.net/node/1065663"
-				  	  style="width: 100%;"></a>
+				  	  style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 350px; height: 200px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-1650  = "opacity: 0; left: 20px; top: 150px; display: block"
-			   data-1750  = "opacity: 1; left: 20px; top: 100px; display: block" 
-			   data-1900  = "opacity: 1; left: 20px; top: 90px; display: block" 
-			   data-2000  = "opacity: 0; left: 20px; top: 40px; display: none">
+			   data-1650  = "opacity: 0; left: 10px; top: 150px; display: block"
+			   data-1750  = "opacity: 1; left: 10px; top: 100px; display: block" 
+			   data-1900  = "opacity: 1; left: 10px; top: 90px; display: block" 
+			   data-2000  = "opacity: 0; left: 10px; top: 40px; display: none">
 			    <a><img 
 				  	src="https://live.staticflickr.com/65535/48279217312_0025b3d8ff_b.jpg" 
 				  	alt="<p>16:45 (香港獨立媒體圖片)<br>遊行隊伍隊頭沿沙田鄉事會路到達Home Square，沙田區議員許鋭宇呼籲示威者按原定路線前往終點沙田站巴士總站。</p>"
 				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="width: 100%;"></a>
+				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 450px; height: 250px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-1650  = "opacity: 0; left: 20px; top: 360px; display: block"
-			   data-1750  = "opacity: 1; left: 20px; top: 310px; display: block" 
-			   data-1900  = "opacity: 1; left: 20px; top: 300px; display: block" 
-			   data-2000  = "opacity: 0; left: 20px; top: 250px; display: none">
+			   data-1650  = "opacity: 0; left: 220px; top: 150px; display: block"
+			   data-1750  = "opacity: 1; left: 220px; top: 100px; display: block" 
+			   data-1900  = "opacity: 1; left: 220px; top: 90px; display: block" 
+			   data-2000  = "opacity: 0; left: 220px; top: 40px; display: none">
 			    <a><img 
 				  	src="https://fs.mingpao.com/ins/20190714/s00001/5d252448bd5a6143d24589eda85e3930.jpg" 
 				  	alt="<p>16:45 (明報圖片)<br>遊行隊頭出發到達終點，與此同時，起點翠田街足球場的所有市民已經出發，仍有市民直接由港鐵大圍站直接進入車公廟路遊行路線。</p>"
 				  	href="https://news.mingpao.com/ins/%E6%B8%AF%E8%81%9E/article/20190714/s00001/1563088298405/%E3%80%90%E9%80%83%E7%8A%AF%E6%A2%9D%E4%BE%8B-%E6%B2%99%E7%94%B0%E7%A4%BA%E5%A8%81%E3%80%917-14%E6%96%87%E5%AD%97%E7%B4%80%E9%8C%84-%E4%B8%8B%E5%8D%88%E9%81%8A%E8%A1%8C-%E6%99%9A%E4%B8%8A%E6%96%B0%E5%9F%8E%E5%B8%82%E5%BB%A3%E5%A0%B4%E8%A1%9D%E7%AA%81%EF%BC%88%E9%99%84%E7%9F%AD%E7%89%87%EF%BC%89"
-				  	style="width: 100%;"></a>
+				  	style="height: 100%;"></a>
 			</div>
 
 
-			<div class="thumbnail" style="width: 500px; height: 300px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-1900 = "opacity: 0; right: 20px; top: 290px; display: block" 
-			   data-2000 = "opacity: 1; right: 20px; top: 240px; display: block" 
-			   data-2150 = "opacity: 1; right: 20px; top: 230px; display: block" 
-			   data-2250 = "opacity: 0; right: 20px; top: 180px; display: none">
+			   data-1900 = "opacity: 0; right: 10px; top: 390px; display: block" 
+			   data-2000 = "opacity: 1; right: 10px; top: 340px; display: block" 
+			   data-2150 = "opacity: 1; right: 10px; top: 330px; display: block" 
+			   data-2250 = "opacity: 0; right: 10px; top: 280px; display: none">
 			   <a><img 
 				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071417303568762.jpg" 
 				  	alt="<p>17:00 (星島日報圖片)<br>源禾路發生衝突，有示威者向警方投擲雜物，其後多名軍裝警員手持警棍衝向示威者，並施放胡椒噴霧。其後警方退守至源禾路泳池一帶，立法會議員郭家麒到場了解情況並要求見指揮官，一名警務人員要求郭家麒立即離開。郭要求其展示委任證，該名警務人員聲稱執行職務期間不便展示委任證。</p>"
 				  	href="http://std.stheadline.com/instant/articles/detail/1044040/%E5%8D%B3%E6%99%82-%E9%A6%99%E6%B8%AF-%E9%80%83%E7%8A%AF%E6%A2%9D%E4%BE%8B-%E6%B2%99%E7%94%B0%E7%88%86%E8%A1%9D%E7%AA%81%E8%AD%A6%E5%AF%9F%E6%94%BE%E8%83%A1%E6%A4%92%E5%99%B4%E9%9C%A7-%E7%A4%BA%E5%A8%81%E8%80%85%E6%8A%95%E6%93%B2%E7%89%A9%E5%93%81%E8%A8%AD%E8%B7%AF%E9%9A%9C"
-				  	style="width: 100%;"></a>
-			</div>
-
-			<div class="thumbnail" style="width: 350px; height: 250px;"
-			   data-start = "display: none"
-			   data-1900 = "opacity: 0; right: 430px; top: 600px; display: block" 
-			   data-2000 = "opacity: 1; right: 430px; top: 550px; display: block" 
-			   data-2150 = "opacity: 1; right: 430px; top: 540px; display: block" 
-			   data-2250 = "opacity: 0; right: 430px; top: 490px; display: none">
-			   <a><img 
-				  	src="https://live.staticflickr.com/65535/48279187051_e04dd35560_b.jpg" 
-				  	alt="<p>17:00 (香港獨立媒體圖片)<br>源禾路發生衝突，有示威者向警方投擲雜物，其後多名軍裝警員手持警棍衝向示威者，並施放胡椒噴霧。其後警方退守至源禾路泳池一帶，立法會議員郭家麒到場了解情況並要求見指揮官，一名警務人員要求郭家麒立即離開。郭要求其展示委任證，該名警務人員聲稱執行職務期間不便展示委任證。</p>"
-				  	href="https://www.inmediahk.net/node/1065663"
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 250px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-1900 = "opacity: 0; right: 20px; top: 600px; display: block" 
-			   data-2000 = "opacity: 1; right: 20px; top: 550px; display: block" 
-			   data-2150 = "opacity: 1; right: 20px; top: 540px; display: block" 
-			   data-2250 = "opacity: 0; right: 20px; top: 490px; display: none">
+			   data-1900 = "opacity: 0; right: 10px; top: 600px; display: block" 
+			   data-2000 = "opacity: 1; right: 10px; top: 550px; display: block" 
+			   data-2150 = "opacity: 1; right: 10px; top: 540px; display: block" 
+			   data-2250 = "opacity: 0; right: 10px; top: 490px; display: none">
 			   <a><img 
 				  	src="https://fs.mingpao.com/ins/20190714/s00001/5dd7edbafcc358f489208b32edef5e95.jpg" 
 				  	alt="<p>17:19 (明報圖片)<br>在源禾路，示威者與警方現時相距約50米，局面僵持，示威者未有進一步推進。</p>"
@@ -673,8 +661,20 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<
-			<div class="thumbnail" style="width: 500px; height: 400px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
+			   data-start = "display: none"
+			   data-1900 = "opacity: 0; right: 10px; top: 810px; display: block" 
+			   data-2000 = "opacity: 1; right: 10px; top: 760px; display: block" 
+			   data-2150 = "opacity: 1; right: 10px; top: 750px; display: block" 
+			   data-2250 = "opacity: 0; right: 10px; top: 700px; display: none">
+			   <a><img 
+				  	src="https://live.staticflickr.com/65535/48279187051_e04dd35560_b.jpg" 
+				  	alt="<p>17:00 (香港獨立媒體圖片)<br>源禾路發生衝突，有示威者向警方投擲雜物，其後多名軍裝警員手持警棍衝向示威者，並施放胡椒噴霧。其後警方退守至源禾路泳池一帶，立法會議員郭家麒到場了解情況並要求見指揮官，一名警務人員要求郭家麒立即離開。郭要求其展示委任證，該名警務人員聲稱執行職務期間不便展示委任證。</p>"
+				  	href="https://www.inmediahk.net/node/1065663"
+				  	style="height: 100%;"></a>
+			</div>
+
+			<div class="thumbnail" style="width: 300px; height: 300px;"
 			   data-start = "display: none"
 			   data-2150 = "opacity: 0; right: 10px; top: 250px; display: block" 
 			   data-2250 = "opacity: 1; right: 10px; top: 200px; display: block" 
@@ -688,7 +688,7 @@
 			</div>
 			
 
-			<div class="thumbnail" style="width: 400px; height: 250px;"
+			<div class="thumbnail" style="width: 300px; height: 250px;"
 			   data-start = "display: none"
 			   data-2900 = "opacity: 0; left: 10px; top: 500px; display: block" 
 			   data-3000 = "opacity: 1; left: 10px; top: 450px; display: block" 
@@ -701,7 +701,7 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 300px;"
+			<div class="thumbnail" style="width: 300px; height: 300px;"
 			   data-start = "display: none"
 			   data-2900 = "opacity: 0; left: 110px; top: 760px; display: block" 
 			   data-3000 = "opacity: 1; left: 110px; top: 710px; display: block" 
@@ -714,12 +714,12 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 300px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-3650 = "opacity: 0; right: 10px; top: 250px; display: block" 
-			   data-3750 = "opacity: 1; right: 10px; top: 200px; display: block" 
-			   data-4000 = "opacity: 1; right: 10px; top: 190px; display: block" 
-			   data-4100 = "opacity: 0; right: 10px; top: 140px; display: none">
+			   data-3650 = "opacity: 0; right: 10px; top: 350px; display: block" 
+			   data-3750 = "opacity: 1; right: 10px; top: 300px; display: block" 
+			   data-4000 = "opacity: 1; right: 10px; top: 290px; display: block" 
+			   data-4100 = "opacity: 0; right: 10px; top: 240px; display: none">
 			   <a><img 
 				  	src="https://live.staticflickr.com/65535/48279710116_348b9fc09a_b.jpg" 
 				  	alt="<p>18:40 (香港獨立媒體圖片)<br>在源禾路的警方更換全副武裝，配備長盾及防暴槍的警員上最前線防守，全部警員均沒有戴上警員編號及委任證。</p>"
@@ -727,7 +727,7 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 200px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
 			   data-3650 = "opacity: 0; right: 10px; top: 560px; display: block" 
 			   data-3750 = "opacity: 1; right: 10px; top: 510px; display: block" 
@@ -742,10 +742,10 @@
 
 			<div class="thumbnail" style="width: 300px; height: 300px;"
 			   data-start = "display: none"
-			   data-3650 = "opacity: 0; right: 420px; top: 460px; display: block" 
-			   data-3750 = "opacity: 1; right: 420px; top: 410px; display: block" 
-			   data-4000 = "opacity: 1; right: 420px; top: 400px; display: block" 
-			   data-4100 = "opacity: 0; right: 420px; top: 350px; display: none">
+			   data-3650 = "opacity: 0; right: 220px; top: 460px; display: block" 
+			   data-3750 = "opacity: 1; right: 220px; top: 410px; display: block" 
+			   data-4000 = "opacity: 1; right: 220px; top: 400px; display: block" 
+			   data-4100 = "opacity: 0; right: 220px; top: 350px; display: none">
 			   <a><img 
 				  	src="https://live.staticflickr.com/65535/48279871097_1753cf402a_b.jpg" 
 				  	alt="<p>18:51 (香港獨立媒體圖片)<br>超過十名民主派沙田區議員包括程張迎、吳錦雄、丘文俊、黎梓恩等在警方防線前開咪，要求會見現場的指揮官，強調不希望重演昨日上水的流血事件，但沒有得到回應。</p>"
@@ -753,17 +753,17 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-4000 = "opacity: 0; right: 10px; top: 70px; display: block" 
-			   data-4100 = "opacity: 1; right: 10px; top: 20px; display: block" 
-			   data-4900 = "opacity: 1; right: 10px; top: 10px; display: block" 
-			   data-5000 = "opacity: 0; right: 10px; top: -40px; display: none">
+			   data-4000 = "opacity: 0; right: 220px; top: 70px; display: block" 
+			   data-4100 = "opacity: 1; right: 220px; top: 20px; display: block" 
+			   data-4900 = "opacity: 1; right: 220px; top: 10px; display: block" 
+			   data-5000 = "opacity: 0; right: 220px; top: -40px; display: none">
 			   <a><img 
 				  	src="https://fs.mingpao.com/ins/20190714/s00001/62592bf797dc0ce4b02cea8e9dc13680.jpg" 
 				  	alt="<p>19:10 (明報圖片)<br>大批警員集結於瀝源邨，部份警員進入瀝源商場，有市民怒罵「黑警」。</p>"
 				  	href="_blank"
-				  	width="500"></a>
+				  	style="height: 100%;"></a>
 			</div>
 
 			<!--
@@ -781,20 +781,20 @@
 			</div>
 			-->
 
-			<div class="thumbnail" style="width: 400px; height: 250px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-4000 = "opacity: 0; right: 370px; top: 600px; display: block" 
-			   data-4100 = "opacity: 1; right: 370px; top: 550px; display: block" 
-			   data-4900 = "opacity: 1; right: 370px; top: 540px; display: block" 
-			   data-5000 = "opacity: 0; right: 370px; top: 490px; display: none">
+			   data-4000 = "opacity: 0; right: 220px; top: 550px; display: block" 
+			   data-4100 = "opacity: 1; right: 220px; top: 500px; display: block" 
+			   data-4900 = "opacity: 1; right: 220px; top: 490px; display: block" 
+			   data-5000 = "opacity: 0; right: 220px; top: 440px; display: none">
 			   <a><img 
 				  	src="https://live.staticflickr.com/65535/48279920336_d04a48bedc_b.jpg" 
 				  	alt="<p>19:10 (香港獨立媒體圖片)<br>多名區議員及立法會議員與警方交涉不果，立法會議員區諾軒籲示威者再三考慮清楚，並指將與其他立法會議員包括朱凱廸、陳志全及民主派沙田區議員坐在警方防線前，保護群眾緩和場面，稱「呢個係我責任嚟。」</p>"
 				  	href="https://www.inmediahk.net/node/1065663"
-				  	style="width: 100%;"></a>
+				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 350px; height: 300px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
 			   data-4000 = "opacity: 0; right: 10px; top: 550px; display: block" 
 			   data-4100 = "opacity: 1; right: 10px; top: 500px; display: block" 
@@ -807,20 +807,20 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 200px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-4000 = "opacity: 0; right: 110px; top: 860px; display: block" 
-			   data-4100 = "opacity: 1; right: 110px; top: 810px; display: block" 
-			   data-4900 = "opacity: 1; right: 110px; top: 800px; display: block" 
-			   data-5000 = "opacity: 0; right: 110px; top: 750px; display: none">
+			   data-4000 = "opacity: 0; right: 220px; top: 760px; display: block" 
+			   data-4100 = "opacity: 1; right: 220px; top: 710px; display: block" 
+			   data-4900 = "opacity: 1; right: 220px; top: 700px; display: block" 
+			   data-5000 = "opacity: 0; right: 220px; top: 650px; display: none">
 			   <a><img 
 				  	src="https://live.staticflickr.com/65535/48280071587_e7f0548925_b.jpg" 
 				  	alt="<p>19:20 (香港獨立媒體圖片)<br>源禾路部份示威者入夜後開始撤離，他們呼籲在場示威者「要走一起走」，並讓較後方的示威者先行撤退。防暴警察於沙燕橋上推進。</p>"
 				  	href="_blank"
-				  	style="width: 100%;"></a>
+				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 300px;"
+			<div class="thumbnail" style="width: 300px; height: 300px;"
 			   data-start = "display: none"
 			   data-4900 = "opacity: 0; left: 40px; top: 300px; display: block" 
 			   data-5000 = "opacity: 1; left: 40px; top: 250px; display: block" 
@@ -845,11 +845,11 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 300px; height: 200px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-6400 = "opacity: 1; right: 10px; bottom: 620px; display: block" 
-			   data-6900 = "opacity: 1; right: 10px; bottom: 630px; display: block"
-			   data-7000 = "opacity: 0; right: 10px; bottom: 680px; display: none">
+			   data-6400 = "opacity: 1; right: 10px; bottom: 430px; display: block" 
+			   data-6900 = "opacity: 1; right: 10px; bottom: 440px; display: block"
+			   data-7000 = "opacity: 0; right: 10px; bottom: 490px; display: none">
 			   <a><img 
 				  	src="https://fs.mingpao.com/pns/20190716/s00006/a5c84befe85c432539a6e973648e4b2f.jpg" 
 				  	alt="<p>21:30 (明報圖片)<br>一批警員於新城市廣場外行人路追捕示威者，有防暴警將香港眾志常委朱恩浩制服在地後，180度扭傷其手腕。</p>"
@@ -857,23 +857,23 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 500px; height: 300px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-6400 = "opacity: 1; right: 10px; bottom: 310px; display: block" 
-			   data-6900 = "opacity: 1; right: 10px; bottom: 320px; display: block"
-			   data-7000 = "opacity: 0; right: 10px; bottom: 370px; display: none">
+			   data-6400 = "opacity: 1; right: 10px; bottom: 220px; display: block" 
+			   data-6900 = "opacity: 1; right: 10px; bottom: 230px; display: block"
+			   data-7000 = "opacity: 0; right: 10px; bottom: 280px; display: none">
 			   <a><img 
 				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071421580592613.jpg" 
 				  	alt="<p>21:25 (頭條日報圖片)<br>示威者退入橫壆街後，分別進入沙田中心商場及好運中心往新城市廣場方向撤退。警方進入橫壆街清場，警方進入好運中心帶走多人。</p>"
 				  	href="http://hd.stheadline.com/news/realtime/hk/1544169/%E5%8D%B3%E6%99%82-%E6%B8%AF%E8%81%9E-%E6%B2%99%E7%94%B0%E8%A1%9D%E7%AA%81-%E7%A4%BA%E5%A8%81%E8%80%85%E8%A1%9D%E5%85%A5%E5%A5%BD%E9%81%8B%E4%B8%AD%E5%BF%83%E6%B2%99%E7%94%B0%E4%B8%AD%E5%BF%83-%E9%98%B2%E6%9A%B4%E8%AD%A6%E5%AF%9F%E5%B8%B6%E8%B5%B0%E5%A4%9A%E4%BA%BA"
-				  	style="width: 100%;"></a>
+				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 300px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-6400 = "opacity: 1; right: 10px; bottom: 0px; display: block" 
-			   data-6900 = "opacity: 1; right: 10px; bottom: 10px; display: block"
-			   data-7000 = "opacity: 0; right: 10px; bottom: 60px; display: none">
+			   data-6400 = "opacity: 1; right: 10px; bottom: 10px; display: block" 
+			   data-6900 = "opacity: 1; right: 10px; bottom: 20px; display: block"
+			   data-7000 = "opacity: 0; right: 10px; bottom: 70px; display: none">
 			   <a><img 
 				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071421580116799.jpg" 
 				  	alt="<p>(頭條日報圖片)<br>示威者退入橫壆街後，分別進入沙田中心商場及好運中心往新城市廣場方向撤退，有示威者向地下投擲物品。</p>"
@@ -881,11 +881,11 @@
 				  	style="height: 100%;"></a>
 			</div>
 
-			<div class="thumbnail" style="width: 400px; height: 300px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-6400 = "opacity: 1; right: 420px; bottom: 0px; display: block" 
-			   data-6900 = "opacity: 1; right: 420px; bottom: 10px; display: block"
-			   data-7000 = "opacity: 0; right: 420px; bottom: 60px; display: none">
+			   data-6400 = "opacity: 1; right: 220px; bottom: 10px; display: block" 
+			   data-6900 = "opacity: 1; right: 220px; bottom: 20px; display: block"
+			   data-7000 = "opacity: 0; right: 220px; bottom: 70px; display: none">
 			   <a><img 
 				  	src="http://static.stheadline.com/stheadline/inewsmedia/20190714/_2019071421354912308.jpg" 
 				  	alt="<p>(頭條日報圖片)<br>防暴警察於商場平臺驅趕示威者。</p>"
@@ -894,11 +894,11 @@
 			</div>
 
 
-			<div class="thumbnail" style="width: 400px; height: 300px;"
+			<div class="thumbnail" style="width: 200px; height: 200px;"
 			   data-start = "display: none"
-			   data-6400 = "opacity: 1; left: 10px; top: 10px; display: block" 
-			   data-6900 = "opacity: 1; left: 10px; top: 0px; display: block"
-			   data-7000 = "opacity: 0; left: 10px; top: -50x; display: none">
+			   data-6400 = "opacity: 1; left: 10px; top: 20px; display: block" 
+			   data-6900 = "opacity: 1; left: 10px; top: 1px; display: block"
+			   data-7000 = "opacity: 0; left: 10px; top: -40x; display: none">
 			   <a><img 
 				  	src="https://live.staticflickr.com/65535/48280898837_761bd82faa_b.jpg"
 				  	alt="<p>21:30 (香港獨立媒體圖片)<br>約50名警員在沙田連城廣場，通往沙田火車站的範圍組成防線，示威者開傘準備。</p>"
