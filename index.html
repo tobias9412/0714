@@ -142,10 +142,11 @@
 
   		.conclusion {
   			position: relative;
-			font-size: 2vh;
+  			z-index: 200;
+			font-size: 2.5vh;
  			float: right;
- 			padding: 4vh 18vh 4vh 4vh;
- 			width: 80%;
+ 			margin: 4vh 18vh 4vh 4vh;
+ 			width: 75%;
   			writing-mode: vertical-rl;
 			color: #c8c8c8;
  			line-height: 1.5;
@@ -153,9 +154,10 @@
 		}
 
 		.conclusion p {
-			width: 90%;
-			padding: 50px 30px;
-			overflow: auto;
+			position: relative;
+			width: 100%;
+			height: 100%;
+			overflow-x: auto;
 		}
 
  		.conclusion span {
@@ -318,12 +320,6 @@
 		<aside>
 	<h2><span>2<br>0<br>1<br>9</span>年<span>7</span>月<span>14</span>日</h2>
 	<h1>沙田遊行</h1>
-	<div class="conclusion"
-		data-start = "display: none"
-		data-8900 =  "opacity:0; display: block"
-		data-9000 =  "opacity:1; display: block">
-				<p>由沙田一隅發起<br><br>遊行人數<br><span>11</span>點<span>5</span>萬人（大會）｜<span>2.8</span>萬人（警方）<br><br>拘捕人數：<span>47</span>人，涉嫌干犯非法集結、襲警、妨礙警務人員執行職務<br><br>受傷警員：<span>10</span>名<br><br>訴求<br>一、徹底撤回修例<br>二、收回暴動定義<br>三、撤銷對所有反送中抗爭者控罪<br>四、徹底追究警隊濫權情況<br>五、以行政命令解散立法會，立即實行雙真普選<br><br>爭議<br><br>示威者警方於沙田鄉事會路要求示威者離去，但從多處包圍示威者。新城市廣場內，大批欲前往沙田站離開的示威者被警方阻止，不久後便有多批警察從後包圍示威者，繼而引發衝突。警方亦曾稱此為圍堵行動。<br><br>集會獲發不反對通知書至晚上<span>11</span>時，惟約於晚上<span>9</span>至<span>10</span>時，警方在毫無預警及通知下到集會場地內，並從四面方向全方位包圍該處，以粗口及揮動手上警棍盾牌等裝備指嚇和平集會人士，命令他們立即離開。<br><br>新城市廣場管理公司職員引領一隊防暴警察推進商場三樓範圍，但衝突當晚沒有報警，亦沒有求警協助。<br><br>一名白衫警員拘捕已倒地的香港眾志成員朱恩浩後，在朱恩浩沒有任何反抗下，該警員以<span>180</span>度屈曲其手腕。<br><br>香港商業電台新聞部記者陳皓為於採訪時多次被警方阻撓，並向記者面部施放胡椒噴劑。<br><br>一名男子在混戰期間疑因被警員挖眼，咬斷該男警手指，最終被捕。警員遭咬斷指經<span>10</span>小時手術駁回，男子在須守宵禁令及禁踏足新城市廣場下獲准保釋。<br><br>警方錯誤引述示威者用鉗夾斷警員手指，惟警方卻從未有正式澄清錯誤發放消息。</p>
-			</div>
 		<div id="button">
 			<span id="prev"> < </span>
 			<div id="time">15:00</div>
@@ -968,6 +964,34 @@
 			</div>
 			<div class="img_circle"></div>
 		</section>
+	<div class="conclusion"
+	data-start = "display: none"
+	data-8900 =  "opacity:0; display: block"
+	data-9000 =  "opacity:1; display: block">
+			<p>由沙田一隅發起<br><br><br>
+
+				遊行人數<br><span>11</span>點<span>5</span>萬人（大會）｜<span>2.8</span>萬人（警方）<br><br><br>
+
+				拘捕人數：<span>47</span>人，涉嫌干犯非法集結、襲警、妨礙警務人員執行職務<br><br><br>
+
+				受傷警員：<span>10</span>名<br><br><br>
+
+				訴求<br>一、徹底撤回修例<br>二、收回暴動定義<br>三、撤銷對所有反送中抗爭者控罪<br>四、徹底追究警隊濫權情況<br>五、以行政命令解散立法會，立即實行雙真普選<br><br><br>
+
+				爭議<br><br>示威者警方於沙田鄉事會路要求示威者離去，但從多處包圍示威者。新城市廣場內，大批欲前往沙田站離開的示威者被警方阻止，不久後便有多批警察從後包圍示威者，繼而引發衝突。警方亦曾稱此為圍堵行動。<br><br>
+
+				集會獲發不反對通知書至晚上<span>11</span>時，惟約於晚上<span>9</span>至<span>10</span>時，警方在毫無預警及通知下到集會場地內，並從四面方向全方位包圍該處，以粗口及揮動手上警棍盾牌等裝備指嚇和平集會人士，命令他們立即離開。<br><br>
+
+				新城市廣場管理公司職員引領一隊防暴警察推進商場三樓範圍，但衝突當晚沒有報警，亦沒有求警協助。<br><br>
+
+				一名白衫警員拘捕已倒地的香港眾志成員朱恩浩後，在朱恩浩沒有任何反抗下，該警員以<span>180</span>度屈曲其手腕。<br><br>
+
+				香港商業電台新聞部記者陳皓為於採訪時多次被警方阻撓，並向記者面部施放胡椒噴劑。<br><br>
+
+				一名男子在混戰期間疑因被警員挖眼，咬斷該男警手指，最終被捕。警員遭咬斷指經<span>10</span>小時手術駁回，男子在須守宵禁令及禁踏足新城市廣場下獲准保釋。<br><br>
+
+				警方錯誤引述示威者用鉗夾斷警員手指，惟警方卻從未有正式澄清錯誤發放消息。</p>
+		</div>
 	<img id="fog1" src="fog1.png">
 	<img id="fog2" src="fog2.png">
 	<div class="conclusion">
