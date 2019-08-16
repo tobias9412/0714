@@ -12,18 +12,6 @@
 			font-family: 'Noto Serif TC', serif;
 		}
 
-		nav {
-			position: fixed;
-			z-index: 150;
-			width: 90%;
-			left: 5%;
-			bottom: -17px;
-			color: white;
-			overflow-y: hidden;
-			white-space: nowrap;
-			background: none;
-		}
-
 		main {
 			position: fixed;
 			left: 5%;
@@ -43,12 +31,17 @@
 			background: none;
 		}
 
-
-		nav ul li {
+		nav {
+			z-index: 9999;
+			position: absolute;
 			display: inline-block;
-			vertical-align: top;
-			margin: 0 20px;
+
+		}
+
+		nav li {
 			list-style-type: none;
+			margin: 0 4vh;
+			float: left;
 		}
 
 		section {
@@ -56,7 +49,7 @@
 			position: absolute;
 			width: 1400px;
 			height: 1200px;
-			left: 50%;
+			left: 45%;
 			top: 50%;
 			margin-left: -700px;
 			margin-top: -600px;
@@ -77,7 +70,7 @@
 			float: right;
 			clear: both;
 			font-weight: bold;
-			font-size: 6vh;
+			font-size: 5vh;
 			line-height: 0.5;
 			color: #c8c8c8;
 			text-shadow: 0 0 50px black;
@@ -105,9 +98,6 @@
 		}
 
 		h1, h2 {
-			position: absolute;
-			z-index: 100;
-			margin: 20px;
 			font-weight: 900;
 			writing-mode: vertical-rl;
 			color: #c8c8c8;
@@ -115,18 +105,13 @@
   			white-space: nowrap;
     	}
 
- 		h2 {
- 			right: 0px;
-			font-size: 6vh;
-  		} 		
-
   		h1 {
- 			right: 55px;	
 			font-size: 6vh;
   		}
 
-  		h1 span, h2 span {
- 			writing-mode: horizontal-tb;
+  		h1 span {
+ 			font-size: 4vh;
+			writing-mode: horizontal-tb;
   		}
 
   		.conclusionbg {
@@ -292,12 +277,12 @@
 	</style>
 </head>
 <body>
-	<!--<div id="log"></div
-	<nav>
-		<ul>
-			<li>6.9 <br>一百零三萬人大遊行</li>
-			<li>6.11<br>添馬公園通宵野餐</li>
-			<li>6.12<br>包圍立法會</li>
+	<!--<div id="log"></div>-->
+	<main>
+		<!--<nav>
+			<li><h1><span>6.9 </span> 一百零三萬人大遊行</h1></li>
+			<li><h1><span>6.11</span> 添馬公園通宵野餐</h1></li>
+			<li><h1><span>6.12</span> 包圍立法會</h1></li>
 			<li>6.14<br>香港媽媽集會</li>
 			<li>6.15<br>失去義士</li>
 			<li>6.16<br>二百萬零一人大遊行</li>
@@ -314,12 +299,9 @@
 			<li>7.17<br>銀髮族遊行</li>
 			<li>7.21<br>港島區大遊行</li>
 			<li>7.26<br>和你飛集會</li>
-		</ul>
-	</nav>>-->
-	<main>
+		</nav>-->
 		<aside>
-	<h2><span>2<br>0<br>1<br>9</span>年<span>7</span>月<span>14</span>日</h2>
-	<h1>沙田遊行</h1>
+			<h1><span>7.14</span> 沙田遊行</h1>
 		<div id="button">
 			<span id="prev"> < </span>
 			<div id="time">15:00</div>
